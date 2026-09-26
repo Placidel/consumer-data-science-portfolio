@@ -1,0 +1,6 @@
+stage_number,stage,reached,share_of_start,step_conversion,lost_at_step,share_of_all_losses
+1,session_start,17004,1.0,1.0,0,0.0
+2,product_view,15344,0.902376,0.902376,1660,0.129951
+3,add_to_cart,7945,0.467243,0.517792,7399,0.579223
+4,checkout_start,5541,0.325865,0.69742,2404,0.188195
+5,purchase,4230,0.248765,0.7634,1311,0.10263

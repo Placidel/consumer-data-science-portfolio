@@ -1,0 +1,31 @@
+feature,shap_logistic_regression,direction_logistic_regression,shap_gradient_boosting,direction_gradient_boosting,permutation_auc_drop,permutation_auc_drop_std
+browse_sessions_90d,0.374534,higher -> less likely,0.413106,higher -> less likely,0.029084,0.001666
+days_since_last_order,0.351313,higher -> more likely,0.341829,higher -> more likely,0.036929,0.001515
+days_since_last_session,0.14973,higher -> more likely,0.328238,higher -> more likely,0.020189,0.000317
+orders_90d,0.191665,higher -> less likely,0.269968,higher -> less likely,0.004581,0.000459
+orders_total,0.266649,higher -> less likely,0.15204,higher -> less likely,0.011358,0.00053
+email_open_rate_90d,0.141205,higher -> less likely,0.12584,higher -> less likely,0.005163,0.000501
+plus_member,0.094498,higher -> less likely,0.109562,higher -> less likely,0.003095,0.000418
+tenure_days,0.008585,higher -> less likely,0.102715,higher -> more likely,0.005798,0.000686
+acquisition_channel,0.082352,categorical,0.064635,categorical,0.001311,0.00025
+net_revenue_180d,0.01382,higher -> less likely,0.051164,higher -> less likely,0.000438,0.000384
+email_clicks_90d,0.077142,higher -> more likely,0.039871,higher -> more likely,0.000396,9.4e-05
+avg_order_value,0.009491,higher -> more likely,0.037025,higher -> more likely,-9.3e-05,0.000272
+app_order_share,0.027196,higher -> less likely,0.035305,higher -> less likely,0.000135,0.000144
+category_count,0.052289,higher -> less likely,0.034866,higher -> less likely,0.000347,0.000116
+discount_share,0.029716,higher -> less likely,0.032337,higher -> more likely,4.8e-05,0.000207
+store_order_share,0.030777,higher -> less likely,0.031505,higher -> less likely,0.000388,0.000245
+income_band,0.040449,categorical,0.030245,categorical,-5.6e-05,0.000109
+age_band,0.044414,categorical,0.028076,categorical,7.2e-05,0.000183
+browse_sessions_30d,0.129875,higher -> less likely,0.028027,higher -> less likely,0.000264,0.000105
+emails_received_90d,0.019288,higher -> less likely,0.027726,higher -> more likely,0.000376,8.3e-05
+region,0.036292,categorical,0.023921,categorical,-6.3e-05,0.000139
+plus_cancelled_180d,0.034959,higher -> more likely,0.022165,higher -> more likely,0.000934,0.000137
+email_opt_in,0.064427,higher -> more likely,0.016396,higher -> more likely,1.9e-05,9.2e-05
+first_order_discounted,0.062941,higher -> more likely,0.012381,higher -> more likely,3e-06,5.9e-05
+orders_prev_90d,0.038301,higher -> less likely,0.012238,higher -> less likely,0.000364,5.6e-05
+open_contacts,0.015933,higher -> more likely,0.009848,higher -> more likely,0.000368,4.3e-05
+device_type,0.028645,categorical,0.009584,categorical,0.00015,4.5e-05
+slow_resolution_contacts_180d,0.015158,higher -> more likely,0.007035,higher -> more likely,9.1e-05,6.3e-05
+support_contacts_180d,0.007698,higher -> less likely,0.006872,higher -> more likely,2.7e-05,4.5e-05
+low_csat_contacts_180d,0.001378,higher -> more likely,0.000289,higher -> more likely,1.3e-05,5e-06

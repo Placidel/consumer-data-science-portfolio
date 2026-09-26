@@ -1,0 +1,23 @@
+# Keep the build context small and free of local state: data and models are regenerated inside
+# the image, and nothing environment-specific (virtualenvs, caches, env files) is copied in.
+.git
+.github
+.venv
+venv
+.env
+.env.*
+*.env
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.automation_logs
+.automation_state.json
+automation
+data/raw
+models
+scores
+tests
+.DS_Store
+.streamlit/secrets.toml

@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "northstar"
+version = "0.1.0"
+description = "Northstar Consumer: an end-to-end consumer data science portfolio built on reproducible synthetic data."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Nathan Callahan" }]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "pyarrow>=14",
+    "matplotlib>=3.8",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+    "shap>=0.45",
+    "streamlit>=1.64,<2",
+    "altair>=5",
+    "joblib>=1.3",
+    "fastapi>=0.115",
+    "pydantic>=2.7",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ruff>=0.5",
+    # FastAPI's TestClient: current Starlette uses httpx2, older releases httpx.
+    "httpx>=0.27",
+    "httpx2>=2",
+    "pyyaml>=6",  # tests parse docker-compose.yml and the CI workflow
+]
+
+[project.scripts]
+northstar = "northstar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "slow: full-scale regeneration checks (deselect with -m 'not slow')",
+]
+filterwarnings = [
+    # Emitted by SHAP's own plotting module at import time; not actionable here.
+    "ignore::PendingDeprecationWarning:shap.*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["automation"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "NPY", "PD", "RUF"]
+ignore = [
+    "RUF001",
+    "RUF002",
+]

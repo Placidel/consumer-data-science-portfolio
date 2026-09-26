@@ -1,0 +1,3 @@
+# Batch scores are regenerated with `northstar score-batch`; keep them out of Git.
+*
+!.gitignore

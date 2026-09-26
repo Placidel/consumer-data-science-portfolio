@@ -1,0 +1,6 @@
+state,customer_months,next_month_purchase_rate,next_month_revenue_per_customer,next_month_revenue,share_of_customer_months,share_of_next_month_revenue
+new,19778,0.2598,36.5835,723548.07,0.1958,0.2327
+active,15926,0.365,48.9774,780014.55,0.1577,0.2509
+loyal,13788,0.5786,93.2028,1285080.66,0.1365,0.4134
+at_risk,17794,0.1233,13.4886,240016.22,0.1762,0.0772
+churned,33710,0.0235,2.3774,80141.91,0.3338,0.0258

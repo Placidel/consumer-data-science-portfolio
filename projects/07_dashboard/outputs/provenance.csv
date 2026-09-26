@@ -1,0 +1,8 @@
+section,key,available,seed,n_prospects,consistent,missing_files,regenerate_with,outputs
+00 Foundation and synthetic data,foundation,True,20240101,40000,True,,northstar generate-data,projects/00_foundation/outputs
+01 Customer acquisition,acquisition,True,20240101,40000,True,,northstar acquisition,projects/01_acquisition/outputs
+02 Retention and churn,retention,True,20240101,40000,True,,northstar retention,projects/02_retention/outputs
+03 Conversion and experimentation,conversion,True,20240101,40000,True,,northstar conversion,projects/03_conversion/outputs
+04 Revenue growth and customer value,revenue,True,20240101,40000,True,,northstar revenue,projects/04_revenue_growth/outputs
+05 Revenue forecast,forecast,True,20240101,40000,True,,northstar forecast,projects/05_predictive_analytics/outputs
+06 Customer lifecycle,lifecycle,True,20240101,40000,True,,northstar lifecycle,projects/06_lifecycle/outputs

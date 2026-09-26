@@ -1,0 +1,4 @@
+# Generated data is reproducible with `northstar generate-data`; keep it out of Git.
+*
+!.gitignore
+!README.md

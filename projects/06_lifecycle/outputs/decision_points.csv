@@ -1,0 +1,5 @@
+decision_point,label,origin,favourable,unfavourable,origin_customer_months,resolved,favourable_n,unfavourable_n,favourable_rate,rate_ci_low,rate_ci_high,unfavourable_per_month,follow_up_resolved,revenue_after_favourable,revenue_after_unfavourable,revenue_gap,revenue_gap_per_year
+second_purchase,New customer buys again within the new window,new,active/loyal,at_risk,19778,6587,3067,3520,0.4656,0.4536,0.4777,293.3333,7567,361.1629,53.9457,307.2172,1081404.376
+active_kept,Active customer stays engaged (vs. slips to at risk),active,active/loyal,at_risk,15926,15926,13000,2926,0.8163,0.8102,0.8222,243.8333,12972,330.2951,105.7012,224.5939,657161.8194
+loyal_kept,Loyal customer stays engaged (vs. slips to at risk),loyal,loyal/active,at_risk,13788,13788,12742,1046,0.9241,0.9196,0.9284,87.1667,7377,524.9643,157.2198,367.7445,384660.7481
+at_risk_recovery,At-risk customer returns before churning,at_risk,active/loyal,churned,17794,6854,2194,4660,0.3201,0.3092,0.3312,388.3333,5381,312.9962,25.7596,287.2366,1338522.5507

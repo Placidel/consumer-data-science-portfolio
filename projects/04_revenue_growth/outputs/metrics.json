@@ -1,0 +1,1773 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "horizon_days": 180,
+    "fit_runs": [
+      "2024-04-01",
+      "2024-05-01",
+      "2024-06-01",
+      "2024-07-01"
+    ],
+    "validation_runs": [
+      "2025-01-01"
+    ],
+    "holdout_runs": [
+      "2025-07-01"
+    ],
+    "shares": [
+      0.01,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "n_bootstrap": 200,
+    "seed": 20240101,
+    "features": [
+      "acquisition_channel",
+      "region",
+      "age_band",
+      "income_band",
+      "device_type",
+      "email_opt_in",
+      "tenure_days",
+      "days_since_last_order",
+      "mean_days_between_orders",
+      "orders_total",
+      "orders_90d",
+      "orders_180d",
+      "orders_365d",
+      "revenue_total",
+      "revenue_90d",
+      "revenue_180d",
+      "revenue_365d",
+      "avg_order_value",
+      "max_order_value",
+      "items_per_order",
+      "discount_share",
+      "category_count",
+      "store_order_share",
+      "app_order_share",
+      "browse_sessions_30d",
+      "browse_sessions_90d",
+      "days_since_last_session",
+      "emails_received_90d",
+      "email_open_rate_90d",
+      "email_clicks_90d",
+      "plus_member",
+      "plus_cancelled_180d",
+      "support_contacts_180d",
+      "low_csat_contacts_180d",
+      "bgnbd_p_alive",
+      "bgnbd_expected_orders",
+      "gg_expected_order_value",
+      "clv_expected_revenue"
+    ]
+  },
+  "splits": [
+    {
+      "split": "fit",
+      "runs": 4,
+      "first_run": "2024-04-01",
+      "last_run": "2024-07-01",
+      "customer_runs": 6522,
+      "unique_customers": 2294,
+      "buyer_rate": 0.5365,
+      "mean_future_revenue": 204.1045,
+      "median_tenure_days": 60.1344
+    },
+    {
+      "split": "validation",
+      "runs": 1,
+      "first_run": "2025-01-01",
+      "last_run": "2025-01-01",
+      "customer_runs": 5434,
+      "unique_customers": 5434,
+      "buyer_rate": 0.4568,
+      "mean_future_revenue": 164.1194,
+      "median_tenure_days": 159.4095
+    },
+    {
+      "split": "holdout",
+      "runs": 1,
+      "first_run": "2025-07-01",
+      "last_run": "2025-07-01",
+      "customer_runs": 8643,
+      "unique_customers": 8643,
+      "buyer_rate": 0.4316,
+      "mean_future_revenue": 180.3549,
+      "median_tenure_days": 236.4219
+    }
+  ],
+  "clv_parameters": {
+    "2024-04-01": {
+      "bgnbd": {
+        "r": 0.5339,
+        "alpha": 3.9765,
+        "a": 352.5465,
+        "b": 2980.958
+      },
+      "gamma_gamma": {
+        "p": 2.1945,
+        "q": 72.2933,
+        "v": 2737.3911
+      },
+      "customers": 979,
+      "repeat_customers": 337
+    },
+    "2024-05-01": {
+      "bgnbd": {
+        "r": 0.5027,
+        "alpha": 3.8168,
+        "a": 2.1414,
+        "b": 12.4578
+      },
+      "gamma_gamma": {
+        "p": 2.2663,
+        "q": 35.3647,
+        "v": 1319.3975
+      },
+      "customers": 1413,
+      "repeat_customers": 536
+    },
+    "2024-06-01": {
+      "bgnbd": {
+        "r": 0.5002,
+        "alpha": 3.971,
+        "a": 1.0154,
+        "b": 5.8031
+      },
+      "gamma_gamma": {
+        "p": 2.2556,
+        "q": 23.703,
+        "v": 879.573
+      },
+      "customers": 1836,
+      "repeat_customers": 753
+    },
+    "2024-07-01": {
+      "bgnbd": {
+        "r": 0.5094,
+        "alpha": 3.9436,
+        "a": 0.6172,
+        "b": 3.7055
+      },
+      "gamma_gamma": {
+        "p": 2.2852,
+        "q": 27.5783,
+        "v": 998.9711
+      },
+      "customers": 2294,
+      "repeat_customers": 1025
+    },
+    "2025-01-01": {
+      "bgnbd": {
+        "r": 0.5167,
+        "alpha": 3.6556,
+        "a": 0.1665,
+        "b": 1.3068
+      },
+      "gamma_gamma": {
+        "p": 2.1615,
+        "q": 27.9326,
+        "v": 1049.0603
+      },
+      "customers": 5434,
+      "repeat_customers": 3088
+    },
+    "2025-07-01": {
+      "bgnbd": {
+        "r": 0.4674,
+        "alpha": 3.4945,
+        "a": 0.306,
+        "b": 2.1237
+      },
+      "gamma_gamma": {
+        "p": 2.2396,
+        "q": 25.389,
+        "v": 921.0799
+      },
+      "customers": 8643,
+      "repeat_customers": 5162
+    }
+  },
+  "clv_level_by_run": [
+    {
+      "run": "2024-04-01",
+      "split": "fit",
+      "label_window_end": "2024-09-28",
+      "customers": 979,
+      "realized_revenue": 196380.83,
+      "predicted_revenue": 161673.6913,
+      "bias": -0.1767
+    },
+    {
+      "run": "2024-05-01",
+      "split": "fit",
+      "label_window_end": "2024-10-28",
+      "customers": 1413,
+      "realized_revenue": 279165.26,
+      "predicted_revenue": 208345.9573,
+      "bias": -0.2537
+    },
+    {
+      "run": "2024-06-01",
+      "split": "fit",
+      "label_window_end": "2024-11-28",
+      "customers": 1836,
+      "realized_revenue": 369148.56,
+      "predicted_revenue": 271175.975,
+      "bias": -0.2654
+    },
+    {
+      "run": "2024-07-01",
+      "split": "fit",
+      "label_window_end": "2024-12-28",
+      "customers": 2294,
+      "realized_revenue": 486474.67,
+      "predicted_revenue": 361497.0701,
+      "bias": -0.2569
+    },
+    {
+      "run": "2025-01-01",
+      "split": "validation",
+      "label_window_end": "2025-06-30",
+      "customers": 5434,
+      "realized_revenue": 891825.02,
+      "predicted_revenue": 1112895.6825,
+      "bias": 0.2479
+    },
+    {
+      "run": "2025-07-01",
+      "split": "holdout",
+      "label_window_end": "2025-12-28",
+      "customers": 8643,
+      "realized_revenue": 1558807.25,
+      "predicted_revenue": 1347094.3002,
+      "bias": -0.1358
+    }
+  ],
+  "leakage_audit": {
+    "passed": true,
+    "checks": {
+      "features_only_from_pre_cutoff_rows": true,
+      "features_unchanged_when_future_rows_removed": true,
+      "labels_only_from_prediction_window": true,
+      "historical_spend_excludes_target_period": true,
+      "every_scored_customer_acquired_before_cutoff": true,
+      "no_outcome_columns_used_as_features": true,
+      "train_labels_end_before_holdout_starts": true,
+      "no_single_feature_suspiciously_predictive": true
+    },
+    "details": {
+      "customers_not_yet_acquired": 0,
+      "label_mismatches": 0,
+      "spend_reconciliation_mismatches": 0,
+      "min_gap_between_last_event_and_cutoff_seconds": 197.0,
+      "invariance_probe_run": "2025-07-01",
+      "last_train_label_end": "2025-06-30",
+      "first_holdout_run": "2025-07-01",
+      "most_predictive_single_feature": "clv_expected_revenue",
+      "most_predictive_single_feature_rank_corr": 0.6684,
+      "single_feature_rank_corr_limit": 0.9
+    }
+  },
+  "champion": "bgnbd_gamma_gamma",
+  "selection_metric": "validation RMSE",
+  "models": [
+    {
+      "model": "run_rate",
+      "role": "baseline",
+      "champion": false,
+      "validation_rmse": 271.4954,
+      "validation_mae": 161.9804,
+      "validation_bias": 0.2571,
+      "validation_normalized_gini": 0.6506,
+      "holdout_rows": 8643,
+      "holdout_buyer_rate": 0.4316,
+      "holdout_actual_mean": 180.3549,
+      "holdout_predicted_mean": 172.359,
+      "holdout_bias": -0.0443,
+      "holdout_mae": 148.6356,
+      "holdout_rmse": 269.4157,
+      "holdout_r2": 0.3597,
+      "holdout_spearman": 0.6123,
+      "holdout_normalized_gini": 0.7194,
+      "holdout_capture_top1": 0.0681,
+      "holdout_lift_top1": 6.809,
+      "holdout_capture_top5": 0.2348,
+      "holdout_lift_top5": 4.6969,
+      "holdout_capture_top10": 0.3866,
+      "holdout_lift_top10": 3.8659,
+      "holdout_capture_top20": 0.5777,
+      "holdout_lift_top20": 2.8883,
+      "holdout_rmse_ci_low": 260.0247,
+      "holdout_rmse_ci_high": 279.8382,
+      "holdout_mae_ci_low": 144.311,
+      "holdout_mae_ci_high": 153.2287,
+      "holdout_normalized_gini_ci_low": 0.7037,
+      "holdout_normalized_gini_ci_high": 0.7353,
+      "holdout_capture_top10_ci_low": 0.3716,
+      "holdout_capture_top10_ci_high": 0.4049
+    },
+    {
+      "model": "rfm_cell_mean",
+      "role": "baseline",
+      "champion": false,
+      "validation_rmse": 284.0586,
+      "validation_mae": 211.4622,
+      "validation_bias": 0.6162,
+      "validation_normalized_gini": 0.5782,
+      "holdout_rows": 8643,
+      "holdout_buyer_rate": 0.4316,
+      "holdout_actual_mean": 180.3549,
+      "holdout_predicted_mean": 196.7232,
+      "holdout_bias": 0.0908,
+      "holdout_mae": 180.5685,
+      "holdout_rmse": 279.6721,
+      "holdout_r2": 0.31,
+      "holdout_spearman": 0.5353,
+      "holdout_normalized_gini": 0.6615,
+      "holdout_capture_top1": 0.0428,
+      "holdout_lift_top1": 4.2801,
+      "holdout_capture_top5": 0.1992,
+      "holdout_lift_top5": 3.9847,
+      "holdout_capture_top10": 0.3555,
+      "holdout_lift_top10": 3.5551,
+      "holdout_capture_top20": 0.5623,
+      "holdout_lift_top20": 2.8115,
+      "holdout_rmse_ci_low": 269.7779,
+      "holdout_rmse_ci_high": 292.3402,
+      "holdout_mae_ci_low": 176.2254,
+      "holdout_mae_ci_high": 184.7094,
+      "holdout_normalized_gini_ci_low": 0.6437,
+      "holdout_normalized_gini_ci_high": 0.6795,
+      "holdout_capture_top10_ci_low": 0.3413,
+      "holdout_capture_top10_ci_high": 0.372
+    },
+    {
+      "model": "bgnbd_gamma_gamma",
+      "role": "model",
+      "champion": true,
+      "validation_rmse": 246.2995,
+      "validation_mae": 154.1763,
+      "validation_bias": 0.2479,
+      "validation_normalized_gini": 0.7107,
+      "holdout_rows": 8643,
+      "holdout_buyer_rate": 0.4316,
+      "holdout_actual_mean": 180.3549,
+      "holdout_predicted_mean": 155.8596,
+      "holdout_bias": -0.1358,
+      "holdout_mae": 137.9735,
+      "holdout_rmse": 245.8344,
+      "holdout_r2": 0.4669,
+      "holdout_spearman": 0.6684,
+      "holdout_normalized_gini": 0.7762,
+      "holdout_capture_top1": 0.0719,
+      "holdout_lift_top1": 7.1929,
+      "holdout_capture_top5": 0.2571,
+      "holdout_lift_top5": 5.1422,
+      "holdout_capture_top10": 0.4055,
+      "holdout_lift_top10": 4.0546,
+      "holdout_capture_top20": 0.6138,
+      "holdout_lift_top20": 3.0689,
+      "holdout_rmse_ci_low": 235.6613,
+      "holdout_rmse_ci_high": 255.428,
+      "holdout_mae_ci_low": 133.3587,
+      "holdout_mae_ci_high": 142.3909,
+      "holdout_normalized_gini_ci_low": 0.7618,
+      "holdout_normalized_gini_ci_high": 0.7884,
+      "holdout_capture_top10_ci_low": 0.3909,
+      "holdout_capture_top10_ci_high": 0.422
+    },
+    {
+      "model": "gradient_boosting",
+      "role": "model",
+      "champion": false,
+      "validation_rmse": 254.551,
+      "validation_mae": 159.7646,
+      "validation_bias": 0.3548,
+      "validation_normalized_gini": 0.724,
+      "holdout_rows": 8643,
+      "holdout_buyer_rate": 0.4316,
+      "holdout_actual_mean": 180.3549,
+      "holdout_predicted_mean": 151.7168,
+      "holdout_bias": -0.1588,
+      "holdout_mae": 132.6198,
+      "holdout_rmse": 242.6044,
+      "holdout_r2": 0.4808,
+      "holdout_spearman": 0.6826,
+      "holdout_normalized_gini": 0.7973,
+      "holdout_capture_top1": 0.0738,
+      "holdout_lift_top1": 7.377,
+      "holdout_capture_top5": 0.2603,
+      "holdout_lift_top5": 5.2063,
+      "holdout_capture_top10": 0.417,
+      "holdout_lift_top10": 4.1703,
+      "holdout_capture_top20": 0.6335,
+      "holdout_lift_top20": 3.1676,
+      "holdout_rmse_ci_low": 232.6578,
+      "holdout_rmse_ci_high": 252.7903,
+      "holdout_mae_ci_low": 128.5383,
+      "holdout_mae_ci_high": 136.2613,
+      "holdout_normalized_gini_ci_low": 0.7862,
+      "holdout_normalized_gini_ci_high": 0.8081,
+      "holdout_capture_top10_ci_low": 0.4026,
+      "holdout_capture_top10_ci_high": 0.4349
+    }
+  ],
+  "champion_vs_models": {
+    "bgnbd_gamma_gamma_minus_run_rate": {
+      "rmse": -23.5813,
+      "mae": -10.6621,
+      "normalized_gini": 0.0568,
+      "capture_top10": 0.0189,
+      "rmse_ci": [
+        -29.6619,
+        -16.8555
+      ],
+      "mae_ci": [
+        -13.1052,
+        -7.9934
+      ],
+      "normalized_gini_ci": [
+        0.0456,
+        0.0653
+      ],
+      "capture_top10_ci": [
+        0.0083,
+        0.0305
+      ]
+    },
+    "bgnbd_gamma_gamma_minus_rfm_cell_mean": {
+      "rmse": -33.8378,
+      "mae": -42.595,
+      "normalized_gini": 0.1147,
+      "capture_top10": 0.0499,
+      "rmse_ci": [
+        -40.0047,
+        -28.2093
+      ],
+      "mae_ci": [
+        -45.0487,
+        -40.4467
+      ],
+      "normalized_gini_ci": [
+        0.1038,
+        0.1248
+      ],
+      "capture_top10_ci": [
+        0.039,
+        0.0653
+      ]
+    },
+    "bgnbd_gamma_gamma_minus_gradient_boosting": {
+      "rmse": 3.23,
+      "mae": 5.3536,
+      "normalized_gini": -0.0211,
+      "capture_top10": -0.0116,
+      "rmse_ci": [
+        -1.131,
+        7.9276
+      ],
+      "mae_ci": [
+        3.467,
+        7.3846
+      ],
+      "normalized_gini_ci": [
+        -0.0276,
+        -0.0159
+      ],
+      "capture_top10_ci": [
+        -0.024,
+        0.0027
+      ]
+    }
+  },
+  "active_base": {
+    "customers": 5676,
+    "share_of_base": 0.6567,
+    "share_of_future_revenue": 0.9677,
+    "run_rate": {
+      "rmse": 327.5169,
+      "normalized_gini": 0.5743,
+      "capture_top10": 0.3009,
+      "bias": -0.0124
+    },
+    "rfm_cell_mean": {
+      "rmse": 331.0175,
+      "normalized_gini": 0.5918,
+      "capture_top10": 0.2622,
+      "bias": -0.0582
+    },
+    "bgnbd_gamma_gamma": {
+      "rmse": 298.2854,
+      "normalized_gini": 0.6674,
+      "capture_top10": 0.3156,
+      "bias": -0.1487
+    },
+    "gradient_boosting": {
+      "rmse": 294.3264,
+      "normalized_gini": 0.7025,
+      "capture_top10": 0.3278,
+      "bias": -0.1567
+    }
+  },
+  "deciles": [
+    {
+      "decile": 1,
+      "customers": 865,
+      "mean_predicted": 680.3446,
+      "mean_actual": 731.1284,
+      "buyer_rate": 0.9237,
+      "actual_revenue": 632426.06,
+      "share_of_revenue": 0.4057,
+      "cumulative_capture": 0.4057,
+      "predicted_to_actual": 0.9305
+    },
+    {
+      "decile": 2,
+      "customers": 864,
+      "mean_predicted": 315.9685,
+      "mean_actual": 375.5961,
+      "buyer_rate": 0.8299,
+      "actual_revenue": 324515.02,
+      "share_of_revenue": 0.2082,
+      "cumulative_capture": 0.6139,
+      "predicted_to_actual": 0.8412
+    },
+    {
+      "decile": 3,
+      "customers": 864,
+      "mean_predicted": 196.033,
+      "mean_actual": 247.0863,
+      "buyer_rate": 0.7176,
+      "actual_revenue": 213482.59,
+      "share_of_revenue": 0.137,
+      "cumulative_capture": 0.7508,
+      "predicted_to_actual": 0.7934
+    },
+    {
+      "decile": 4,
+      "customers": 864,
+      "mean_predicted": 132.8073,
+      "mean_actual": 175.0014,
+      "buyer_rate": 0.5995,
+      "actual_revenue": 151201.17,
+      "share_of_revenue": 0.097,
+      "cumulative_capture": 0.8478,
+      "predicted_to_actual": 0.7589
+    },
+    {
+      "decile": 5,
+      "customers": 865,
+      "mean_predicted": 87.2792,
+      "mean_actual": 120.5255,
+      "buyer_rate": 0.4936,
+      "actual_revenue": 104254.55,
+      "share_of_revenue": 0.0669,
+      "cumulative_capture": 0.9147,
+      "predicted_to_actual": 0.7242
+    },
+    {
+      "decile": 6,
+      "customers": 864,
+      "mean_predicted": 56.4696,
+      "mean_actual": 77.3271,
+      "buyer_rate": 0.3356,
+      "actual_revenue": 66810.59,
+      "share_of_revenue": 0.0429,
+      "cumulative_capture": 0.9576,
+      "predicted_to_actual": 0.7303
+    },
+    {
+      "decile": 7,
+      "customers": 864,
+      "mean_predicted": 37.1764,
+      "mean_actual": 36.8882,
+      "buyer_rate": 0.2025,
+      "actual_revenue": 31871.42,
+      "share_of_revenue": 0.0204,
+      "cumulative_capture": 0.978,
+      "predicted_to_actual": 1.0078
+    },
+    {
+      "decile": 8,
+      "customers": 864,
+      "mean_predicted": 25.4761,
+      "mean_actual": 22.8948,
+      "buyer_rate": 0.125,
+      "actual_revenue": 19781.15,
+      "share_of_revenue": 0.0127,
+      "cumulative_capture": 0.9907,
+      "predicted_to_actual": 1.1127
+    },
+    {
+      "decile": 9,
+      "customers": 864,
+      "mean_predicted": 17.4976,
+      "mean_actual": 9.5017,
+      "buyer_rate": 0.0532,
+      "actual_revenue": 8209.44,
+      "share_of_revenue": 0.0053,
+      "cumulative_capture": 0.996,
+      "predicted_to_actual": 1.8415
+    },
+    {
+      "decile": 10,
+      "customers": 865,
+      "mean_predicted": 9.1856,
+      "mean_actual": 7.2315,
+      "buyer_rate": 0.0347,
+      "actual_revenue": 6255.26,
+      "share_of_revenue": 0.004,
+      "cumulative_capture": 1.0,
+      "predicted_to_actual": 1.2702
+    }
+  ],
+  "revenue_capture": [
+    {
+      "share_targeted": 0.01,
+      "policy": "random",
+      "customers": 86.43,
+      "revenue_captured": 15588.0725,
+      "share_of_revenue": 0.01,
+      "revenue_per_customer": 180.3549,
+      "lift": 1.0
+    },
+    {
+      "share_targeted": 0.01,
+      "policy": "run_rate",
+      "customers": 86.43,
+      "revenue_captured": 106139.1876,
+      "share_of_revenue": 0.0681,
+      "revenue_per_customer": 1228.0364,
+      "lift": 6.809
+    },
+    {
+      "share_targeted": 0.01,
+      "policy": "rfm_cell_mean",
+      "customers": 86.43,
+      "revenue_captured": 66718.9072,
+      "share_of_revenue": 0.0428,
+      "revenue_per_customer": 771.9415,
+      "lift": 4.2801
+    },
+    {
+      "share_targeted": 0.01,
+      "policy": "bgnbd_gamma_gamma",
+      "customers": 86.43,
+      "revenue_captured": 112123.8279,
+      "share_of_revenue": 0.0719,
+      "revenue_per_customer": 1297.279,
+      "lift": 7.1929
+    },
+    {
+      "share_targeted": 0.01,
+      "policy": "gradient_boosting",
+      "customers": 86.43,
+      "revenue_captured": 114993.4154,
+      "share_of_revenue": 0.0738,
+      "revenue_per_customer": 1330.4803,
+      "lift": 7.377
+    },
+    {
+      "share_targeted": 0.01,
+      "policy": "oracle",
+      "customers": 86.43,
+      "revenue_captured": 163594.497,
+      "share_of_revenue": 0.1049,
+      "revenue_per_customer": 1892.7976,
+      "lift": 10.4949
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "random",
+      "customers": 432.15,
+      "revenue_captured": 77940.3625,
+      "share_of_revenue": 0.05,
+      "revenue_per_customer": 180.3549,
+      "lift": 1.0
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "run_rate",
+      "customers": 432.15,
+      "revenue_captured": 366079.7485,
+      "share_of_revenue": 0.2348,
+      "revenue_per_customer": 847.1127,
+      "lift": 4.6969
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "rfm_cell_mean",
+      "customers": 432.15,
+      "revenue_captured": 310570.0153,
+      "share_of_revenue": 0.1992,
+      "revenue_per_customer": 718.6625,
+      "lift": 3.9847
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "bgnbd_gamma_gamma",
+      "customers": 432.15,
+      "revenue_captured": 400786.187,
+      "share_of_revenue": 0.2571,
+      "revenue_per_customer": 927.4238,
+      "lift": 5.1422
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "gradient_boosting",
+      "customers": 432.15,
+      "revenue_captured": 405778.235,
+      "share_of_revenue": 0.2603,
+      "revenue_per_customer": 938.9754,
+      "lift": 5.2063
+    },
+    {
+      "share_targeted": 0.05,
+      "policy": "oracle",
+      "customers": 432.15,
+      "revenue_captured": 559997.515,
+      "share_of_revenue": 0.3592,
+      "revenue_per_customer": 1295.8406,
+      "lift": 7.1849
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "random",
+      "customers": 864.3,
+      "revenue_captured": 155880.725,
+      "share_of_revenue": 0.1,
+      "revenue_per_customer": 180.3549,
+      "lift": 1.0
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "run_rate",
+      "customers": 864.3,
+      "revenue_captured": 602621.62,
+      "share_of_revenue": 0.3866,
+      "revenue_per_customer": 697.2366,
+      "lift": 3.8659
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "rfm_cell_mean",
+      "customers": 864.3,
+      "revenue_captured": 554174.181,
+      "share_of_revenue": 0.3555,
+      "revenue_per_customer": 641.1827,
+      "lift": 3.5551
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "bgnbd_gamma_gamma",
+      "customers": 864.3,
+      "revenue_captured": 632028.992,
+      "share_of_revenue": 0.4055,
+      "revenue_per_customer": 731.2611,
+      "lift": 4.0546
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "gradient_boosting",
+      "customers": 864.3,
+      "revenue_captured": 650063.555,
+      "share_of_revenue": 0.417,
+      "revenue_per_customer": 752.1272,
+      "lift": 4.1703
+    },
+    {
+      "share_targeted": 0.1,
+      "policy": "oracle",
+      "customers": 864.3,
+      "revenue_captured": 878115.654,
+      "share_of_revenue": 0.5633,
+      "revenue_per_customer": 1015.9848,
+      "lift": 5.6333
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "random",
+      "customers": 1728.6,
+      "revenue_captured": 311761.45,
+      "share_of_revenue": 0.2,
+      "revenue_per_customer": 180.3549,
+      "lift": 1.0
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "run_rate",
+      "customers": 1728.6,
+      "revenue_captured": 900467.532,
+      "share_of_revenue": 0.5777,
+      "revenue_per_customer": 520.923,
+      "lift": 2.8883
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "rfm_cell_mean",
+      "customers": 1728.6,
+      "revenue_captured": 876514.0274,
+      "share_of_revenue": 0.5623,
+      "revenue_per_customer": 507.0658,
+      "lift": 2.8115
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "bgnbd_gamma_gamma",
+      "customers": 1728.6,
+      "revenue_captured": 956750.428,
+      "share_of_revenue": 0.6138,
+      "revenue_per_customer": 553.4828,
+      "lift": 3.0689
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "gradient_boosting",
+      "customers": 1728.6,
+      "revenue_captured": 987548.32,
+      "share_of_revenue": 0.6335,
+      "revenue_per_customer": 571.2995,
+      "lift": 3.1676
+    },
+    {
+      "share_targeted": 0.2,
+      "policy": "oracle",
+      "customers": 1728.6,
+      "revenue_captured": 1259239.118,
+      "share_of_revenue": 0.8078,
+      "revenue_per_customer": 728.4734,
+      "lift": 4.0391
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "clv_expected_revenue",
+      "rmse_increase": 31.6695,
+      "rmse_increase_std": 1.5907
+    },
+    {
+      "feature": "browse_sessions_90d",
+      "rmse_increase": 27.6058,
+      "rmse_increase_std": 1.0093
+    },
+    {
+      "feature": "days_since_last_order",
+      "rmse_increase": 23.7283,
+      "rmse_increase_std": 0.9336
+    },
+    {
+      "feature": "mean_days_between_orders",
+      "rmse_increase": 20.3306,
+      "rmse_increase_std": 1.1675
+    },
+    {
+      "feature": "days_since_last_session",
+      "rmse_increase": 16.3813,
+      "rmse_increase_std": 0.6034
+    },
+    {
+      "feature": "revenue_180d",
+      "rmse_increase": 8.4207,
+      "rmse_increase_std": 0.8328
+    },
+    {
+      "feature": "plus_member",
+      "rmse_increase": 2.1696,
+      "rmse_increase_std": 0.1544
+    },
+    {
+      "feature": "income_band",
+      "rmse_increase": 2.0656,
+      "rmse_increase_std": 0.6924
+    },
+    {
+      "feature": "browse_sessions_30d",
+      "rmse_increase": 1.8714,
+      "rmse_increase_std": 0.3736
+    },
+    {
+      "feature": "acquisition_channel",
+      "rmse_increase": 1.2113,
+      "rmse_increase_std": 0.4715
+    },
+    {
+      "feature": "avg_order_value",
+      "rmse_increase": 1.2055,
+      "rmse_increase_std": 0.1346
+    },
+    {
+      "feature": "bgnbd_expected_orders",
+      "rmse_increase": 0.7803,
+      "rmse_increase_std": 0.4363
+    }
+  ],
+  "segmentation": {
+    "run": "2025-07-01",
+    "tiers": [
+      {
+        "group": "Top 5%",
+        "customers": 432,
+        "share_of_customers": 0.05,
+        "predicted_revenue": 376309.4307,
+        "share_of_predicted": 0.2793,
+        "actual_revenue": 400763.69,
+        "share_of_actual": 0.2571,
+        "mean_predicted": 871.0866,
+        "mean_actual": 927.6937,
+        "buyer_rate": 0.9514,
+        "mean_revenue_180d": 968.4165,
+        "active_share": 1.0,
+        "plus_member_rate": 0.5903,
+        "mean_orders_total": 18.6759,
+        "mean_category_count": 4.2546,
+        "mean_p_alive": 0.9471
+      },
+      {
+        "group": "Next 15%",
+        "customers": 1296,
+        "share_of_customers": 0.1499,
+        "predicted_revenue": 484942.6608,
+        "share_of_predicted": 0.36,
+        "actual_revenue": 555700.76,
+        "share_of_actual": 0.3565,
+        "mean_predicted": 374.1842,
+        "mean_actual": 428.7815,
+        "buyer_rate": 0.8519,
+        "mean_revenue_180d": 409.7138,
+        "active_share": 1.0,
+        "plus_member_rate": 0.3032,
+        "mean_orders_total": 8.5309,
+        "mean_category_count": 3.5424,
+        "mean_p_alive": 0.8865
+      },
+      {
+        "group": "Next 30%",
+        "customers": 2593,
+        "share_of_customers": 0.3,
+        "predicted_revenue": 359788.2115,
+        "share_of_predicted": 0.2671,
+        "actual_revenue": 469414.94,
+        "share_of_actual": 0.3011,
+        "mean_predicted": 138.7536,
+        "mean_actual": 181.0316,
+        "buyer_rate": 0.6039,
+        "mean_revenue_180d": 156.925,
+        "active_share": 0.985,
+        "plus_member_rate": 0.1007,
+        "mean_orders_total": 3.3783,
+        "mean_category_count": 2.4578,
+        "mean_p_alive": 0.8318
+      },
+      {
+        "group": "Bottom 50%",
+        "customers": 4322,
+        "share_of_customers": 0.5001,
+        "predicted_revenue": 126053.9972,
+        "share_of_predicted": 0.0936,
+        "actual_revenue": 132927.86,
+        "share_of_actual": 0.0853,
+        "mean_predicted": 29.1657,
+        "mean_actual": 30.7561,
+        "buyer_rate": 0.1502,
+        "mean_revenue_180d": 30.8764,
+        "active_share": 0.3225,
+        "plus_member_rate": 0.0243,
+        "mean_orders_total": 1.9653,
+        "mean_category_count": 1.8376,
+        "mean_p_alive": 0.7471
+      }
+    ],
+    "migration": [
+      {
+        "group": "core",
+        "customers": 1325,
+        "share_of_customers": 0.1533,
+        "predicted_revenue": 727210.2837,
+        "share_of_predicted": 0.5398,
+        "actual_revenue": 806514.99,
+        "share_of_actual": 0.5174,
+        "mean_predicted": 548.8379,
+        "mean_actual": 608.6906,
+        "buyer_rate": 0.8966,
+        "mean_revenue_180d": 659.6494,
+        "active_share": 1.0,
+        "plus_member_rate": 0.4158,
+        "mean_orders_total": 12.4136,
+        "mean_category_count": 3.9125,
+        "mean_p_alive": 0.9103
+      },
+      {
+        "group": "rising",
+        "customers": 403,
+        "share_of_customers": 0.0466,
+        "predicted_revenue": 134041.8077,
+        "share_of_predicted": 0.0995,
+        "actual_revenue": 149949.46,
+        "share_of_actual": 0.0962,
+        "mean_predicted": 332.6099,
+        "mean_actual": 372.083,
+        "buyer_rate": 0.8114,
+        "mean_revenue_180d": 186.8725,
+        "active_share": 1.0,
+        "plus_member_rate": 0.2407,
+        "mean_orders_total": 6.6402,
+        "mean_category_count": 3.0893,
+        "mean_p_alive": 0.8733
+      },
+      {
+        "group": "fading",
+        "customers": 403,
+        "share_of_customers": 0.0466,
+        "predicted_revenue": 64319.3436,
+        "share_of_predicted": 0.0477,
+        "actual_revenue": 93812.58,
+        "share_of_actual": 0.0602,
+        "mean_predicted": 159.6013,
+        "mean_actual": 232.7856,
+        "buyer_rate": 0.598,
+        "mean_revenue_180d": 389.6286,
+        "active_share": 1.0,
+        "plus_member_rate": 0.1613,
+        "mean_orders_total": 5.9454,
+        "mean_category_count": 3.2184,
+        "mean_p_alive": 0.6683
+      },
+      {
+        "group": "base",
+        "customers": 6512,
+        "share_of_customers": 0.7534,
+        "predicted_revenue": 421522.8652,
+        "share_of_predicted": 0.3129,
+        "actual_revenue": 508530.22,
+        "share_of_actual": 0.3262,
+        "mean_predicted": 64.7302,
+        "mean_actual": 78.0913,
+        "buyer_rate": 0.3031,
+        "mean_revenue_180d": 58.8658,
+        "active_share": 0.5444,
+        "plus_member_rate": 0.0462,
+        "mean_orders_total": 2.2816,
+        "mean_category_count": 1.9991,
+        "mean_p_alive": 0.7857
+      }
+    ]
+  },
+  "next_best_action": {
+    "rules": {
+      "vip_share": 0.05,
+      "growth_share": 0.2,
+      "engaged_share": 0.5,
+      "at_risk_past_share": 0.2,
+      "at_risk_p_alive": 0.5,
+      "cross_sell_max_categories": 2
+    },
+    "actions": [
+      {
+        "group": "retention_save",
+        "customers": 212,
+        "share_of_customers": 0.0245,
+        "predicted_revenue": 15925.9103,
+        "share_of_predicted": 0.0118,
+        "actual_revenue": 23132.64,
+        "share_of_actual": 0.0148,
+        "mean_predicted": 75.1222,
+        "mean_actual": 109.1162,
+        "buyer_rate": 0.2264,
+        "mean_revenue_180d": 241.9259,
+        "active_share": 0.6509,
+        "plus_member_rate": 0.1745,
+        "mean_orders_total": 11.8585,
+        "mean_category_count": 3.8821,
+        "mean_p_alive": 0.1871
+      },
+      {
+        "group": "vip_care",
+        "customers": 432,
+        "share_of_customers": 0.05,
+        "predicted_revenue": 376309.4307,
+        "share_of_predicted": 0.2793,
+        "actual_revenue": 400763.69,
+        "share_of_actual": 0.2571,
+        "mean_predicted": 871.0866,
+        "mean_actual": 927.6937,
+        "buyer_rate": 0.9514,
+        "mean_revenue_180d": 968.4165,
+        "active_share": 1.0,
+        "plus_member_rate": 0.5903,
+        "mean_orders_total": 18.6759,
+        "mean_category_count": 4.2546,
+        "mean_p_alive": 0.9471
+      },
+      {
+        "group": "plus_invite",
+        "customers": 838,
+        "share_of_customers": 0.097,
+        "predicted_revenue": 302668.312,
+        "share_of_predicted": 0.2247,
+        "actual_revenue": 323288.99,
+        "share_of_actual": 0.2074,
+        "mean_predicted": 361.1794,
+        "mean_actual": 385.7864,
+        "buyer_rate": 0.8317,
+        "mean_revenue_180d": 378.8671,
+        "active_share": 1.0,
+        "plus_member_rate": 0.0,
+        "mean_orders_total": 7.2637,
+        "mean_category_count": 3.4284,
+        "mean_p_alive": 0.8827
+      },
+      {
+        "group": "cross_sell",
+        "customers": 1452,
+        "share_of_customers": 0.168,
+        "predicted_revenue": 201009.5615,
+        "share_of_predicted": 0.1492,
+        "actual_revenue": 256199.44,
+        "share_of_actual": 0.1644,
+        "mean_predicted": 138.4363,
+        "mean_actual": 176.4459,
+        "buyer_rate": 0.5854,
+        "mean_revenue_180d": 127.3713,
+        "active_share": 0.9966,
+        "plus_member_rate": 0.0985,
+        "mean_orders_total": 2.1309,
+        "mean_category_count": 1.5503,
+        "mean_p_alive": 0.8847
+      },
+      {
+        "group": "personalized_grow",
+        "customers": 1509,
+        "share_of_customers": 0.1746,
+        "predicted_revenue": 327872.825,
+        "share_of_predicted": 0.2434,
+        "actual_revenue": 426455.63,
+        "share_of_actual": 0.2736,
+        "mean_predicted": 217.2782,
+        "mean_actual": 282.6081,
+        "buyer_rate": 0.719,
+        "mean_revenue_180d": 265.3554,
+        "active_share": 0.9808,
+        "plus_member_rate": 0.326,
+        "mean_orders_total": 6.3313,
+        "mean_category_count": 3.6428,
+        "mean_p_alive": 0.829
+      },
+      {
+        "group": "low_touch",
+        "customers": 4200,
+        "share_of_customers": 0.4859,
+        "predicted_revenue": 123308.2608,
+        "share_of_predicted": 0.0915,
+        "actual_revenue": 128966.86,
+        "share_of_actual": 0.0827,
+        "mean_predicted": 29.3591,
+        "mean_actual": 30.7064,
+        "buyer_rate": 0.1521,
+        "mean_revenue_180d": 27.9047,
+        "active_share": 0.3193,
+        "plus_member_rate": 0.0207,
+        "mean_orders_total": 1.6812,
+        "mean_category_count": 1.7767,
+        "mean_p_alive": 0.7666
+      }
+    ],
+    "category_rules": {
+      "window_buyers": 3730,
+      "featured_category_hit_rate": 0.8233,
+      "best_seller_hit_rate": 0.6826,
+      "best_seller_category": "apparel",
+      "cross_sell_new_category_buyers": 631,
+      "suggested_new_category_hit_rate": 0.5357,
+      "random_new_category_hit_rate": 0.3889
+    }
+  },
+  "scenario": {
+    "assumptions": {
+      "uplift": 0.05,
+      "contact_cost": 2.0,
+      "perk_cost": 15.0,
+      "redemption_rate": 0.4
+    },
+    "cost_per_customer": 8.0,
+    "observed_margin_rate": 0.4792,
+    "customers_in_run": 8643,
+    "policies": [
+      {
+        "depth": 0.05,
+        "policy": "random",
+        "customers_targeted": 432.15,
+        "baseline_revenue": 77940.3625,
+        "incremental_revenue": 3897.0181,
+        "incremental_margin": 1867.3857,
+        "program_cost": 3457.2,
+        "net_value": -1589.8143,
+        "roi": -0.4599,
+        "break_even_uplift": 0.0926
+      },
+      {
+        "depth": 0.1,
+        "policy": "random",
+        "customers_targeted": 864.3,
+        "baseline_revenue": 155880.725,
+        "incremental_revenue": 7794.0363,
+        "incremental_margin": 3734.7715,
+        "program_cost": 6914.4,
+        "net_value": -3179.6285,
+        "roi": -0.4599,
+        "break_even_uplift": 0.0926
+      },
+      {
+        "depth": 0.2,
+        "policy": "random",
+        "customers_targeted": 1728.6,
+        "baseline_revenue": 311761.45,
+        "incremental_revenue": 15588.0725,
+        "incremental_margin": 7469.5429,
+        "program_cost": 13828.8,
+        "net_value": -6359.2571,
+        "roi": -0.4599,
+        "break_even_uplift": 0.0926
+      },
+      {
+        "depth": 0.3,
+        "policy": "random",
+        "customers_targeted": 2592.9,
+        "baseline_revenue": 467642.175,
+        "incremental_revenue": 23382.1087,
+        "incremental_margin": 11204.3144,
+        "program_cost": 20743.2,
+        "net_value": -9538.8856,
+        "roi": -0.4599,
+        "break_even_uplift": 0.0926
+      },
+      {
+        "depth": 0.5,
+        "policy": "random",
+        "customers_targeted": 4321.5,
+        "baseline_revenue": 779403.625,
+        "incremental_revenue": 38970.1813,
+        "incremental_margin": 18673.8573,
+        "program_cost": 34572.0,
+        "net_value": -15898.1427,
+        "roi": -0.4599,
+        "break_even_uplift": 0.0926
+      },
+      {
+        "depth": 0.05,
+        "policy": "run_rate",
+        "customers_targeted": 432.15,
+        "baseline_revenue": 366079.7485,
+        "incremental_revenue": 18303.9874,
+        "incremental_margin": 8770.9638,
+        "program_cost": 3457.2,
+        "net_value": 5313.7638,
+        "roi": 1.537,
+        "break_even_uplift": 0.0197
+      },
+      {
+        "depth": 0.1,
+        "policy": "run_rate",
+        "customers_targeted": 864.3,
+        "baseline_revenue": 602621.62,
+        "incremental_revenue": 30131.081,
+        "incremental_margin": 14438.3087,
+        "program_cost": 6914.4,
+        "net_value": 7523.9087,
+        "roi": 1.0882,
+        "break_even_uplift": 0.0239
+      },
+      {
+        "depth": 0.2,
+        "policy": "run_rate",
+        "customers_targeted": 1728.6,
+        "baseline_revenue": 900467.532,
+        "incremental_revenue": 45023.3766,
+        "incremental_margin": 21574.447,
+        "program_cost": 13828.8,
+        "net_value": 7745.647,
+        "roi": 0.5601,
+        "break_even_uplift": 0.032
+      },
+      {
+        "depth": 0.3,
+        "policy": "run_rate",
+        "customers_targeted": 2592.9,
+        "baseline_revenue": 1108925.16,
+        "incremental_revenue": 55446.258,
+        "incremental_margin": 26568.9169,
+        "program_cost": 20743.2,
+        "net_value": 5825.7169,
+        "roi": 0.2808,
+        "break_even_uplift": 0.039
+      },
+      {
+        "depth": 0.5,
+        "policy": "run_rate",
+        "customers_targeted": 4321.5,
+        "baseline_revenue": 1373528.8264,
+        "incremental_revenue": 68676.4413,
+        "incremental_margin": 32908.5989,
+        "program_cost": 34572.0,
+        "net_value": -1663.4011,
+        "roi": -0.0481,
+        "break_even_uplift": 0.0525
+      },
+      {
+        "depth": 0.05,
+        "policy": "rfm_cell_mean",
+        "customers_targeted": 432.15,
+        "baseline_revenue": 310570.0153,
+        "incremental_revenue": 15528.5008,
+        "incremental_margin": 7440.9971,
+        "program_cost": 3457.2,
+        "net_value": 3983.7971,
+        "roi": 1.1523,
+        "break_even_uplift": 0.0232
+      },
+      {
+        "depth": 0.1,
+        "policy": "rfm_cell_mean",
+        "customers_targeted": 864.3,
+        "baseline_revenue": 554174.181,
+        "incremental_revenue": 27708.7091,
+        "incremental_margin": 13277.5487,
+        "program_cost": 6914.4,
+        "net_value": 6363.1487,
+        "roi": 0.9203,
+        "break_even_uplift": 0.026
+      },
+      {
+        "depth": 0.2,
+        "policy": "rfm_cell_mean",
+        "customers_targeted": 1728.6,
+        "baseline_revenue": 876514.0274,
+        "incremental_revenue": 43825.7014,
+        "incremental_margin": 21000.5411,
+        "program_cost": 13828.8,
+        "net_value": 7171.7411,
+        "roi": 0.5186,
+        "break_even_uplift": 0.0329
+      },
+      {
+        "depth": 0.3,
+        "policy": "rfm_cell_mean",
+        "customers_targeted": 2592.9,
+        "baseline_revenue": 1141767.6907,
+        "incremental_revenue": 57088.3845,
+        "incremental_margin": 27355.7964,
+        "program_cost": 20743.2,
+        "net_value": 6612.5964,
+        "roi": 0.3188,
+        "break_even_uplift": 0.0379
+      },
+      {
+        "depth": 0.5,
+        "policy": "rfm_cell_mean",
+        "customers_targeted": 4321.5,
+        "baseline_revenue": 1264774.5479,
+        "incremental_revenue": 63238.7274,
+        "incremental_margin": 30302.9376,
+        "program_cost": 34572.0,
+        "net_value": -4269.0624,
+        "roi": -0.1235,
+        "break_even_uplift": 0.057
+      },
+      {
+        "depth": 0.05,
+        "policy": "bgnbd_gamma_gamma",
+        "customers_targeted": 432.15,
+        "baseline_revenue": 400786.187,
+        "incremental_revenue": 20039.3093,
+        "incremental_margin": 9602.501,
+        "program_cost": 3457.2,
+        "net_value": 6145.301,
+        "roi": 1.7775,
+        "break_even_uplift": 0.018
+      },
+      {
+        "depth": 0.1,
+        "policy": "bgnbd_gamma_gamma",
+        "customers_targeted": 864.3,
+        "baseline_revenue": 632028.992,
+        "incremental_revenue": 31601.4496,
+        "incremental_margin": 15142.8846,
+        "program_cost": 6914.4,
+        "net_value": 8228.4846,
+        "roi": 1.1901,
+        "break_even_uplift": 0.0228
+      },
+      {
+        "depth": 0.2,
+        "policy": "bgnbd_gamma_gamma",
+        "customers_targeted": 1728.6,
+        "baseline_revenue": 956750.428,
+        "incremental_revenue": 47837.5214,
+        "incremental_margin": 22922.9379,
+        "program_cost": 13828.8,
+        "net_value": 9094.1379,
+        "roi": 0.6576,
+        "break_even_uplift": 0.0302
+      },
+      {
+        "depth": 0.3,
+        "policy": "bgnbd_gamma_gamma",
+        "customers_targeted": 2592.9,
+        "baseline_revenue": 1170423.67,
+        "incremental_revenue": 58521.1835,
+        "incremental_margin": 28042.3696,
+        "program_cost": 20743.2,
+        "net_value": 7299.1696,
+        "roi": 0.3519,
+        "break_even_uplift": 0.037
+      },
+      {
+        "depth": 0.5,
+        "policy": "bgnbd_gamma_gamma",
+        "customers_targeted": 4321.5,
+        "baseline_revenue": 1425879.39,
+        "incremental_revenue": 71293.9695,
+        "incremental_margin": 34162.8745,
+        "program_cost": 34572.0,
+        "net_value": -409.1255,
+        "roi": -0.0118,
+        "break_even_uplift": 0.0506
+      },
+      {
+        "depth": 0.05,
+        "policy": "gradient_boosting",
+        "customers_targeted": 432.15,
+        "baseline_revenue": 405778.235,
+        "incremental_revenue": 20288.9117,
+        "incremental_margin": 9722.1062,
+        "program_cost": 3457.2,
+        "net_value": 6264.9062,
+        "roi": 1.8121,
+        "break_even_uplift": 0.0178
+      },
+      {
+        "depth": 0.1,
+        "policy": "gradient_boosting",
+        "customers_targeted": 864.3,
+        "baseline_revenue": 650063.555,
+        "incremental_revenue": 32503.1777,
+        "incremental_margin": 15574.9777,
+        "program_cost": 6914.4,
+        "net_value": 8660.5777,
+        "roi": 1.2525,
+        "break_even_uplift": 0.0222
+      },
+      {
+        "depth": 0.2,
+        "policy": "gradient_boosting",
+        "customers_targeted": 1728.6,
+        "baseline_revenue": 987548.32,
+        "incremental_revenue": 49377.416,
+        "incremental_margin": 23660.8296,
+        "program_cost": 13828.8,
+        "net_value": 9832.0296,
+        "roi": 0.711,
+        "break_even_uplift": 0.0292
+      },
+      {
+        "depth": 0.3,
+        "policy": "gradient_boosting",
+        "customers_targeted": 2592.9,
+        "baseline_revenue": 1202642.153,
+        "incremental_revenue": 60132.1076,
+        "incremental_margin": 28814.2975,
+        "program_cost": 20743.2,
+        "net_value": 8071.0975,
+        "roi": 0.3891,
+        "break_even_uplift": 0.036
+      },
+      {
+        "depth": 0.5,
+        "policy": "gradient_boosting",
+        "customers_targeted": 4321.5,
+        "baseline_revenue": 1441480.33,
+        "incremental_revenue": 72074.0165,
+        "incremental_margin": 34536.6599,
+        "program_cost": 34572.0,
+        "net_value": -35.3401,
+        "roi": -0.001,
+        "break_even_uplift": 0.0501
+      }
+    ],
+    "planned_vs_realized": [
+      {
+        "depth": 0.05,
+        "planned_baseline_revenue": 376399.1716,
+        "realized_baseline_revenue": 400786.187,
+        "planned_net_value": 5561.0085,
+        "realized_net_value": 6145.301
+      },
+      {
+        "depth": 0.1,
+        "planned_baseline_revenue": 588212.4843,
+        "realized_baseline_revenue": 632028.992,
+        "planned_net_value": 7178.6779,
+        "realized_net_value": 8228.4846
+      },
+      {
+        "depth": 0.2,
+        "planned_baseline_revenue": 861397.7236,
+        "realized_baseline_revenue": 956750.428,
+        "planned_net_value": 6809.5671,
+        "realized_net_value": 9094.1379
+      },
+      {
+        "depth": 0.3,
+        "planned_baseline_revenue": 1030851.3945,
+        "realized_baseline_revenue": 1170423.67,
+        "planned_net_value": 3955.135,
+        "realized_net_value": 7299.1696
+      },
+      {
+        "depth": 0.5,
+        "planned_baseline_revenue": 1221074.8143,
+        "realized_baseline_revenue": 1425879.39,
+        "planned_net_value": -5316.0714,
+        "realized_net_value": -409.1255
+      }
+    ],
+    "expected_net_positive": {
+      "policy": "expected_net_positive",
+      "depth": 0.1377,
+      "min_predicted_revenue": 333.9015,
+      "customers_targeted": 1190.0,
+      "baseline_revenue": 771983.73,
+      "incremental_revenue": 38599.1865,
+      "incremental_margin": 18496.0828,
+      "program_cost": 9520.0,
+      "net_value": 8976.0828,
+      "roi": 0.9429,
+      "break_even_uplift": 0.0257,
+      "planned_net_value": 7456.8525
+    },
+    "sensitivity": [
+      {
+        "uplift": 0.02,
+        "perk_cost": 5.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -1963.2914,
+        "roi": -0.5679
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 5.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 2318.1235,
+        "roi": 0.6705
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 5.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 2599.9539,
+        "roi": 0.752
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 15.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -5420.4914,
+        "roi": -0.7839
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 15.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": -1139.0765,
+        "roi": -0.1647
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 15.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": -857.2461,
+        "roi": -0.124
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 30.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -10606.2914,
+        "roi": -0.8765
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 30.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": -6324.8765,
+        "roi": -0.5227
+      },
+      {
+        "uplift": 0.02,
+        "perk_cost": 30.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": -6043.0461,
+        "roi": -0.4994
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 5.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": 277.5715,
+        "roi": 0.0803
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 5.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 10981.1087,
+        "roi": 3.1763
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 5.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 11685.6846,
+        "roi": 3.3801
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 15.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -3179.6285,
+        "roi": -0.4599
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 15.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 7523.9087,
+        "roi": 1.0882
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 15.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 8228.4846,
+        "roi": 1.1901
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 30.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -8365.4285,
+        "roi": -0.6913
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 30.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 2338.1087,
+        "roi": 0.1932
+      },
+      {
+        "uplift": 0.05,
+        "perk_cost": 30.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 3042.6846,
+        "roi": 0.2515
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 5.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": 4012.3429,
+        "roi": 1.1606
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 5.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 25419.4173,
+        "roi": 7.3526
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 5.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 26828.5693,
+        "roi": 7.7602
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 15.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": 555.1429,
+        "roi": 0.0803
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 15.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 21962.2173,
+        "roi": 3.1763
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 15.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 23371.3693,
+        "roi": 3.3801
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 30.0,
+        "policy": "random",
+        "depth": 0.1,
+        "net_value": -4630.6571,
+        "roi": -0.3827
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 30.0,
+        "policy": "run_rate",
+        "depth": 0.1,
+        "net_value": 16776.4173,
+        "roi": 1.3865
+      },
+      {
+        "uplift": 0.1,
+        "perk_cost": 30.0,
+        "policy": "bgnbd_gamma_gamma",
+        "depth": 0.1,
+        "net_value": 18185.5693,
+        "roi": 1.5029
+      }
+    ],
+    "sensitivity_depth": 0.1
+  }
+}

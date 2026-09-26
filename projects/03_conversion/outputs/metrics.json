@@ -1,0 +1,1336 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "funnel_weeks": 52,
+    "prospect_window_days": 30,
+    "opportunity_dimension": "device_type",
+    "opportunity_reference": "desktop",
+    "min_entering_for_weakest": 1000
+  },
+  "plan": {
+    "experiment_id": "EXP001",
+    "primary_metric": "converted",
+    "primary_label": "First-purchase conversion",
+    "primary_definition": "share of assigned prospects whose first order is placed between assignment and the end of the experiment window",
+    "test": "two-sided two-proportion z-test (unpooled SE) with the matching Wald 95% CI",
+    "alpha": 0.05,
+    "target_power": 0.8,
+    "minimum_effect_of_interest": 0.02,
+    "guardrails": [
+      {
+        "metric": "first_order_value",
+        "label": "Average first-order net value",
+        "kind": "mean",
+        "scale": "relative",
+        "margin": 0.05
+      },
+      {
+        "metric": "reached_checkout_start",
+        "label": "Checkout-start rate",
+        "kind": "proportion",
+        "scale": "absolute",
+        "margin": 0.01
+      }
+    ],
+    "secondary_metrics": [
+      [
+        "first_order_revenue",
+        "First-order net revenue per assigned prospect"
+      ],
+      [
+        "revenue_90d",
+        "Net revenue per assigned prospect, 90 days from assignment"
+      ]
+    ],
+    "revenue_window_days": 90,
+    "subgroup_dimensions": [
+      "device_type",
+      "acquisition_channel",
+      "lead_type"
+    ],
+    "subgroup_min_units_per_arm": 30,
+    "srm_alpha": 0.001,
+    "balance_smd_limit": 0.1,
+    "n_permutations": 10000,
+    "n_aa_simulations": 2000,
+    "seed": 20250303,
+    "power_grid": [
+      0.0,
+      0.0025,
+      0.005,
+      0.0075,
+      0.01,
+      0.0125,
+      0.015,
+      0.0175,
+      0.02,
+      0.0225,
+      0.025,
+      0.0275,
+      0.03,
+      0.0325,
+      0.035,
+      0.0375,
+      0.04,
+      0.0425,
+      0.045,
+      0.0475,
+      0.05,
+      0.0525,
+      0.055,
+      0.0575,
+      0.06
+    ]
+  },
+  "funnel": {
+    "period_start": "2024-03-04",
+    "period_end_exclusive": "2025-03-03",
+    "integrity": {
+      "sessions": 220091,
+      "events": 606786,
+      "orphan_events": 0,
+      "sessions_without_events": 0,
+      "sessions_missing_session_start": 0,
+      "sessions_with_skipped_stages": 0,
+      "duplicate_stage_events": 0,
+      "out_of_order_events": 0
+    },
+    "session_funnel": {
+      "prospect": [
+        {
+          "stage_number": 1,
+          "stage": "session_start",
+          "reached": 52366,
+          "share_of_start": 1.0,
+          "step_conversion": 1.0,
+          "lost_at_step": 0,
+          "share_of_all_losses": 0.0
+        },
+        {
+          "stage_number": 2,
+          "stage": "product_view",
+          "reached": 40343,
+          "share_of_start": 0.770404,
+          "step_conversion": 0.770404,
+          "lost_at_step": 12023,
+          "share_of_all_losses": 0.258593
+        },
+        {
+          "stage_number": 3,
+          "stage": "add_to_cart",
+          "reached": 15061,
+          "share_of_start": 0.28761,
+          "step_conversion": 0.373324,
+          "lost_at_step": 25282,
+          "share_of_all_losses": 0.543769
+        },
+        {
+          "stage_number": 4,
+          "stage": "checkout_start",
+          "reached": 8733,
+          "share_of_start": 0.166769,
+          "step_conversion": 0.579842,
+          "lost_at_step": 6328,
+          "share_of_all_losses": 0.136104
+        },
+        {
+          "stage_number": 5,
+          "stage": "purchase",
+          "reached": 5872,
+          "share_of_start": 0.112134,
+          "step_conversion": 0.672392,
+          "lost_at_step": 2861,
+          "share_of_all_losses": 0.061535
+        }
+      ],
+      "customer": [
+        {
+          "stage_number": 1,
+          "stage": "session_start",
+          "reached": 36074,
+          "share_of_start": 1.0,
+          "step_conversion": 1.0,
+          "lost_at_step": 0,
+          "share_of_all_losses": 0.0
+        },
+        {
+          "stage_number": 2,
+          "stage": "product_view",
+          "reached": 30669,
+          "share_of_start": 0.850169,
+          "step_conversion": 0.850169,
+          "lost_at_step": 5405,
+          "share_of_all_losses": 0.233447
+        },
+        {
+          "stage_number": 3,
+          "stage": "add_to_cart",
+          "reached": 18949,
+          "share_of_start": 0.525281,
+          "step_conversion": 0.617855,
+          "lost_at_step": 11720,
+          "share_of_all_losses": 0.506198
+        },
+        {
+          "stage_number": 4,
+          "stage": "checkout_start",
+          "reached": 15627,
+          "share_of_start": 0.433193,
+          "step_conversion": 0.824687,
+          "lost_at_step": 3322,
+          "share_of_all_losses": 0.14348
+        },
+        {
+          "stage_number": 5,
+          "stage": "purchase",
+          "reached": 12921,
+          "share_of_start": 0.35818,
+          "step_conversion": 0.826838,
+          "lost_at_step": 2706,
+          "share_of_all_losses": 0.116875
+        }
+      ]
+    },
+    "prospect_cohort": {
+      "created_from": "2024-03-04",
+      "created_before": "2025-02-01",
+      "window_days": 30,
+      "leads": 17004
+    },
+    "prospect_funnel": [
+      {
+        "stage_number": 1,
+        "stage": "session_start",
+        "reached": 17004,
+        "share_of_start": 1.0,
+        "step_conversion": 1.0,
+        "lost_at_step": 0,
+        "share_of_all_losses": 0.0
+      },
+      {
+        "stage_number": 2,
+        "stage": "product_view",
+        "reached": 15344,
+        "share_of_start": 0.902376,
+        "step_conversion": 0.902376,
+        "lost_at_step": 1660,
+        "share_of_all_losses": 0.129951
+      },
+      {
+        "stage_number": 3,
+        "stage": "add_to_cart",
+        "reached": 7945,
+        "share_of_start": 0.467243,
+        "step_conversion": 0.517792,
+        "lost_at_step": 7399,
+        "share_of_all_losses": 0.579223
+      },
+      {
+        "stage_number": 4,
+        "stage": "checkout_start",
+        "reached": 5541,
+        "share_of_start": 0.325865,
+        "step_conversion": 0.69742,
+        "lost_at_step": 2404,
+        "share_of_all_losses": 0.188195
+      },
+      {
+        "stage_number": 5,
+        "stage": "purchase",
+        "reached": 4230,
+        "share_of_start": 0.248765,
+        "step_conversion": 0.7634,
+        "lost_at_step": 1311,
+        "share_of_all_losses": 0.10263
+      }
+    ],
+    "largest_loss_step": "product_view->add_to_cart",
+    "lowest_step_conversion": "product_view->add_to_cart",
+    "segments": [
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "sessions": 29034,
+        "reached_session_start": 29034,
+        "reached_product_view": 22433,
+        "reached_add_to_cart": 8458,
+        "reached_checkout_start": 4600,
+        "reached_purchase": 2958,
+        "rate_session_start->product_view": 0.772646,
+        "rate_product_view->add_to_cart": 0.377034,
+        "rate_add_to_cart->checkout_start": 0.543864,
+        "rate_checkout_start->purchase": 0.643043,
+        "session_to_purchase": 0.101881
+      },
+      {
+        "dimension": "device_type",
+        "level": "desktop",
+        "sessions": 17346,
+        "reached_session_start": 17346,
+        "reached_product_view": 13327,
+        "reached_add_to_cart": 4937,
+        "reached_checkout_start": 3097,
+        "reached_purchase": 2162,
+        "rate_session_start->product_view": 0.768304,
+        "rate_product_view->add_to_cart": 0.370451,
+        "rate_add_to_cart->checkout_start": 0.627304,
+        "rate_checkout_start->purchase": 0.698095,
+        "session_to_purchase": 0.12464
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "sessions": 5986,
+        "reached_session_start": 5986,
+        "reached_product_view": 4583,
+        "reached_add_to_cart": 1666,
+        "reached_checkout_start": 1036,
+        "reached_purchase": 752,
+        "rate_session_start->product_view": 0.76562,
+        "rate_product_view->add_to_cart": 0.363517,
+        "rate_add_to_cart->checkout_start": 0.621849,
+        "rate_checkout_start->purchase": 0.725869,
+        "session_to_purchase": 0.125626
+      },
+      {
+        "dimension": "platform",
+        "level": "web",
+        "sessions": 36888,
+        "reached_session_start": 36888,
+        "reached_product_view": 28416,
+        "reached_add_to_cart": 10595,
+        "reached_checkout_start": 6274,
+        "reached_purchase": 4263,
+        "rate_session_start->product_view": 0.770332,
+        "rate_product_view->add_to_cart": 0.372853,
+        "rate_add_to_cart->checkout_start": 0.592166,
+        "rate_checkout_start->purchase": 0.679471,
+        "session_to_purchase": 0.115566
+      },
+      {
+        "dimension": "platform",
+        "level": "app",
+        "sessions": 15478,
+        "reached_session_start": 15478,
+        "reached_product_view": 11927,
+        "reached_add_to_cart": 4466,
+        "reached_checkout_start": 2459,
+        "reached_purchase": 1609,
+        "rate_session_start->product_view": 0.770578,
+        "rate_product_view->add_to_cart": 0.374445,
+        "rate_add_to_cart->checkout_start": 0.550605,
+        "rate_checkout_start->purchase": 0.654331,
+        "session_to_purchase": 0.103954
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "paid_search",
+        "sessions": 4368,
+        "reached_session_start": 4368,
+        "reached_product_view": 3391,
+        "reached_add_to_cart": 994,
+        "reached_checkout_start": 536,
+        "reached_purchase": 348,
+        "rate_session_start->product_view": 0.776328,
+        "rate_product_view->add_to_cart": 0.293129,
+        "rate_add_to_cart->checkout_start": 0.539235,
+        "rate_checkout_start->purchase": 0.649254,
+        "session_to_purchase": 0.07967
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "paid_social",
+        "sessions": 4943,
+        "reached_session_start": 4943,
+        "reached_product_view": 3642,
+        "reached_add_to_cart": 1146,
+        "reached_checkout_start": 633,
+        "reached_purchase": 423,
+        "rate_session_start->product_view": 0.7368,
+        "rate_product_view->add_to_cart": 0.314662,
+        "rate_add_to_cart->checkout_start": 0.552356,
+        "rate_checkout_start->purchase": 0.668246,
+        "session_to_purchase": 0.085576
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "display",
+        "sessions": 2713,
+        "reached_session_start": 2713,
+        "reached_product_view": 1966,
+        "reached_add_to_cart": 695,
+        "reached_checkout_start": 436,
+        "reached_purchase": 285,
+        "rate_session_start->product_view": 0.724659,
+        "rate_product_view->add_to_cart": 0.35351,
+        "rate_add_to_cart->checkout_start": 0.627338,
+        "rate_checkout_start->purchase": 0.65367,
+        "session_to_purchase": 0.10505
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "affiliate",
+        "sessions": 1427,
+        "reached_session_start": 1427,
+        "reached_product_view": 1065,
+        "reached_add_to_cart": 271,
+        "reached_checkout_start": 147,
+        "reached_purchase": 90,
+        "rate_session_start->product_view": 0.746321,
+        "rate_product_view->add_to_cart": 0.25446,
+        "rate_add_to_cart->checkout_start": 0.542435,
+        "rate_checkout_start->purchase": 0.612245,
+        "session_to_purchase": 0.063069
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "email",
+        "sessions": 8117,
+        "reached_session_start": 8117,
+        "reached_product_view": 6489,
+        "reached_add_to_cart": 3053,
+        "reached_checkout_start": 1788,
+        "reached_purchase": 1239,
+        "rate_session_start->product_view": 0.799433,
+        "rate_product_view->add_to_cart": 0.470489,
+        "rate_add_to_cart->checkout_start": 0.585653,
+        "rate_checkout_start->purchase": 0.692953,
+        "session_to_purchase": 0.152643
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "referral",
+        "sessions": 1591,
+        "reached_session_start": 1591,
+        "reached_product_view": 1281,
+        "reached_add_to_cart": 430,
+        "reached_checkout_start": 237,
+        "reached_purchase": 171,
+        "rate_session_start->product_view": 0.805154,
+        "rate_product_view->add_to_cart": 0.335675,
+        "rate_add_to_cart->checkout_start": 0.551163,
+        "rate_checkout_start->purchase": 0.721519,
+        "session_to_purchase": 0.10748
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "organic_search",
+        "sessions": 15103,
+        "reached_session_start": 15103,
+        "reached_product_view": 11585,
+        "reached_add_to_cart": 4238,
+        "reached_checkout_start": 2434,
+        "reached_purchase": 1634,
+        "rate_session_start->product_view": 0.767066,
+        "rate_product_view->add_to_cart": 0.365818,
+        "rate_add_to_cart->checkout_start": 0.574328,
+        "rate_checkout_start->purchase": 0.671323,
+        "session_to_purchase": 0.10819
+      },
+      {
+        "dimension": "traffic_source",
+        "level": "direct",
+        "sessions": 14104,
+        "reached_session_start": 14104,
+        "reached_product_view": 10924,
+        "reached_add_to_cart": 4234,
+        "reached_checkout_start": 2522,
+        "reached_purchase": 1682,
+        "rate_session_start->product_view": 0.774532,
+        "rate_product_view->add_to_cart": 0.387587,
+        "rate_add_to_cart->checkout_start": 0.595654,
+        "rate_checkout_start->purchase": 0.666931,
+        "session_to_purchase": 0.119257
+      },
+      {
+        "dimension": "visit_number",
+        "level": "1st visit",
+        "sessions": 18570,
+        "reached_session_start": 18570,
+        "reached_product_view": 14069,
+        "reached_add_to_cart": 3853,
+        "reached_checkout_start": 2021,
+        "reached_purchase": 1332,
+        "rate_session_start->product_view": 0.75762,
+        "rate_product_view->add_to_cart": 0.273865,
+        "rate_add_to_cart->checkout_start": 0.524526,
+        "rate_checkout_start->purchase": 0.65908,
+        "session_to_purchase": 0.071729
+      },
+      {
+        "dimension": "visit_number",
+        "level": "2nd visit",
+        "sessions": 14667,
+        "reached_session_start": 14667,
+        "reached_product_view": 11195,
+        "reached_add_to_cart": 3898,
+        "reached_checkout_start": 2225,
+        "reached_purchase": 1502,
+        "rate_session_start->product_view": 0.763278,
+        "rate_product_view->add_to_cart": 0.348191,
+        "rate_add_to_cart->checkout_start": 0.570806,
+        "rate_checkout_start->purchase": 0.675056,
+        "session_to_purchase": 0.102407
+      },
+      {
+        "dimension": "visit_number",
+        "level": "3rd+ visit",
+        "sessions": 19129,
+        "reached_session_start": 19129,
+        "reached_product_view": 15079,
+        "reached_add_to_cart": 7310,
+        "reached_checkout_start": 4487,
+        "reached_purchase": 3038,
+        "rate_session_start->product_view": 0.78828,
+        "rate_product_view->add_to_cart": 0.48478,
+        "rate_add_to_cart->checkout_start": 0.613817,
+        "rate_checkout_start->purchase": 0.677067,
+        "session_to_purchase": 0.158816
+      }
+    ],
+    "weakest_by_step": [
+      {
+        "step": "session_start->product_view",
+        "dimension": "traffic_source",
+        "level": "display",
+        "rate": 0.724659,
+        "overall_rate": 0.770404
+      },
+      {
+        "step": "product_view->add_to_cart",
+        "dimension": "traffic_source",
+        "level": "affiliate",
+        "rate": 0.25446,
+        "overall_rate": 0.373324
+      },
+      {
+        "step": "add_to_cart->checkout_start",
+        "dimension": "visit_number",
+        "level": "1st visit",
+        "rate": 0.524526,
+        "overall_rate": 0.579842
+      },
+      {
+        "step": "checkout_start->purchase",
+        "dimension": "device_type",
+        "level": "mobile",
+        "rate": 0.643043,
+        "overall_rate": 0.672392
+      }
+    ],
+    "opportunity": [
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "reference": "desktop",
+        "step": "session_start->product_view",
+        "entering": 29034,
+        "level_rate": 0.772646,
+        "reference_rate": 0.768304,
+        "rate_gap": -0.004342,
+        "extra_step_completions": -126.063646,
+        "purchase_equivalents": -16.622666
+      },
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "reference": "desktop",
+        "step": "product_view->add_to_cart",
+        "entering": 22433,
+        "level_rate": 0.377034,
+        "reference_rate": 0.370451,
+        "rate_gap": -0.006583,
+        "extra_step_completions": -147.67352,
+        "purchase_equivalents": -51.645575
+      },
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "reference": "desktop",
+        "step": "add_to_cart->checkout_start",
+        "entering": 8458,
+        "level_rate": 0.543864,
+        "reference_rate": 0.627304,
+        "rate_gap": 0.08344,
+        "extra_step_completions": 705.737492,
+        "purchase_equivalents": 453.819892
+      },
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "reference": "desktop",
+        "step": "checkout_start->purchase",
+        "entering": 4600,
+        "level_rate": 0.643043,
+        "reference_rate": 0.698095,
+        "rate_gap": 0.055051,
+        "extra_step_completions": 253.236681,
+        "purchase_equivalents": 253.236681
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "reference": "desktop",
+        "step": "session_start->product_view",
+        "entering": 5986,
+        "level_rate": 0.76562,
+        "reference_rate": 0.768304,
+        "rate_gap": 0.002684,
+        "extra_step_completions": 16.067335,
+        "purchase_equivalents": 2.636403
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "reference": "desktop",
+        "step": "product_view->add_to_cart",
+        "entering": 4583,
+        "level_rate": 0.363517,
+        "reference_rate": 0.370451,
+        "rate_gap": 0.006934,
+        "extra_step_completions": 31.776769,
+        "purchase_equivalents": 14.343416
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "reference": "desktop",
+        "step": "add_to_cart->checkout_start",
+        "entering": 1666,
+        "level_rate": 0.621849,
+        "reference_rate": 0.627304,
+        "rate_gap": 0.005455,
+        "extra_step_completions": 9.088515,
+        "purchase_equivalents": 6.597069
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "reference": "desktop",
+        "step": "checkout_start->purchase",
+        "entering": 1036,
+        "level_rate": 0.725869,
+        "reference_rate": 0.698095,
+        "rate_gap": -0.027774,
+        "extra_step_completions": -28.773652,
+        "purchase_equivalents": -28.773652
+      }
+    ]
+  },
+  "experiment": {
+    "registry": {
+      "experiment_id": "EXP001",
+      "experiment_name": "one_page_checkout",
+      "hypothesis": "Replacing the three-step checkout with a one-page checkout increases the share of new visitors who complete a first purchase.",
+      "randomization_unit": "prospect (person)",
+      "eligible_population": "Unconverted prospects with a web/app session during the experiment window",
+      "start_date": "2025-03-03",
+      "end_date": "2025-05-25",
+      "treatment_share": 0.5,
+      "primary_metric": "First-purchase conversion: share of assigned prospects whose first order is placed during the experiment window",
+      "guardrail_metrics": "Average first-order net value; checkout-start rate"
+    },
+    "assignment_audit": {
+      "passed": true,
+      "checks": {
+        "variant_matches_hash_rule": true,
+        "one_assignment_per_prospect": true,
+        "assigned_inside_window": true,
+        "assigned_before_first_order": true,
+        "every_eligible_prospect_assigned_at_first_exposure": true,
+        "no_sample_ratio_mismatch": true
+      },
+      "details": {
+        "control": 2888,
+        "treatment": 2886,
+        "designed_treatment_share": 0.5,
+        "observed_treatment_share": 0.499827,
+        "srm_chi2": 0.000693,
+        "srm_p_value": 0.979002,
+        "srm_alpha": 0.001,
+        "eligible_prospects": 5774
+      }
+    },
+    "balance": {
+      "max_abs_smd": 0.043411,
+      "limit": 0.1,
+      "covariates_over_limit": 0,
+      "covariates_checked": 30
+    },
+    "planning": {
+      "pre_period_start": "2024-12-09",
+      "pre_period_end_exclusive": "2025-03-03",
+      "baseline_conversion": 0.259241,
+      "expected_eligible_prospects": 6033,
+      "expected_per_arm": 3016.5,
+      "planned_weeks": 12.0,
+      "mde_absolute": 0.032202,
+      "mde_relative": 0.124218,
+      "power_at_mei": 0.417551,
+      "per_arm_needed_for_mei": 7718,
+      "weeks_needed_for_mei": 30.703133
+    },
+    "primary": {
+      "control": 0.242382,
+      "treatment": 0.27131,
+      "n_control": 2888,
+      "n_treatment": 2886,
+      "diff": 0.028927,
+      "se": 0.011493,
+      "ci": [
+        0.006402,
+        0.051453
+      ],
+      "z": 2.516974,
+      "p_value": 0.011837,
+      "p_value_pooled": 0.011882,
+      "relative": 0.119347,
+      "relative_ci": [
+        0.02512,
+        0.222234
+      ]
+    },
+    "guardrails": {
+      "first_order_value": {
+        "label": "Average first-order net value",
+        "scale": "relative",
+        "margin": 0.05,
+        "status": "fail",
+        "control": 86.018371,
+        "treatment": 73.586462,
+        "n_control": 700,
+        "n_treatment": 783,
+        "diff": -12.431909,
+        "se": 2.851081,
+        "ci": [
+          -18.024714,
+          -6.839104
+        ],
+        "t": -4.360419,
+        "df": 1413.667047,
+        "p_value": 1.4e-05,
+        "relative": -0.144526,
+        "relative_ci": [
+          -0.202228,
+          -0.082651
+        ]
+      },
+      "reached_checkout_start": {
+        "label": "Checkout-start rate",
+        "scale": "absolute",
+        "margin": 0.01,
+        "status": "pass",
+        "control": 0.312327,
+        "treatment": 0.33957,
+        "n_control": 2888,
+        "n_treatment": 2886,
+        "diff": 0.027243,
+        "se": 0.012332,
+        "ci": [
+          0.003073,
+          0.051414
+        ],
+        "z": 2.209182,
+        "p_value": 0.027162,
+        "p_value_pooled": 0.027226,
+        "relative": 0.087227,
+        "relative_ci": [
+          0.009395,
+          0.171061
+        ]
+      }
+    },
+    "secondary": {
+      "first_order_revenue": {
+        "label": "First-order net revenue per assigned prospect",
+        "control": 20.849328,
+        "treatment": 19.964726,
+        "n_control": 2888,
+        "n_treatment": 2886,
+        "diff": -0.884602,
+        "se": 1.170191,
+        "ci": [
+          -3.17862,
+          1.409416
+        ],
+        "t": -0.755946,
+        "df": 5723.769772,
+        "p_value": 0.449712,
+        "relative": -0.042428,
+        "relative_ci": [
+          -0.144118,
+          0.071343
+        ],
+        "p_holm": 0.899425
+      },
+      "revenue_90d": {
+        "label": "Net revenue per assigned prospect, 90 days from assignment",
+        "control": 55.385623,
+        "treatment": 54.624657,
+        "n_control": 2888,
+        "n_treatment": 2886,
+        "diff": -0.760966,
+        "se": 3.42055,
+        "ci": [
+          -7.466527,
+          5.944594
+        ],
+        "t": -0.222469,
+        "df": 5771.613886,
+        "p_value": 0.823957,
+        "relative": -0.013739,
+        "relative_ci": [
+          -0.126934,
+          0.114131
+        ],
+        "p_holm": 0.899425
+      }
+    },
+    "basket_items": {
+      "control": 1.727143,
+      "treatment": 1.570881,
+      "n_control": 700,
+      "n_treatment": 783,
+      "diff": -0.156262,
+      "se": 0.042435,
+      "ci": [
+        -0.239504,
+        -0.073019
+      ],
+      "t": -3.682341,
+      "df": 1427.665713,
+      "p_value": 0.00024,
+      "relative": -0.090474,
+      "relative_ci": [
+        -0.13511,
+        -0.043534
+      ]
+    },
+    "decision": {
+      "statistically_significant": true,
+      "ci_excludes_zero": true,
+      "practical_significance": "estimate_above_mei",
+      "guardrails_pass": false,
+      "recommendation": "hold_guardrail",
+      "recommendation_text": "Do not ship as tested: conversion improved, but at least one guardrail did not pass. Fix the cause and re-test."
+    },
+    "business": {
+      "annual_eligible_prospects": 25089.404762,
+      "extra_first_purchases_per_1000": 28.9275,
+      "extra_first_purchases_per_1000_ci": [
+        6.401701,
+        51.453299
+      ],
+      "extra_first_purchases_per_year": 725.773752,
+      "extra_first_purchases_per_year_ci": [
+        160.614871,
+        1290.932634
+      ],
+      "first_order_revenue_per_1000": -884.60199,
+      "first_order_revenue_per_1000_ci": [
+        -3178.620272,
+        1409.416292
+      ],
+      "revenue_window_per_1000": -760.966304,
+      "revenue_window_per_1000_ci": [
+        -7466.526539,
+        5944.593931
+      ],
+      "break_even_lift_given_observed_aov": 0.040949
+    },
+    "realized_design": {
+      "mde_absolute": 0.032262,
+      "power_at_mei": 0.416864,
+      "retrodesign_at_mei": {
+        "true_effect": 0.02,
+        "se": 0.01143,
+        "power": 0.416864,
+        "type_s_error": 0.000249,
+        "exaggeration_ratio": 1.535047
+      }
+    },
+    "robustness": {
+      "p_value_pooled": 0.011882,
+      "permutation_p_value": 0.011199,
+      "n_permutations": 10000,
+      "regression_adjusted": {
+        "diff": 0.025229,
+        "se": 0.011261,
+        "ci": [
+          0.003158,
+          0.047299
+        ],
+        "p_value": 0.025064,
+        "n_covariates": 23,
+        "se_ratio_vs_unadjusted": 0.979793
+      },
+      "aa_control_arm": {
+        "simulations": 2000,
+        "units": 2888,
+        "nominal_alpha": 0.05,
+        "false_positive_rate": 0.045,
+        "false_positive_rate_ci": [
+          0.035915,
+          0.054085
+        ],
+        "ci_coverage_of_zero": 0.955
+      }
+    },
+    "arm_funnel": [
+      {
+        "stage": "product_view",
+        "control": 0.885388,
+        "treatment": 0.889813,
+        "diff": 0.004425,
+        "ci_low": -0.011869,
+        "ci_high": 0.020719,
+        "p_value": 0.594524
+      },
+      {
+        "stage": "add_to_cart",
+        "control": 0.450139,
+        "treatment": 0.475745,
+        "diff": 0.025606,
+        "ci_low": -0.000108,
+        "ci_high": 0.051321,
+        "p_value": 0.050966
+      },
+      {
+        "stage": "checkout_start",
+        "control": 0.312327,
+        "treatment": 0.33957,
+        "diff": 0.027243,
+        "ci_low": 0.003073,
+        "ci_high": 0.051414,
+        "p_value": 0.027162
+      },
+      {
+        "stage": "purchase",
+        "control": 0.242382,
+        "treatment": 0.27131,
+        "diff": 0.028927,
+        "ci_low": 0.006402,
+        "ci_high": 0.051453,
+        "p_value": 0.011837
+      },
+      {
+        "stage": "purchase | checkout_start",
+        "control": 0.776053,
+        "treatment": 0.79898,
+        "diff": 0.022926,
+        "ci_low": -0.014084,
+        "ci_high": 0.059936,
+        "p_value": 0.224698
+      }
+    ],
+    "subgroups": [
+      {
+        "dimension": "device_type",
+        "level": "desktop",
+        "n_control": 960,
+        "n_treatment": 961,
+        "control": 0.271875,
+        "treatment": 0.284079,
+        "diff": 0.012204,
+        "se": 0.020441,
+        "ci_low": -0.02786,
+        "ci_high": 0.052268,
+        "p_value": 0.550483,
+        "p_holm": 1.0,
+        "q_bh": 0.66058,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.046365,
+        "ci_bonferroni_high": 0.070773
+      },
+      {
+        "dimension": "device_type",
+        "level": "mobile",
+        "n_control": 1700,
+        "n_treatment": 1704,
+        "control": 0.23,
+        "treatment": 0.260563,
+        "diff": 0.030563,
+        "se": 0.014739,
+        "ci_low": 0.001675,
+        "ci_high": 0.059452,
+        "p_value": 0.038116,
+        "p_holm": 0.419278,
+        "q_bh": 0.137651,
+        "significant_raw": true,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.011668,
+        "ci_bonferroni_high": 0.072795
+      },
+      {
+        "dimension": "device_type",
+        "level": "tablet",
+        "n_control": 228,
+        "n_treatment": 221,
+        "control": 0.210526,
+        "treatment": 0.298643,
+        "diff": 0.088116,
+        "se": 0.040948,
+        "ci_low": 0.00786,
+        "ci_high": 0.168373,
+        "p_value": 0.031404,
+        "p_holm": 0.376853,
+        "q_bh": 0.137651,
+        "significant_raw": true,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.02921,
+        "ci_bonferroni_high": 0.205443
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "affiliate",
+        "n_control": 214,
+        "n_treatment": 242,
+        "control": 0.219626,
+        "treatment": 0.252066,
+        "diff": 0.03244,
+        "se": 0.039748,
+        "ci_low": -0.045465,
+        "ci_high": 0.110345,
+        "p_value": 0.414424,
+        "p_holm": 1.0,
+        "q_bh": 0.621637,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.08145,
+        "ci_bonferroni_high": 0.146329
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "display",
+        "n_control": 202,
+        "n_treatment": 179,
+        "control": 0.123762,
+        "treatment": 0.145251,
+        "diff": 0.021489,
+        "se": 0.035078,
+        "ci_low": -0.047262,
+        "ci_high": 0.09024,
+        "p_value": 0.540134,
+        "p_holm": 1.0,
+        "q_bh": 0.66058,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.079018,
+        "ci_bonferroni_high": 0.121996
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "email",
+        "n_control": 306,
+        "n_treatment": 312,
+        "control": 0.366013,
+        "treatment": 0.365385,
+        "diff": -0.000628,
+        "se": 0.03875,
+        "ci_low": -0.076576,
+        "ci_high": 0.075319,
+        "p_value": 0.98706,
+        "p_holm": 1.0,
+        "q_bh": 0.98706,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.111656,
+        "ci_bonferroni_high": 0.110399
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "organic_search",
+        "n_control": 572,
+        "n_treatment": 588,
+        "control": 0.246503,
+        "treatment": 0.277211,
+        "diff": 0.030707,
+        "se": 0.025797,
+        "ci_low": -0.019853,
+        "ci_high": 0.081268,
+        "p_value": 0.233907,
+        "p_holm": 1.0,
+        "q_bh": 0.400983,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.043207,
+        "ci_bonferroni_high": 0.104622
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "paid_search",
+        "n_control": 697,
+        "n_treatment": 677,
+        "control": 0.275466,
+        "treatment": 0.277696,
+        "diff": 0.002229,
+        "se": 0.024138,
+        "ci_low": -0.04508,
+        "ci_high": 0.049538,
+        "p_value": 0.926409,
+        "p_holm": 1.0,
+        "q_bh": 0.98706,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.066931,
+        "ci_bonferroni_high": 0.07139
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "paid_social",
+        "n_control": 657,
+        "n_treatment": 634,
+        "control": 0.165906,
+        "treatment": 0.206625,
+        "diff": 0.040719,
+        "se": 0.021661,
+        "ci_low": -0.001735,
+        "ci_high": 0.083173,
+        "p_value": 0.060129,
+        "p_holm": 0.481035,
+        "q_bh": 0.144311,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.021345,
+        "ci_bonferroni_high": 0.102783
+      },
+      {
+        "dimension": "acquisition_channel",
+        "level": "referral",
+        "n_control": 240,
+        "n_treatment": 254,
+        "control": 0.308333,
+        "treatment": 0.393701,
+        "diff": 0.085367,
+        "se": 0.042759,
+        "ci_low": 0.001561,
+        "ci_high": 0.169174,
+        "p_value": 0.045884,
+        "p_holm": 0.456671,
+        "q_bh": 0.137651,
+        "significant_raw": true,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.037149,
+        "ci_bonferroni_high": 0.207884
+      },
+      {
+        "dimension": "lead_type",
+        "level": "new lead",
+        "n_control": 2273,
+        "n_treatment": 2295,
+        "control": 0.24769,
+        "treatment": 0.273638,
+        "diff": 0.025948,
+        "se": 0.012984,
+        "ci_low": 0.0005,
+        "ci_high": 0.051396,
+        "p_value": 0.045667,
+        "p_holm": 0.456671,
+        "q_bh": 0.137651,
+        "significant_raw": true,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.011255,
+        "ci_bonferroni_high": 0.063151
+      },
+      {
+        "dimension": "lead_type",
+        "level": "returning lead",
+        "n_control": 615,
+        "n_treatment": 591,
+        "control": 0.222764,
+        "treatment": 0.262267,
+        "diff": 0.039503,
+        "se": 0.024676,
+        "ci_low": -0.008861,
+        "ci_high": 0.087867,
+        "p_value": 0.109407,
+        "p_holm": 0.765851,
+        "q_bh": 0.218814,
+        "significant_raw": false,
+        "significant_holm": false,
+        "ci_bonferroni_low": -0.0312,
+        "ci_bonferroni_high": 0.110207
+      }
+    ],
+    "heterogeneity": [
+      {
+        "dimension": "device_type",
+        "levels": 3,
+        "q": 2.769979,
+        "df": 2,
+        "p_value": 0.250326,
+        "pooled_effect": 0.029297,
+        "p_holm": 0.750979
+      },
+      {
+        "dimension": "acquisition_channel",
+        "levels": 7,
+        "q": 3.887129,
+        "df": 6,
+        "p_value": 0.691948,
+        "pooled_effect": 0.027597,
+        "p_holm": 1.0
+      },
+      {
+        "dimension": "lead_type",
+        "levels": 2,
+        "q": 0.236322,
+        "df": 1,
+        "p_value": 0.626876,
+        "pooled_effect": 0.028887,
+        "p_holm": 1.0
+      }
+    ],
+    "subgroup_tests": 12,
+    "cumulative": [
+      {
+        "week": 1,
+        "data_through": "2025-03-09",
+        "units": 797,
+        "control": 0.125641,
+        "treatment": 0.179361,
+        "diff": 0.05372,
+        "ci_low": 0.004008,
+        "ci_high": 0.103433,
+        "p_value": 0.034177,
+        "nominally_significant": true
+      },
+      {
+        "week": 2,
+        "data_through": "2025-03-16",
+        "units": 1408,
+        "control": 0.143895,
+        "treatment": 0.193056,
+        "diff": 0.04916,
+        "ci_low": 0.010186,
+        "ci_high": 0.088135,
+        "p_value": 0.013429,
+        "nominally_significant": true
+      },
+      {
+        "week": 3,
+        "data_through": "2025-03-23",
+        "units": 2002,
+        "control": 0.172589,
+        "treatment": 0.202557,
+        "diff": 0.029968,
+        "ci_low": -0.004194,
+        "ci_high": 0.06413,
+        "p_value": 0.085556,
+        "nominally_significant": false
+      },
+      {
+        "week": 4,
+        "data_through": "2025-03-30",
+        "units": 2483,
+        "control": 0.183007,
+        "treatment": 0.211279,
+        "diff": 0.028272,
+        "ci_low": -0.002996,
+        "ci_high": 0.05954,
+        "p_value": 0.076366,
+        "nominally_significant": false
+      },
+      {
+        "week": 5,
+        "data_through": "2025-04-06",
+        "units": 2940,
+        "control": 0.196552,
+        "treatment": 0.219463,
+        "diff": 0.022911,
+        "ci_low": -0.006415,
+        "ci_high": 0.052237,
+        "p_value": 0.125706,
+        "nominally_significant": false
+      },
+      {
+        "week": 6,
+        "data_through": "2025-04-13",
+        "units": 3350,
+        "control": 0.209891,
+        "treatment": 0.231678,
+        "diff": 0.021787,
+        "ci_low": -0.006291,
+        "ci_high": 0.049865,
+        "p_value": 0.128301,
+        "nominally_significant": false
+      },
+      {
+        "week": 7,
+        "data_through": "2025-04-20",
+        "units": 3772,
+        "control": 0.22073,
+        "treatment": 0.235079,
+        "diff": 0.014348,
+        "ci_low": -0.01242,
+        "ci_high": 0.041116,
+        "p_value": 0.293452,
+        "nominally_significant": false
+      },
+      {
+        "week": 8,
+        "data_through": "2025-04-27",
+        "units": 4172,
+        "control": 0.231289,
+        "treatment": 0.246073,
+        "diff": 0.014784,
+        "ci_low": -0.011081,
+        "ci_high": 0.040649,
+        "p_value": 0.26259,
+        "nominally_significant": false
+      },
+      {
+        "week": 9,
+        "data_through": "2025-05-04",
+        "units": 4560,
+        "control": 0.230092,
+        "treatment": 0.252733,
+        "diff": 0.02264,
+        "ci_low": -0.002191,
+        "ci_high": 0.047472,
+        "p_value": 0.073937,
+        "nominally_significant": false
+      },
+      {
+        "week": 10,
+        "data_through": "2025-05-11",
+        "units": 4983,
+        "control": 0.234085,
+        "treatment": 0.259096,
+        "diff": 0.025011,
+        "ci_low": 0.001087,
+        "ci_high": 0.048935,
+        "p_value": 0.040459,
+        "nominally_significant": true
+      },
+      {
+        "week": 11,
+        "data_through": "2025-05-18",
+        "units": 5382,
+        "control": 0.235643,
+        "treatment": 0.26612,
+        "diff": 0.030477,
+        "ci_low": 0.007326,
+        "ci_high": 0.053628,
+        "p_value": 0.009875,
+        "nominally_significant": true
+      },
+      {
+        "week": 12,
+        "data_through": "2025-05-25",
+        "units": 5774,
+        "control": 0.242382,
+        "treatment": 0.27131,
+        "diff": 0.028927,
+        "ci_low": 0.006402,
+        "ci_high": 0.051453,
+        "p_value": 0.011837,
+        "nominally_significant": true
+      }
+    ]
+  }
+}

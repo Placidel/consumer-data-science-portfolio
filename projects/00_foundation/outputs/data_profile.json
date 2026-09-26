@@ -1,0 +1,108 @@
+{
+  "seed": 20240101,
+  "n_prospects": 40000,
+  "data_start": "2024-01-01",
+  "data_end_exclusive": "2026-01-01",
+  "default_cutoff": "2025-07-01",
+  "row_counts": {
+    "products": 130,
+    "campaigns": 55,
+    "experiments": 1,
+    "prospects": 40000,
+    "customers": 12359,
+    "marketing_touches": 426612,
+    "sessions": 220091,
+    "funnel_events": 606786,
+    "orders": 64215,
+    "order_lines": 108829,
+    "subscription_events": 11477,
+    "support_contacts": 6713,
+    "experiment_assignments": 5774
+  },
+  "headline": {
+    "leads": 40000,
+    "customers": 12359,
+    "lead_conversion_rate_60d": 0.3001,
+    "orders": 64215,
+    "net_revenue": 5402375.92,
+    "average_order_value": 84.13,
+    "repeat_order_revenue_share": 0.8116,
+    "discounted_order_share": 0.1918,
+    "store_order_share": 0.1884,
+    "repeat_purchase_rate_180d": 0.6326,
+    "members_ever": 2318,
+    "membership_revenue": 170251.72,
+    "support_contacts_per_100_orders": 10.45,
+    "mean_csat": 3.592,
+    "marketing_cost": 441032.79,
+    "experiment_assigned_control": 2888,
+    "experiment_assigned_treatment": 2886,
+    "orders_before_default_cutoff": 36378,
+    "orders_on_or_after_default_cutoff": 27837
+  },
+  "channels": [
+    {
+      "acquisition_channel": "paid_search",
+      "leads": 9238,
+      "customers": 3167,
+      "conversion_rate_60d": 0.3286,
+      "sourcing_spend": 177684.81,
+      "cost_per_lead": 19.2341,
+      "cost_per_customer": 56.1051
+    },
+    {
+      "acquisition_channel": "paid_social",
+      "leads": 8810,
+      "customers": 1878,
+      "conversion_rate_60d": 0.2099,
+      "sourcing_spend": 112222.02,
+      "cost_per_lead": 12.738,
+      "cost_per_customer": 59.7561
+    },
+    {
+      "acquisition_channel": "display",
+      "leads": 3048,
+      "customers": 464,
+      "conversion_rate_60d": 0.1485,
+      "sourcing_spend": 22785.53,
+      "cost_per_lead": 7.4756,
+      "cost_per_customer": 49.1067
+    },
+    {
+      "acquisition_channel": "affiliate",
+      "leads": 3060,
+      "customers": 859,
+      "conversion_rate_60d": 0.2705,
+      "sourcing_spend": 71391.12,
+      "cost_per_lead": 23.3304,
+      "cost_per_customer": 83.1096
+    },
+    {
+      "acquisition_channel": "email",
+      "leads": 4588,
+      "customers": 1931,
+      "conversion_rate_60d": 0.4149,
+      "sourcing_spend": 7264.99,
+      "cost_per_lead": 1.5835,
+      "cost_per_customer": 3.7623
+    },
+    {
+      "acquisition_channel": "referral",
+      "leads": 3484,
+      "customers": 1554,
+      "conversion_rate_60d": 0.4339,
+      "sourcing_spend": 37153.28,
+      "cost_per_lead": 10.664,
+      "cost_per_customer": 23.9082
+    },
+    {
+      "acquisition_channel": "organic_search",
+      "leads": 7772,
+      "customers": 2506,
+      "conversion_rate_60d": 0.3129,
+      "sourcing_spend": 0.0,
+      "cost_per_lead": null,
+      "cost_per_customer": null
+    }
+  ]
+}

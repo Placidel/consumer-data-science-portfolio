@@ -1,0 +1,6 @@
+role,metric,label,control,treatment,n_control,n_treatment,diff,ci_low,ci_high,relative,relative_ci_low,relative_ci_high,p_value,status,margin,margin_scale,p_holm
+primary,converted,First-purchase conversion,0.242382,0.27131,2888,2886,0.028927,0.006402,0.051453,0.119347,0.02512,0.222234,0.011837,,,,
+guardrail,first_order_value,Average first-order net value,86.018371,73.586462,700,783,-12.431909,-18.024714,-6.839104,-0.144526,-0.202228,-0.082651,1.4e-05,fail,0.05,relative,
+guardrail,reached_checkout_start,Checkout-start rate,0.312327,0.33957,2888,2886,0.027243,0.003073,0.051414,0.087227,0.009395,0.171061,0.027162,pass,0.01,absolute,
+secondary,first_order_revenue,First-order net revenue per assigned prospect,20.849328,19.964726,2888,2886,-0.884602,-3.17862,1.409416,-0.042428,-0.144118,0.071343,0.449712,,,,0.899425
+secondary,revenue_90d,"Net revenue per assigned prospect, 90 days from assignment",55.385623,54.624657,2888,2886,-0.760966,-7.466527,5.944594,-0.013739,-0.126934,0.114131,0.823957,,,,0.899425

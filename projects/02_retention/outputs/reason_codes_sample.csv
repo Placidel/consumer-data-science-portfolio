@@ -1,0 +1,16 @@
+run_cutoff,customer_id,churn_probability,margin_180d,expected_net_value,days_since_last_order,orders_total,top_risk_drivers,churned_in_next_90d
+2025-10-01,C002297,0.860178,805.97,101.002324,78.205046,35.0,days_since_last_session; plus_cancelled_180d; days_since_last_order,1
+2025-10-01,C002791,0.72851,878.06,92.501051,99.683553,23.0,days_since_last_session; days_since_last_order; plus_cancelled_180d,1
+2025-10-01,C004439,0.65972,778.92,73.389417,88.499502,30.0,days_since_last_order; days_since_last_session; browse_sessions_90d,1
+2025-10-01,C003652,0.7072,651.81,65.619222,87.203495,29.0,days_since_last_session; days_since_last_order; plus_cancelled_180d,1
+2025-10-01,C002236,0.965008,440.98,61.209921,137.551285,52.0,days_since_last_session; days_since_last_order; plus_cancelled_180d,1
+2025-10-01,C006973,0.77209,526.75,57.707036,86.640486,14.0,days_since_last_session; days_since_last_order; orders_90d,1
+2025-10-01,C005751,0.810702,463.42,53.191806,79.539606,14.0,days_since_last_session; days_since_last_order; open_contacts,1
+2025-10-01,C006744,0.79777,456.61,51.432675,77.494861,12.0,days_since_last_session; plus_cancelled_180d; open_contacts,1
+2025-10-01,C003440,0.79385,443.5,49.589345,77.410868,25.0,days_since_last_session; plus_cancelled_180d; days_since_last_order,1
+2025-10-01,C002365,0.84277,392.06,46.512147,71.201586,21.0,plus_cancelled_180d; days_since_last_session; days_since_last_order,1
+2025-10-01,C003858,0.864934,372.45,45.348977,76.195463,23.0,days_since_last_session; plus_cancelled_180d; days_since_last_order,1
+2025-10-01,C007203,0.796349,369.37,40.909358,94.540856,8.0,plus_cancelled_180d; days_since_last_session; browse_sessions_90d,1
+2025-10-01,C005418,0.57658,517.36,40.762945,51.449838,21.0,days_since_last_session; browse_sessions_90d; region,1
+2025-10-01,C007767,0.851213,342.88,40.758858,128.412986,4.0,days_since_last_order; days_since_last_session; browse_sessions_90d,1
+2025-10-01,C003977,0.911538,299.13,38.090617,120.1561,20.0,days_since_last_session; days_since_last_order; browse_sessions_90d,0

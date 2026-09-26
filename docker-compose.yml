@@ -1,0 +1,38 @@
+# Scoring API (http://localhost:8000/docs) and executive dashboard (http://localhost:8501) from
+# one deterministic image. Start with `docker compose up --build --wait`; stop with
+# `docker compose down`. No environment variables or secrets are required.
+name: northstar
+
+services:
+  api:
+    build: .
+    image: northstar-consumer:local
+    command: ["northstar", "serve", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys, urllib.request; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4).status == 200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    image: northstar-consumer:local
+    command: ["streamlit", "run", "src/northstar/dashboard/app.py", "--server.port", "8501",
+              "--server.address", "0.0.0.0", "--server.headless", "true",
+              "--browser.gatherUsageStats", "false"]
+    ports:
+      - "8501:8501"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys, urllib.request; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=4).status == 200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    restart: unless-stopped

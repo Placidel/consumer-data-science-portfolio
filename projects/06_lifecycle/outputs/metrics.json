@@ -1,0 +1,1380 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "rules": {
+      "new_days": 90,
+      "at_risk_days": 90,
+      "churn_days": 180,
+      "loyal_window_days": 365,
+      "loyal_min_orders": 6,
+      "loyal_min_tenure_days": 180
+    },
+    "report_months": 12,
+    "follow_up_months": 6,
+    "cohort_follow_up_months": 12,
+    "segment_as_of": "2025-07-01",
+    "outcome_days": 90,
+    "states": [
+      "prospect",
+      "new",
+      "active",
+      "loyal",
+      "at_risk",
+      "churned"
+    ],
+    "precedence": [
+      "prospect",
+      "churned",
+      "at_risk",
+      "new",
+      "loyal",
+      "active"
+    ],
+    "definitions": {
+      "prospect": "Identified lead with no order yet.",
+      "new": "First order within the last 90 days.",
+      "active": "Ordered within the last 90 days; neither new nor loyal.",
+      "loyal": "Ordered within the last 90 days, at least 6 orders in the last 365 days and first order more than 180 days ago.",
+      "at_risk": "Last order more than 90 and at most 180 days ago.",
+      "churned": "Last order more than 180 days ago."
+    },
+    "impossible_transitions": [
+      "active->churned",
+      "active->new",
+      "active->prospect",
+      "at_risk->new",
+      "at_risk->prospect",
+      "churned->at_risk",
+      "churned->new",
+      "churned->prospect",
+      "loyal->churned",
+      "loyal->new",
+      "loyal->prospect",
+      "new->churned",
+      "new->loyal",
+      "new->prospect",
+      "prospect->active",
+      "prospect->at_risk",
+      "prospect->churned",
+      "prospect->loyal"
+    ],
+    "decision_points": [
+      {
+        "key": "second_purchase",
+        "label": "New customer buys again within the new window",
+        "origin": "new",
+        "favourable": [
+          "active",
+          "loyal"
+        ],
+        "unfavourable": [
+          "at_risk"
+        ]
+      },
+      {
+        "key": "active_kept",
+        "label": "Active customer stays engaged (vs. slips to at risk)",
+        "origin": "active",
+        "favourable": [
+          "active",
+          "loyal"
+        ],
+        "unfavourable": [
+          "at_risk"
+        ]
+      },
+      {
+        "key": "loyal_kept",
+        "label": "Loyal customer stays engaged (vs. slips to at risk)",
+        "origin": "loyal",
+        "favourable": [
+          "loyal",
+          "active"
+        ],
+        "unfavourable": [
+          "at_risk"
+        ]
+      },
+      {
+        "key": "at_risk_recovery",
+        "label": "At-risk customer returns before churning",
+        "origin": "at_risk",
+        "favourable": [
+          "active",
+          "loyal"
+        ],
+        "unfavourable": [
+          "churned"
+        ]
+      }
+    ],
+    "rfm_rules": {
+      "champions": "R 4-5 and FM 4-5",
+      "loyalists": "R 4-5 and FM 3, or R 3 and FM 3-5",
+      "promising": "R 4-5 and FM 1-2",
+      "needs_attention": "R 3 and FM 1-2",
+      "cannot_lose": "R 1-2 and FM 4-5",
+      "slipping": "R 1-2 and FM 3",
+      "hibernating": "R 1-2 and FM 1-2"
+    }
+  },
+  "population": {
+    "people": 40000,
+    "customers": 12359,
+    "orders": 64215,
+    "first_period": "2024-01",
+    "last_period": "2025-12",
+    "periods": 24
+  },
+  "states": {
+    "current": {
+      "period": "2025-12",
+      "as_of": "2026-01-01",
+      "people": 40000,
+      "customers": 12359,
+      "counts": {
+        "prospect": 27641,
+        "new": 1981,
+        "active": 1789,
+        "loyal": 1900,
+        "at_risk": 1713,
+        "churned": 4976
+      },
+      "customer_shares": {
+        "new": 0.1603,
+        "active": 0.1448,
+        "loyal": 0.1537,
+        "at_risk": 0.1386,
+        "churned": 0.4026
+      }
+    },
+    "year_ago": {
+      "period": "2024-12",
+      "as_of": "2025-01-01",
+      "people": 18125,
+      "customers": 5434,
+      "counts": {
+        "prospect": 12691,
+        "new": 1643,
+        "active": 1023,
+        "loyal": 585,
+        "at_risk": 1075,
+        "churned": 1108
+      },
+      "customer_shares": {
+        "new": 0.3024,
+        "active": 0.1883,
+        "loyal": 0.1077,
+        "at_risk": 0.1978,
+        "churned": 0.2039
+      }
+    }
+  },
+  "transitions": {
+    "first_origin": "2024-12",
+    "last_destination": "2025-12",
+    "months": 12,
+    "counts": {
+      "prospect": {
+        "prospect": 222854,
+        "new": 2751,
+        "active": 0,
+        "loyal": 0,
+        "at_risk": 0,
+        "churned": 0
+      },
+      "new": {
+        "prospect": 0,
+        "new": 13191,
+        "active": 3067,
+        "loyal": 0,
+        "at_risk": 3520,
+        "churned": 0
+      },
+      "active": {
+        "prospect": 0,
+        "new": 0,
+        "active": 11008,
+        "loyal": 1992,
+        "at_risk": 2926,
+        "churned": 0
+      },
+      "loyal": {
+        "prospect": 0,
+        "new": 0,
+        "active": 234,
+        "loyal": 12508,
+        "at_risk": 1046,
+        "churned": 0
+      },
+      "at_risk": {
+        "prospect": 0,
+        "new": 0,
+        "active": 1643,
+        "loyal": 551,
+        "at_risk": 10940,
+        "churned": 4660
+      },
+      "churned": {
+        "prospect": 0,
+        "new": 0,
+        "active": 740,
+        "loyal": 52,
+        "at_risk": 0,
+        "churned": 32918
+      }
+    },
+    "probabilities": {
+      "prospect": {
+        "prospect": 0.9878,
+        "new": 0.0122,
+        "active": 0.0,
+        "loyal": 0.0,
+        "at_risk": 0.0,
+        "churned": 0.0
+      },
+      "new": {
+        "prospect": 0.0,
+        "new": 0.667,
+        "active": 0.1551,
+        "loyal": 0.0,
+        "at_risk": 0.178,
+        "churned": 0.0
+      },
+      "active": {
+        "prospect": 0.0,
+        "new": 0.0,
+        "active": 0.6912,
+        "loyal": 0.1251,
+        "at_risk": 0.1837,
+        "churned": 0.0
+      },
+      "loyal": {
+        "prospect": 0.0,
+        "new": 0.0,
+        "active": 0.017,
+        "loyal": 0.9072,
+        "at_risk": 0.0759,
+        "churned": 0.0
+      },
+      "at_risk": {
+        "prospect": 0.0,
+        "new": 0.0,
+        "active": 0.0923,
+        "loyal": 0.031,
+        "at_risk": 0.6148,
+        "churned": 0.2619
+      },
+      "churned": {
+        "prospect": 0.0,
+        "new": 0.0,
+        "active": 0.022,
+        "loyal": 0.0015,
+        "at_risk": 0.0,
+        "churned": 0.9765
+      }
+    },
+    "new_leads": 21875,
+    "new_leads_entering_as_new": 4174
+  },
+  "state_value": [
+    {
+      "state": "new",
+      "customer_months": 19778,
+      "next_month_purchase_rate": 0.2598,
+      "next_month_revenue_per_customer": 36.5835,
+      "next_month_revenue": 723548.07,
+      "share_of_customer_months": 0.1958,
+      "share_of_next_month_revenue": 0.2327
+    },
+    {
+      "state": "active",
+      "customer_months": 15926,
+      "next_month_purchase_rate": 0.365,
+      "next_month_revenue_per_customer": 48.9774,
+      "next_month_revenue": 780014.55,
+      "share_of_customer_months": 0.1577,
+      "share_of_next_month_revenue": 0.2509
+    },
+    {
+      "state": "loyal",
+      "customer_months": 13788,
+      "next_month_purchase_rate": 0.5786,
+      "next_month_revenue_per_customer": 93.2028,
+      "next_month_revenue": 1285080.66,
+      "share_of_customer_months": 0.1365,
+      "share_of_next_month_revenue": 0.4134
+    },
+    {
+      "state": "at_risk",
+      "customer_months": 17794,
+      "next_month_purchase_rate": 0.1233,
+      "next_month_revenue_per_customer": 13.4886,
+      "next_month_revenue": 240016.22,
+      "share_of_customer_months": 0.1762,
+      "share_of_next_month_revenue": 0.0772
+    },
+    {
+      "state": "churned",
+      "customer_months": 33710,
+      "next_month_purchase_rate": 0.0235,
+      "next_month_revenue_per_customer": 2.3774,
+      "next_month_revenue": 80141.91,
+      "share_of_customer_months": 0.3338,
+      "share_of_next_month_revenue": 0.0258
+    }
+  ],
+  "decision_points": [
+    {
+      "decision_point": "second_purchase",
+      "label": "New customer buys again within the new window",
+      "origin": "new",
+      "favourable": "active/loyal",
+      "unfavourable": "at_risk",
+      "origin_customer_months": 19778,
+      "resolved": 6587,
+      "favourable_n": 3067,
+      "unfavourable_n": 3520,
+      "favourable_rate": 0.4656,
+      "rate_ci_low": 0.4536,
+      "rate_ci_high": 0.4777,
+      "unfavourable_per_month": 293.3333,
+      "follow_up_resolved": 7567,
+      "revenue_after_favourable": 361.1629,
+      "revenue_after_unfavourable": 53.9457,
+      "revenue_gap": 307.2172,
+      "revenue_gap_per_year": 1081404.376
+    },
+    {
+      "decision_point": "active_kept",
+      "label": "Active customer stays engaged (vs. slips to at risk)",
+      "origin": "active",
+      "favourable": "active/loyal",
+      "unfavourable": "at_risk",
+      "origin_customer_months": 15926,
+      "resolved": 15926,
+      "favourable_n": 13000,
+      "unfavourable_n": 2926,
+      "favourable_rate": 0.8163,
+      "rate_ci_low": 0.8102,
+      "rate_ci_high": 0.8222,
+      "unfavourable_per_month": 243.8333,
+      "follow_up_resolved": 12972,
+      "revenue_after_favourable": 330.2951,
+      "revenue_after_unfavourable": 105.7012,
+      "revenue_gap": 224.5939,
+      "revenue_gap_per_year": 657161.8194
+    },
+    {
+      "decision_point": "loyal_kept",
+      "label": "Loyal customer stays engaged (vs. slips to at risk)",
+      "origin": "loyal",
+      "favourable": "loyal/active",
+      "unfavourable": "at_risk",
+      "origin_customer_months": 13788,
+      "resolved": 13788,
+      "favourable_n": 12742,
+      "unfavourable_n": 1046,
+      "favourable_rate": 0.9241,
+      "rate_ci_low": 0.9196,
+      "rate_ci_high": 0.9284,
+      "unfavourable_per_month": 87.1667,
+      "follow_up_resolved": 7377,
+      "revenue_after_favourable": 524.9643,
+      "revenue_after_unfavourable": 157.2198,
+      "revenue_gap": 367.7445,
+      "revenue_gap_per_year": 384660.7481
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "label": "At-risk customer returns before churning",
+      "origin": "at_risk",
+      "favourable": "active/loyal",
+      "unfavourable": "churned",
+      "origin_customer_months": 17794,
+      "resolved": 6854,
+      "favourable_n": 2194,
+      "unfavourable_n": 4660,
+      "favourable_rate": 0.3201,
+      "rate_ci_low": 0.3092,
+      "rate_ci_high": 0.3312,
+      "unfavourable_per_month": 388.3333,
+      "follow_up_resolved": 5381,
+      "revenue_after_favourable": 312.9962,
+      "revenue_after_unfavourable": 25.7596,
+      "revenue_gap": 287.2366,
+      "revenue_gap_per_year": 1338522.5507
+    }
+  ],
+  "decision_points_by_channel": [
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "affiliate",
+      "resolved": 462,
+      "favourable_n": 204,
+      "favourable_rate": 0.4416,
+      "rate_ci_low": 0.3969,
+      "rate_ci_high": 0.4871
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "display",
+      "resolved": 237,
+      "favourable_n": 96,
+      "favourable_rate": 0.4051,
+      "rate_ci_low": 0.3446,
+      "rate_ci_high": 0.4686
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "email",
+      "resolved": 996,
+      "favourable_n": 455,
+      "favourable_rate": 0.4568,
+      "rate_ci_low": 0.4261,
+      "rate_ci_high": 0.4879
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "organic_search",
+      "resolved": 1337,
+      "favourable_n": 681,
+      "favourable_rate": 0.5093,
+      "rate_ci_low": 0.4826,
+      "rate_ci_high": 0.5361
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "paid_search",
+      "resolved": 1699,
+      "favourable_n": 789,
+      "favourable_rate": 0.4644,
+      "rate_ci_low": 0.4408,
+      "rate_ci_high": 0.4882
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "paid_social",
+      "resolved": 1016,
+      "favourable_n": 424,
+      "favourable_rate": 0.4173,
+      "rate_ci_low": 0.3874,
+      "rate_ci_high": 0.4479
+    },
+    {
+      "decision_point": "second_purchase",
+      "acquisition_channel": "referral",
+      "resolved": 840,
+      "favourable_n": 418,
+      "favourable_rate": 0.4976,
+      "rate_ci_low": 0.4639,
+      "rate_ci_high": 0.5314
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "affiliate",
+      "resolved": 1062,
+      "favourable_n": 875,
+      "favourable_rate": 0.8239,
+      "rate_ci_low": 0.7999,
+      "rate_ci_high": 0.8456
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "display",
+      "resolved": 521,
+      "favourable_n": 416,
+      "favourable_rate": 0.7985,
+      "rate_ci_low": 0.7619,
+      "rate_ci_high": 0.8307
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "email",
+      "resolved": 2453,
+      "favourable_n": 2008,
+      "favourable_rate": 0.8186,
+      "rate_ci_low": 0.8028,
+      "rate_ci_high": 0.8333
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "organic_search",
+      "resolved": 3466,
+      "favourable_n": 2803,
+      "favourable_rate": 0.8087,
+      "rate_ci_low": 0.7953,
+      "rate_ci_high": 0.8215
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "paid_search",
+      "resolved": 4045,
+      "favourable_n": 3311,
+      "favourable_rate": 0.8185,
+      "rate_ci_low": 0.8064,
+      "rate_ci_high": 0.8301
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "paid_social",
+      "resolved": 2228,
+      "favourable_n": 1787,
+      "favourable_rate": 0.8021,
+      "rate_ci_low": 0.785,
+      "rate_ci_high": 0.8181
+    },
+    {
+      "decision_point": "active_kept",
+      "acquisition_channel": "referral",
+      "resolved": 2151,
+      "favourable_n": 1800,
+      "favourable_rate": 0.8368,
+      "rate_ci_low": 0.8206,
+      "rate_ci_high": 0.8518
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "affiliate",
+      "resolved": 915,
+      "favourable_n": 846,
+      "favourable_rate": 0.9246,
+      "rate_ci_low": 0.9056,
+      "rate_ci_high": 0.94
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "display",
+      "resolved": 406,
+      "favourable_n": 368,
+      "favourable_rate": 0.9064,
+      "rate_ci_low": 0.8741,
+      "rate_ci_high": 0.931
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "email",
+      "resolved": 2423,
+      "favourable_n": 2251,
+      "favourable_rate": 0.929,
+      "rate_ci_low": 0.9181,
+      "rate_ci_high": 0.9386
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "organic_search",
+      "resolved": 2964,
+      "favourable_n": 2733,
+      "favourable_rate": 0.9221,
+      "rate_ci_low": 0.9119,
+      "rate_ci_high": 0.9312
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "paid_search",
+      "resolved": 3668,
+      "favourable_n": 3387,
+      "favourable_rate": 0.9234,
+      "rate_ci_low": 0.9143,
+      "rate_ci_high": 0.9316
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "paid_social",
+      "resolved": 1297,
+      "favourable_n": 1165,
+      "favourable_rate": 0.8982,
+      "rate_ci_low": 0.8806,
+      "rate_ci_high": 0.9135
+    },
+    {
+      "decision_point": "loyal_kept",
+      "acquisition_channel": "referral",
+      "resolved": 2115,
+      "favourable_n": 1992,
+      "favourable_rate": 0.9418,
+      "rate_ci_low": 0.931,
+      "rate_ci_high": 0.951
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "affiliate",
+      "resolved": 470,
+      "favourable_n": 141,
+      "favourable_rate": 0.3,
+      "rate_ci_low": 0.2603,
+      "rate_ci_high": 0.3429
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "display",
+      "resolved": 276,
+      "favourable_n": 70,
+      "favourable_rate": 0.2536,
+      "rate_ci_low": 0.2059,
+      "rate_ci_high": 0.3081
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "email",
+      "resolved": 1065,
+      "favourable_n": 358,
+      "favourable_rate": 0.3362,
+      "rate_ci_low": 0.3084,
+      "rate_ci_high": 0.3651
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "organic_search",
+      "resolved": 1403,
+      "favourable_n": 505,
+      "favourable_rate": 0.3599,
+      "rate_ci_low": 0.3352,
+      "rate_ci_high": 0.3854
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "paid_search",
+      "resolved": 1765,
+      "favourable_n": 545,
+      "favourable_rate": 0.3088,
+      "rate_ci_low": 0.2877,
+      "rate_ci_high": 0.3307
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "paid_social",
+      "resolved": 1088,
+      "favourable_n": 296,
+      "favourable_rate": 0.2721,
+      "rate_ci_low": 0.2465,
+      "rate_ci_high": 0.2993
+    },
+    {
+      "decision_point": "at_risk_recovery",
+      "acquisition_channel": "referral",
+      "resolved": 787,
+      "favourable_n": 279,
+      "favourable_rate": 0.3545,
+      "rate_ci_low": 0.3219,
+      "rate_ci_high": 0.3886
+    }
+  ],
+  "repurchase_by_recency": [
+    {
+      "days_since_last_order": "0-30",
+      "customer_months": 26999,
+      "buyers": 13152,
+      "repurchase_rate": 0.4871,
+      "next_month_revenue": 76.2362
+    },
+    {
+      "days_since_last_order": "30-60",
+      "customer_months": 13383,
+      "buyers": 4061,
+      "repurchase_rate": 0.3034,
+      "next_month_revenue": 39.911
+    },
+    {
+      "days_since_last_order": "60-90",
+      "customer_months": 9110,
+      "buyers": 1716,
+      "repurchase_rate": 0.1884,
+      "next_month_revenue": 21.5381
+    },
+    {
+      "days_since_last_order": "90-120",
+      "customer_months": 7120,
+      "buyers": 1250,
+      "repurchase_rate": 0.1756,
+      "next_month_revenue": 19.5219
+    },
+    {
+      "days_since_last_order": "120-150",
+      "customer_months": 5728,
+      "buyers": 578,
+      "repurchase_rate": 0.1009,
+      "next_month_revenue": 11.5548
+    },
+    {
+      "days_since_last_order": "150-180",
+      "customer_months": 4946,
+      "buyers": 366,
+      "repurchase_rate": 0.074,
+      "next_month_revenue": 7.043
+    },
+    {
+      "days_since_last_order": "180-210",
+      "customer_months": 4429,
+      "buyers": 247,
+      "repurchase_rate": 0.0558,
+      "next_month_revenue": 5.9011
+    },
+    {
+      "days_since_last_order": "210-240",
+      "customer_months": 4004,
+      "buyers": 167,
+      "repurchase_rate": 0.0417,
+      "next_month_revenue": 4.3364
+    },
+    {
+      "days_since_last_order": "240-270",
+      "customer_months": 3668,
+      "buyers": 106,
+      "repurchase_rate": 0.0289,
+      "next_month_revenue": 2.9653
+    },
+    {
+      "days_since_last_order": "270-300",
+      "customer_months": 3395,
+      "buyers": 72,
+      "repurchase_rate": 0.0212,
+      "next_month_revenue": 2.1357
+    },
+    {
+      "days_since_last_order": "300-330",
+      "customer_months": 3116,
+      "buyers": 63,
+      "repurchase_rate": 0.0202,
+      "next_month_revenue": 2.0776
+    },
+    {
+      "days_since_last_order": "330-360",
+      "customer_months": 2835,
+      "buyers": 44,
+      "repurchase_rate": 0.0155,
+      "next_month_revenue": 1.2626
+    },
+    {
+      "days_since_last_order": "360+",
+      "customer_months": 12263,
+      "buyers": 93,
+      "repurchase_rate": 0.0076,
+      "next_month_revenue": 0.6901
+    }
+  ],
+  "conversion_by_lead_age": [
+    {
+      "lead_age_days": "0-30",
+      "prospect_months": 17028,
+      "conversions": 1946,
+      "conversion_rate": 0.1143
+    },
+    {
+      "lead_age_days": "30-60",
+      "prospect_months": 14891,
+      "conversions": 504,
+      "conversion_rate": 0.0338
+    },
+    {
+      "lead_age_days": "60-90",
+      "prospect_months": 14217,
+      "conversions": 159,
+      "conversion_rate": 0.0112
+    },
+    {
+      "lead_age_days": "90-180",
+      "prospect_months": 40661,
+      "conversions": 123,
+      "conversion_rate": 0.003
+    },
+    {
+      "lead_age_days": "180-365",
+      "prospect_months": 77581,
+      "conversions": 19,
+      "conversion_rate": 0.0002
+    },
+    {
+      "lead_age_days": "365+",
+      "prospect_months": 61227,
+      "conversions": 0,
+      "conversion_rate": 0.0
+    }
+  ],
+  "cohorts": {
+    "count": 24,
+    "first": "2024-01",
+    "last": "2025-12",
+    "pooled": [
+      {
+        "months_since_acquisition": 0,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 5434.0,
+        "revenue": 580961.18,
+        "retention": 1.0,
+        "revenue_per_customer": 106.9123,
+        "cumulative_revenue_per_customer": 106.9123
+      },
+      {
+        "months_since_acquisition": 1,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1651.0,
+        "revenue": 221922.08,
+        "retention": 0.3038,
+        "revenue_per_customer": 40.8395,
+        "cumulative_revenue_per_customer": 147.7518
+      },
+      {
+        "months_since_acquisition": 2,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1400.0,
+        "revenue": 195976.1,
+        "retention": 0.2576,
+        "revenue_per_customer": 36.0648,
+        "cumulative_revenue_per_customer": 183.8166
+      },
+      {
+        "months_since_acquisition": 3,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1305.0,
+        "revenue": 179418.12,
+        "retention": 0.2402,
+        "revenue_per_customer": 33.0177,
+        "cumulative_revenue_per_customer": 216.8343
+      },
+      {
+        "months_since_acquisition": 4,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1362.0,
+        "revenue": 179164.02,
+        "retention": 0.2506,
+        "revenue_per_customer": 32.9709,
+        "cumulative_revenue_per_customer": 249.8052
+      },
+      {
+        "months_since_acquisition": 5,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1318.0,
+        "revenue": 181386.98,
+        "retention": 0.2425,
+        "revenue_per_customer": 33.38,
+        "cumulative_revenue_per_customer": 283.1852
+      },
+      {
+        "months_since_acquisition": 6,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1269.0,
+        "revenue": 181060.67,
+        "retention": 0.2335,
+        "revenue_per_customer": 33.32,
+        "cumulative_revenue_per_customer": 316.5052
+      },
+      {
+        "months_since_acquisition": 7,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1240.0,
+        "revenue": 171562.8,
+        "retention": 0.2282,
+        "revenue_per_customer": 31.5721,
+        "cumulative_revenue_per_customer": 348.0773
+      },
+      {
+        "months_since_acquisition": 8,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1192.0,
+        "revenue": 172376.36,
+        "retention": 0.2194,
+        "revenue_per_customer": 31.7218,
+        "cumulative_revenue_per_customer": 379.7991
+      },
+      {
+        "months_since_acquisition": 9,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1175.0,
+        "revenue": 166681.3,
+        "retention": 0.2162,
+        "revenue_per_customer": 30.6738,
+        "cumulative_revenue_per_customer": 410.4729
+      },
+      {
+        "months_since_acquisition": 10,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1071.0,
+        "revenue": 144866.04,
+        "retention": 0.1971,
+        "revenue_per_customer": 26.6592,
+        "cumulative_revenue_per_customer": 437.1321
+      },
+      {
+        "months_since_acquisition": 11,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1073.0,
+        "revenue": 154857.43,
+        "retention": 0.1975,
+        "revenue_per_customer": 28.4979,
+        "cumulative_revenue_per_customer": 465.6299
+      },
+      {
+        "months_since_acquisition": 12,
+        "cohorts": 12,
+        "customers": 5434,
+        "buyers": 1085.0,
+        "revenue": 160228.95,
+        "retention": 0.1997,
+        "revenue_per_customer": 29.4864,
+        "cumulative_revenue_per_customer": 495.1163
+      }
+    ],
+    "pooled_first_cohort": "2024-01",
+    "pooled_last_cohort": "2024-12",
+    "by_channel": [
+      {
+        "acquisition_channel": "affiliate",
+        "months_since_acquisition": 3,
+        "customers": 387,
+        "retention": 0.2145,
+        "cumulative_revenue_per_customer": 220.3927
+      },
+      {
+        "acquisition_channel": "affiliate",
+        "months_since_acquisition": 6,
+        "customers": 387,
+        "retention": 0.2351,
+        "cumulative_revenue_per_customer": 318.6567
+      },
+      {
+        "acquisition_channel": "affiliate",
+        "months_since_acquisition": 12,
+        "customers": 387,
+        "retention": 0.168,
+        "cumulative_revenue_per_customer": 486.1033
+      },
+      {
+        "acquisition_channel": "display",
+        "months_since_acquisition": 3,
+        "customers": 247,
+        "retention": 0.166,
+        "cumulative_revenue_per_customer": 185.4081
+      },
+      {
+        "acquisition_channel": "display",
+        "months_since_acquisition": 6,
+        "customers": 247,
+        "retention": 0.1215,
+        "cumulative_revenue_per_customer": 249.1776
+      },
+      {
+        "acquisition_channel": "display",
+        "months_since_acquisition": 12,
+        "customers": 247,
+        "retention": 0.1134,
+        "cumulative_revenue_per_customer": 351.825
+      },
+      {
+        "acquisition_channel": "email",
+        "months_since_acquisition": 3,
+        "customers": 863,
+        "retention": 0.2514,
+        "cumulative_revenue_per_customer": 213.6385
+      },
+      {
+        "acquisition_channel": "email",
+        "months_since_acquisition": 6,
+        "customers": 863,
+        "retention": 0.263,
+        "cumulative_revenue_per_customer": 317.4194
+      },
+      {
+        "acquisition_channel": "email",
+        "months_since_acquisition": 12,
+        "customers": 863,
+        "retention": 0.2202,
+        "cumulative_revenue_per_customer": 511.4828
+      },
+      {
+        "acquisition_channel": "organic_search",
+        "months_since_acquisition": 3,
+        "customers": 1100,
+        "retention": 0.2564,
+        "cumulative_revenue_per_customer": 214.8226
+      },
+      {
+        "acquisition_channel": "organic_search",
+        "months_since_acquisition": 6,
+        "customers": 1100,
+        "retention": 0.2418,
+        "cumulative_revenue_per_customer": 327.3752
+      },
+      {
+        "acquisition_channel": "organic_search",
+        "months_since_acquisition": 12,
+        "customers": 1100,
+        "retention": 0.2118,
+        "cumulative_revenue_per_customer": 512.1529
+      },
+      {
+        "acquisition_channel": "paid_search",
+        "months_since_acquisition": 3,
+        "customers": 1418,
+        "retention": 0.2496,
+        "cumulative_revenue_per_customer": 223.1686
+      },
+      {
+        "acquisition_channel": "paid_search",
+        "months_since_acquisition": 6,
+        "customers": 1418,
+        "retention": 0.2447,
+        "cumulative_revenue_per_customer": 326.9587
+      },
+      {
+        "acquisition_channel": "paid_search",
+        "months_since_acquisition": 12,
+        "customers": 1418,
+        "retention": 0.1939,
+        "cumulative_revenue_per_customer": 509.6844
+      },
+      {
+        "acquisition_channel": "paid_social",
+        "months_since_acquisition": 3,
+        "customers": 764,
+        "retention": 0.1937,
+        "cumulative_revenue_per_customer": 194.0222
+      },
+      {
+        "acquisition_channel": "paid_social",
+        "months_since_acquisition": 6,
+        "customers": 764,
+        "retention": 0.1636,
+        "cumulative_revenue_per_customer": 259.0515
+      },
+      {
+        "acquisition_channel": "paid_social",
+        "months_since_acquisition": 12,
+        "customers": 764,
+        "retention": 0.1531,
+        "cumulative_revenue_per_customer": 383.1207
+      },
+      {
+        "acquisition_channel": "referral",
+        "months_since_acquisition": 3,
+        "customers": 655,
+        "retention": 0.2748,
+        "cumulative_revenue_per_customer": 247.067
+      },
+      {
+        "acquisition_channel": "referral",
+        "months_since_acquisition": 6,
+        "customers": 655,
+        "retention": 0.2794,
+        "cumulative_revenue_per_customer": 365.5476
+      },
+      {
+        "acquisition_channel": "referral",
+        "months_since_acquisition": 12,
+        "customers": 655,
+        "retention": 0.2702,
+        "cumulative_revenue_per_customer": 603.3966
+      }
+    ]
+  },
+  "segments": {
+    "as_of": "2025-07-01",
+    "outcome_end": "2025-09-28",
+    "customers": 8643,
+    "rfm": [
+      {
+        "rfm_segment": "champions",
+        "customers": 2311,
+        "share_of_customers": 0.2674,
+        "revenue_365d": 1659082.38,
+        "share_of_revenue_365d": 0.6292,
+        "orders_365d": 8.3977,
+        "median_days_since_order": 17.3004,
+        "avg_order_value": 87.9921,
+        "browse_sessions_90d": 3.2276,
+        "email_open_rate_90d": 0.2711,
+        "plus_member_rate": 0.3159,
+        "next_purchase_rate": 0.7538,
+        "next_revenue": 529255.56,
+        "revenue_365d_per_customer": 717.9067,
+        "next_revenue_per_customer": 229.0158,
+        "share_of_next_revenue": 0.6946
+      },
+      {
+        "rfm_segment": "loyalists",
+        "customers": 1754,
+        "share_of_customers": 0.2029,
+        "revenue_365d": 511041.45,
+        "share_of_revenue_365d": 0.1938,
+        "orders_365d": 3.3797,
+        "median_days_since_order": 80.211,
+        "avg_order_value": 94.6065,
+        "browse_sessions_90d": 1.1602,
+        "email_open_rate_90d": 0.2187,
+        "plus_member_rate": 0.0952,
+        "next_purchase_rate": 0.4133,
+        "next_revenue": 138465.77,
+        "revenue_365d_per_customer": 291.3577,
+        "next_revenue_per_customer": 78.9429,
+        "share_of_next_revenue": 0.1817
+      },
+      {
+        "rfm_segment": "promising",
+        "customers": 579,
+        "share_of_customers": 0.067,
+        "revenue_365d": 31186.81,
+        "share_of_revenue_365d": 0.0118,
+        "orders_365d": 1.0121,
+        "median_days_since_order": 25.7518,
+        "avg_order_value": 53.621,
+        "browse_sessions_90d": 0.4801,
+        "email_open_rate_90d": 0.2225,
+        "plus_member_rate": 0.0415,
+        "next_purchase_rate": 0.4093,
+        "next_revenue": 43665.98,
+        "revenue_365d_per_customer": 53.8632,
+        "next_revenue_per_customer": 75.4162,
+        "share_of_next_revenue": 0.0573
+      },
+      {
+        "rfm_segment": "needs_attention",
+        "customers": 542,
+        "share_of_customers": 0.0627,
+        "revenue_365d": 27784.47,
+        "share_of_revenue_365d": 0.0105,
+        "orders_365d": 1.0074,
+        "median_days_since_order": 104.4947,
+        "avg_order_value": 52.1905,
+        "browse_sessions_90d": 0.655,
+        "email_open_rate_90d": 0.1508,
+        "plus_member_rate": 0.0314,
+        "next_purchase_rate": 0.2048,
+        "next_revenue": 14580.31,
+        "revenue_365d_per_customer": 51.2629,
+        "next_revenue_per_customer": 26.9009,
+        "share_of_next_revenue": 0.0191
+      },
+      {
+        "rfm_segment": "cannot_lose",
+        "customers": 636,
+        "share_of_customers": 0.0736,
+        "revenue_365d": 240161.32,
+        "share_of_revenue_365d": 0.0911,
+        "orders_365d": 4.2862,
+        "median_days_since_order": 204.1018,
+        "avg_order_value": 93.6042,
+        "browse_sessions_90d": 0.6305,
+        "email_open_rate_90d": 0.1089,
+        "plus_member_rate": 0.0629,
+        "next_purchase_rate": 0.1368,
+        "next_revenue": 14819.48,
+        "revenue_365d_per_customer": 377.6121,
+        "next_revenue_per_customer": 23.3011,
+        "share_of_next_revenue": 0.0194
+      },
+      {
+        "rfm_segment": "slipping",
+        "customers": 813,
+        "share_of_customers": 0.0941,
+        "revenue_365d": 112476.86,
+        "share_of_revenue_365d": 0.0427,
+        "orders_365d": 1.4736,
+        "median_days_since_order": 240.5355,
+        "avg_order_value": 108.8549,
+        "browse_sessions_90d": 0.4846,
+        "email_open_rate_90d": 0.1163,
+        "plus_member_rate": 0.0185,
+        "next_purchase_rate": 0.1021,
+        "next_revenue": 10093.18,
+        "revenue_365d_per_customer": 138.3479,
+        "next_revenue_per_customer": 12.4147,
+        "share_of_next_revenue": 0.0132
+      },
+      {
+        "rfm_segment": "hibernating",
+        "customers": 2008,
+        "share_of_customers": 0.2323,
+        "revenue_365d": 54970.63,
+        "share_of_revenue_365d": 0.0208,
+        "orders_365d": 0.5204,
+        "median_days_since_order": 359.3924,
+        "avg_order_value": 68.7728,
+        "browse_sessions_90d": 0.383,
+        "email_open_rate_90d": 0.0968,
+        "plus_member_rate": 0.0105,
+        "next_purchase_rate": 0.0438,
+        "next_revenue": 11103.21,
+        "revenue_365d_per_customer": 27.3758,
+        "next_revenue_per_customer": 5.5295,
+        "share_of_next_revenue": 0.0146
+      }
+    ],
+    "states": [
+      {
+        "state": "new",
+        "customers": 1625,
+        "share_of_customers": 0.188,
+        "revenue_365d": 235667.22,
+        "share_of_revenue_365d": 0.0894,
+        "orders_365d": 1.7028,
+        "median_days_since_order": 27.14,
+        "avg_order_value": 82.8987,
+        "browse_sessions_90d": 1.0572,
+        "email_open_rate_90d": 0.2343,
+        "plus_member_rate": 0.0757,
+        "next_purchase_rate": 0.4591,
+        "next_revenue": 183154.58,
+        "revenue_365d_per_customer": 145.026,
+        "next_revenue_per_customer": 112.7105,
+        "share_of_next_revenue": 0.2404
+      },
+      {
+        "state": "active",
+        "customers": 1285,
+        "share_of_customers": 0.1487,
+        "revenue_365d": 442704.17,
+        "share_of_revenue_365d": 0.1679,
+        "orders_365d": 4.0996,
+        "median_days_since_order": 33.1012,
+        "avg_order_value": 83.6666,
+        "browse_sessions_90d": 2.0755,
+        "email_open_rate_90d": 0.255,
+        "plus_member_rate": 0.1665,
+        "next_purchase_rate": 0.635,
+        "next_revenue": 183150.48,
+        "revenue_365d_per_customer": 344.5169,
+        "next_revenue_per_customer": 142.5296,
+        "share_of_next_revenue": 0.2404
+      },
+      {
+        "state": "loyal",
+        "customers": 1212,
+        "share_of_customers": 0.1402,
+        "revenue_365d": 1289657.82,
+        "share_of_revenue_365d": 0.4891,
+        "orders_365d": 12.5825,
+        "median_days_since_order": 18.5059,
+        "avg_order_value": 84.5751,
+        "browse_sessions_90d": 3.9464,
+        "email_open_rate_90d": 0.278,
+        "plus_member_rate": 0.4282,
+        "next_purchase_rate": 0.8045,
+        "next_revenue": 312973.41,
+        "revenue_365d_per_customer": 1064.0741,
+        "next_revenue_per_customer": 258.2289,
+        "share_of_next_revenue": 0.4107
+      },
+      {
+        "state": "at_risk",
+        "customers": 1554,
+        "share_of_customers": 0.1798,
+        "revenue_365d": 366287.08,
+        "share_of_revenue_365d": 0.1389,
+        "orders_365d": 2.8616,
+        "median_days_since_order": 128.149,
+        "avg_order_value": 80.2326,
+        "browse_sessions_90d": 0.8095,
+        "email_open_rate_90d": 0.1523,
+        "plus_member_rate": 0.0631,
+        "next_purchase_rate": 0.2336,
+        "next_revenue": 60760.31,
+        "revenue_365d_per_customer": 235.706,
+        "next_revenue_per_customer": 39.0993,
+        "share_of_next_revenue": 0.0797
+      },
+      {
+        "state": "churned",
+        "customers": 2967,
+        "share_of_customers": 0.3433,
+        "revenue_365d": 302387.63,
+        "share_of_revenue_365d": 0.1147,
+        "orders_365d": 1.2484,
+        "median_days_since_order": 309.4967,
+        "avg_order_value": 82.6903,
+        "browse_sessions_90d": 0.4264,
+        "email_open_rate_90d": 0.0992,
+        "plus_member_rate": 0.0202,
+        "next_purchase_rate": 0.0583,
+        "next_revenue": 21944.71,
+        "revenue_365d_per_customer": 101.917,
+        "next_revenue_per_customer": 7.3963,
+        "share_of_next_revenue": 0.0288
+      }
+    ],
+    "crosstab": {
+      "new": {
+        "champions": 359,
+        "loyalists": 528,
+        "promising": 563,
+        "needs_attention": 175,
+        "cannot_lose": 0,
+        "slipping": 0,
+        "hibernating": 0
+      },
+      "active": {
+        "champions": 853,
+        "loyalists": 409,
+        "promising": 16,
+        "needs_attention": 7,
+        "cannot_lose": 0,
+        "slipping": 0,
+        "hibernating": 0
+      },
+      "loyal": {
+        "champions": 1099,
+        "loyalists": 113,
+        "promising": 0,
+        "needs_attention": 0,
+        "cannot_lose": 0,
+        "slipping": 0,
+        "hibernating": 0
+      },
+      "at_risk": {
+        "champions": 0,
+        "loyalists": 704,
+        "promising": 0,
+        "needs_attention": 360,
+        "cannot_lose": 176,
+        "slipping": 140,
+        "hibernating": 174
+      },
+      "churned": {
+        "champions": 0,
+        "loyalists": 0,
+        "promising": 0,
+        "needs_attention": 0,
+        "cannot_lose": 460,
+        "slipping": 673,
+        "hibernating": 1834
+      }
+    }
+  },
+  "audit": {
+    "passed": true,
+    "checks": {
+      "every_person_has_one_valid_state_once_created": true,
+      "people_never_leave_the_panel": true,
+      "transitions_out_of_each_state_sum_to_its_population": true,
+      "no_transition_the_state_rules_forbid": true,
+      "states_unchanged_when_later_orders_removed": true,
+      "segment_profile_uses_panel_states": true,
+      "segment_scores_unchanged_when_later_rows_removed": true,
+      "cohort_denominator_fixed_at_acquisition_size": true,
+      "unobserved_cohort_months_missing_not_zero": true,
+      "pooled_curve_uses_one_fixed_cohort_set": true
+    },
+    "details": {
+      "person_months": 457121,
+      "transition_row_mismatches": 0,
+      "impossible_transitions_checked": 18,
+      "impossible_transitions_observed": {},
+      "point_in_time_probe": "2025-07-01",
+      "cohorts": 24
+    }
+  }
+}

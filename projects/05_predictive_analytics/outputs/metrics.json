@@ -1,0 +1,957 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "plan": {
+      "horizon_weeks": 13,
+      "first_origin": "2024-07-01",
+      "design_last_origin": "2024-11-18",
+      "first_evaluation_origin": "2025-02-17",
+      "last_origin": null,
+      "step_weeks": 1,
+      "calibration_origins": 26,
+      "min_calibration_origins": 12,
+      "levels": [
+        0.5,
+        0.8
+      ]
+    },
+    "harmonic": {
+      "burn_in_days": 28,
+      "knot_spacing_days": 28,
+      "min_knot_gap_days": 56,
+      "trend_penalty": 0.01,
+      "fourier_order": 6,
+      "fourier_penalty": 0.001,
+      "min_annual_history_days": 365,
+      "damping": 0.97,
+      "level_window_days": 28,
+      "smearing_window_days": 182,
+      "use_promotions": true
+    },
+    "models": [
+      "naive_4wk",
+      "seasonal_naive_yoy",
+      "harmonic_no_promo",
+      "harmonic"
+    ],
+    "baselines": [
+      "naive_4wk",
+      "seasonal_naive_yoy"
+    ],
+    "champion": "harmonic",
+    "horizon_days": 91,
+    "peak_months": [
+      11,
+      12
+    ]
+  },
+  "series": {
+    "first_day": "2024-01-01",
+    "last_day": "2025-12-31",
+    "days": 731,
+    "complete_weeks": 104,
+    "first_week": "2024-01-01",
+    "last_week": "2025-12-22",
+    "partial_days_dropped": 3,
+    "total_revenue": 5402375.92,
+    "last_13_weeks_revenue": 1306506.21,
+    "same_13_weeks_prior_year_revenue": 681466.15,
+    "mean_daily_revenue_by_weekday": {
+      "Mon": 10090.2935,
+      "Tue": 9900.1594,
+      "Wed": 10060.2158,
+      "Thu": 9800.0042,
+      "Fri": 10710.7698,
+      "Sat": 11849.9223,
+      "Sun": 11398.5563
+    }
+  },
+  "promotions": [
+    {
+      "campaign_name": "Spring Refresh Sale 2024",
+      "start_date": "2024-03-14",
+      "end_date": "2024-03-24",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Summer Sale 2024",
+      "start_date": "2024-07-10",
+      "end_date": "2024-07-20",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Black Friday / Cyber Week 2024",
+      "start_date": "2024-11-28",
+      "end_date": "2024-12-02",
+      "days": 5,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Holiday Gift Event 2024",
+      "start_date": "2024-12-08",
+      "end_date": "2024-12-18",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Spring Refresh Sale 2025",
+      "start_date": "2025-03-13",
+      "end_date": "2025-03-23",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Summer Sale 2025",
+      "start_date": "2025-07-09",
+      "end_date": "2025-07-19",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Black Friday / Cyber Week 2025",
+      "start_date": "2025-11-27",
+      "end_date": "2025-12-01",
+      "days": 5,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Holiday Gift Event 2025",
+      "start_date": "2025-12-07",
+      "end_date": "2025-12-17",
+      "days": 11,
+      "assumed": false
+    },
+    {
+      "campaign_name": "Spring Refresh Sale (assumed repeat)",
+      "start_date": "2026-03-12",
+      "end_date": "2026-03-22",
+      "days": 11,
+      "assumed": true
+    }
+  ],
+  "backtest": {
+    "origins": 66,
+    "roles": [
+      {
+        "role": "design",
+        "origins": 21,
+        "first_origin": "2024-07-01",
+        "last_origin": "2024-11-18",
+        "last_target_day": "2025-02-16"
+      },
+      {
+        "role": "calibration",
+        "origins": 12,
+        "first_origin": "2024-11-25",
+        "last_origin": "2025-02-10",
+        "last_target_day": "2025-05-11"
+      },
+      {
+        "role": "evaluation",
+        "origins": 33,
+        "first_origin": "2025-02-17",
+        "last_origin": "2025-09-29",
+        "last_target_day": "2025-12-28"
+      }
+    ]
+  },
+  "leakage_audit": {
+    "passed": true,
+    "checks": {
+      "forecasts_identical_when_rebuilt_from_orders_before_origin": true,
+      "models_refuse_history_on_or_after_origin": true,
+      "harmonic_fit_only_on_days_before_origin": true,
+      "seasonal_naive_looks_back_a_full_season": true,
+      "interval_errors_observed_before_origin": true,
+      "design_targets_end_before_evaluation": true,
+      "targets_are_complete_observed_weeks": true
+    },
+    "details": {
+      "origins_rebuilt_from_truncated_orders": 33,
+      "forecast_mismatches": [],
+      "min_days_between_last_training_day_and_origin": 1,
+      "interval_rows_using_unobserved_errors": 0,
+      "last_design_target_day": "2025-02-16",
+      "first_evaluation_origin": "2025-02-17"
+    }
+  },
+  "design_period": [
+    {
+      "model": "naive_4wk",
+      "n": 273,
+      "mae": 10600.4823,
+      "rmse": 15048.917,
+      "wape": 0.2339,
+      "smape": 0.2359,
+      "bias": -0.2254
+    },
+    {
+      "model": "harmonic_no_promo",
+      "n": 273,
+      "mae": 8591.2578,
+      "rmse": 12104.2371,
+      "wape": 0.1896,
+      "smape": 0.1805,
+      "bias": -0.0537
+    },
+    {
+      "model": "harmonic",
+      "n": 273,
+      "mae": 7462.2324,
+      "rmse": 10363.1819,
+      "wape": 0.1646,
+      "smape": 0.1563,
+      "bias": -0.0451
+    }
+  ],
+  "evaluation": {
+    "overall": [
+      {
+        "model": "naive_4wk",
+        "n": 429,
+        "mae": 10019.3942,
+        "rmse": 14644.6469,
+        "wape": 0.1334,
+        "smape": 0.1367,
+        "bias": -0.1182,
+        "skill_vs_naive": 0.0
+      },
+      {
+        "model": "seasonal_naive_yoy",
+        "n": 429,
+        "mae": 16118.5735,
+        "rmse": 19344.3682,
+        "wape": 0.2147,
+        "smape": 0.1903,
+        "bias": 0.2107,
+        "skill_vs_naive": -0.6087
+      },
+      {
+        "model": "harmonic_no_promo",
+        "n": 429,
+        "mae": 7790.6068,
+        "rmse": 10210.2056,
+        "wape": 0.1038,
+        "smape": 0.1047,
+        "bias": 0.0282,
+        "skill_vs_naive": 0.2224
+      },
+      {
+        "model": "harmonic",
+        "n": 429,
+        "mae": 7500.8194,
+        "rmse": 9919.7298,
+        "wape": 0.0999,
+        "smape": 0.1013,
+        "bias": 0.0278,
+        "skill_vs_naive": 0.2514
+      }
+    ],
+    "by_bucket": [
+      {
+        "model": "naive_4wk",
+        "bucket": "weeks 1-4",
+        "n": 132,
+        "mae": 5280.2816,
+        "rmse": 6865.9384,
+        "wape": 0.0757,
+        "smape": 0.0781,
+        "bias": -0.0503,
+        "skill_vs_naive": 0.0
+      },
+      {
+        "model": "naive_4wk",
+        "bucket": "weeks 5-8",
+        "n": 132,
+        "mae": 8180.7077,
+        "rmse": 10190.8928,
+        "wape": 0.112,
+        "smape": 0.1191,
+        "bias": -0.0936,
+        "skill_vs_naive": 0.0
+      },
+      {
+        "model": "naive_4wk",
+        "bucket": "weeks 9-13",
+        "n": 165,
+        "mae": 15281.6334,
+        "rmse": 20900.1064,
+        "wape": 0.1887,
+        "smape": 0.1975,
+        "bias": -0.1826,
+        "skill_vs_naive": 0.0
+      },
+      {
+        "model": "seasonal_naive_yoy",
+        "bucket": "weeks 1-4",
+        "n": 132,
+        "mae": 8175.2405,
+        "rmse": 9923.4798,
+        "wape": 0.1173,
+        "smape": 0.1119,
+        "bias": 0.1043,
+        "skill_vs_naive": -0.5483
+      },
+      {
+        "model": "seasonal_naive_yoy",
+        "bucket": "weeks 5-8",
+        "n": 132,
+        "mae": 14833.7692,
+        "rmse": 17367.4172,
+        "wape": 0.2031,
+        "smape": 0.1847,
+        "bias": 0.2022,
+        "skill_vs_naive": -0.8133
+      },
+      {
+        "model": "seasonal_naive_yoy",
+        "bucket": "weeks 9-13",
+        "n": 165,
+        "mae": 23501.0834,
+        "rmse": 25550.9258,
+        "wape": 0.2901,
+        "smape": 0.2575,
+        "bias": 0.2901,
+        "skill_vs_naive": -0.5379
+      },
+      {
+        "model": "harmonic_no_promo",
+        "bucket": "weeks 1-4",
+        "n": 132,
+        "mae": 5948.6265,
+        "rmse": 7837.2637,
+        "wape": 0.0853,
+        "smape": 0.0861,
+        "bias": 0.0486,
+        "skill_vs_naive": -0.1266
+      },
+      {
+        "model": "harmonic_no_promo",
+        "bucket": "weeks 5-8",
+        "n": 132,
+        "mae": 8068.663,
+        "rmse": 10899.7809,
+        "wape": 0.1105,
+        "smape": 0.1113,
+        "bias": 0.0496,
+        "skill_vs_naive": 0.0137
+      },
+      {
+        "model": "harmonic_no_promo",
+        "bucket": "weeks 9-13",
+        "n": 165,
+        "mae": 9041.7461,
+        "rmse": 11263.3581,
+        "wape": 0.1116,
+        "smape": 0.1144,
+        "bias": -0.0013,
+        "skill_vs_naive": 0.4083
+      },
+      {
+        "model": "harmonic",
+        "bucket": "weeks 1-4",
+        "n": 132,
+        "mae": 5689.7078,
+        "rmse": 7609.6908,
+        "wape": 0.0816,
+        "smape": 0.0827,
+        "bias": 0.0482,
+        "skill_vs_naive": -0.0775
+      },
+      {
+        "model": "harmonic",
+        "bucket": "weeks 5-8",
+        "n": 132,
+        "mae": 7846.6527,
+        "rmse": 10647.7215,
+        "wape": 0.1074,
+        "smape": 0.1087,
+        "bias": 0.0483,
+        "skill_vs_naive": 0.0408
+      },
+      {
+        "model": "harmonic",
+        "bucket": "weeks 9-13",
+        "n": 165,
+        "mae": 8673.0419,
+        "rmse": 10900.349,
+        "wape": 0.1071,
+        "smape": 0.1104,
+        "bias": -0.0011,
+        "skill_vs_naive": 0.4325
+      }
+    ],
+    "totals": [
+      {
+        "model": "naive_4wk",
+        "origins": 33,
+        "mape": 0.1283,
+        "median_ape": 0.1458,
+        "max_ape": 0.2283,
+        "bias": -0.1182
+      },
+      {
+        "model": "seasonal_naive_yoy",
+        "origins": 33,
+        "mape": 0.2218,
+        "median_ape": 0.1994,
+        "max_ape": 0.5384,
+        "bias": 0.2107
+      },
+      {
+        "model": "harmonic_no_promo",
+        "origins": 33,
+        "mape": 0.0921,
+        "median_ape": 0.0361,
+        "max_ape": 0.3876,
+        "bias": 0.0282
+      },
+      {
+        "model": "harmonic",
+        "origins": 33,
+        "mape": 0.0914,
+        "median_ape": 0.0539,
+        "max_ape": 0.3786,
+        "bias": 0.0278
+      }
+    ],
+    "comparisons": [
+      {
+        "reference": "naive_4wk",
+        "target": "week 1",
+        "n": 33,
+        "lead": 1,
+        "mean_loss_diff": 32.6428,
+        "dm_stat": 0.0409,
+        "p_value": 0.9677,
+        "champion_mae": 4164.1058,
+        "reference_mae": 4131.463,
+        "champion_wins_share": 0.4848
+      },
+      {
+        "reference": "naive_4wk",
+        "target": "week 4",
+        "n": 33,
+        "lead": 4,
+        "mean_loss_diff": 905.6665,
+        "dm_stat": 0.3482,
+        "p_value": 0.73,
+        "champion_mae": 7130.6256,
+        "reference_mae": 6224.9592,
+        "champion_wins_share": 0.4848
+      },
+      {
+        "reference": "naive_4wk",
+        "target": "week 8",
+        "n": 33,
+        "lead": 8,
+        "mean_loss_diff": -1860.6621,
+        "dm_stat": -0.3863,
+        "p_value": 0.7019,
+        "champion_mae": 7699.2228,
+        "reference_mae": 9559.8849,
+        "champion_wins_share": 0.4848
+      },
+      {
+        "reference": "naive_4wk",
+        "target": "week 13",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -8616.0511,
+        "dm_stat": -1.3153,
+        "p_value": 0.1978,
+        "champion_mae": 9782.4115,
+        "reference_mae": 18398.4627,
+        "champion_wins_share": 0.697
+      },
+      {
+        "reference": "naive_4wk",
+        "target": "13-week total",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -46833.4809,
+        "dm_stat": -0.812,
+        "p_value": 0.4228,
+        "champion_mae": 79862.7665,
+        "reference_mae": 126696.2473,
+        "champion_wins_share": 0.5455
+      },
+      {
+        "reference": "seasonal_naive_yoy",
+        "target": "week 1",
+        "n": 33,
+        "lead": 1,
+        "mean_loss_diff": -1430.8459,
+        "dm_stat": -1.678,
+        "p_value": 0.1031,
+        "champion_mae": 4164.1058,
+        "reference_mae": 5594.9517,
+        "champion_wins_share": 0.5455
+      },
+      {
+        "reference": "seasonal_naive_yoy",
+        "target": "week 4",
+        "n": 33,
+        "lead": 4,
+        "mean_loss_diff": -3295.4385,
+        "dm_stat": -1.9334,
+        "p_value": 0.0621,
+        "champion_mae": 7130.6256,
+        "reference_mae": 10426.0641,
+        "champion_wins_share": 0.6667
+      },
+      {
+        "reference": "seasonal_naive_yoy",
+        "target": "week 8",
+        "n": 33,
+        "lead": 8,
+        "mean_loss_diff": -9763.9365,
+        "dm_stat": -2.8016,
+        "p_value": 0.0086,
+        "champion_mae": 7699.2228,
+        "reference_mae": 17463.1593,
+        "champion_wins_share": 0.8485
+      },
+      {
+        "reference": "seasonal_naive_yoy",
+        "target": "week 13",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -17525.0187,
+        "dm_stat": -2.7382,
+        "p_value": 0.01,
+        "champion_mae": 9782.4115,
+        "reference_mae": 27307.4303,
+        "champion_wins_share": 0.9697
+      },
+      {
+        "reference": "seasonal_naive_yoy",
+        "target": "13-week total",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -125807.1184,
+        "dm_stat": -3.304,
+        "p_value": 0.0024,
+        "champion_mae": 79862.7665,
+        "reference_mae": 205669.8849,
+        "champion_wins_share": 0.9091
+      },
+      {
+        "reference": "harmonic_no_promo",
+        "target": "week 1",
+        "n": 33,
+        "lead": 1,
+        "mean_loss_diff": -384.1456,
+        "dm_stat": -1.482,
+        "p_value": 0.1481,
+        "champion_mae": 4164.1058,
+        "reference_mae": 4548.2514,
+        "champion_wins_share": 0.697
+      },
+      {
+        "reference": "harmonic_no_promo",
+        "target": "week 4",
+        "n": 33,
+        "lead": 4,
+        "mean_loss_diff": 16.4518,
+        "dm_stat": 0.0763,
+        "p_value": 0.9397,
+        "champion_mae": 7130.6256,
+        "reference_mae": 7114.1738,
+        "champion_wins_share": 0.4848
+      },
+      {
+        "reference": "harmonic_no_promo",
+        "target": "week 8",
+        "n": 33,
+        "lead": 8,
+        "mean_loss_diff": -318.7829,
+        "dm_stat": -1.5032,
+        "p_value": 0.1426,
+        "champion_mae": 7699.2228,
+        "reference_mae": 8018.0057,
+        "champion_wins_share": 0.6364
+      },
+      {
+        "reference": "harmonic_no_promo",
+        "target": "week 13",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -516.8599,
+        "dm_stat": -1.4649,
+        "p_value": 0.1527,
+        "champion_mae": 9782.4115,
+        "reference_mae": 10299.2715,
+        "champion_wins_share": 0.6061
+      },
+      {
+        "reference": "harmonic_no_promo",
+        "target": "13-week total",
+        "n": 33,
+        "lead": 13,
+        "mean_loss_diff": -578.4893,
+        "dm_stat": -0.56,
+        "p_value": 0.5794,
+        "champion_mae": 79862.7665,
+        "reference_mae": 80441.2558,
+        "champion_wins_share": 0.6061
+      }
+    ]
+  },
+  "intervals": {
+    "method": "empirical quantiles of actual/forecast over the most recent 26 past origins at the same lead whose outcome was observed before the origin",
+    "overall": [
+      {
+        "level": 0.5,
+        "n": 429,
+        "coverage": 0.4312,
+        "below": 0.1119,
+        "above": 0.4569,
+        "mean_relative_width": 0.229
+      },
+      {
+        "level": 0.8,
+        "n": 429,
+        "coverage": 0.6807,
+        "below": 0.042,
+        "above": 0.2774,
+        "mean_relative_width": 0.4638
+      }
+    ],
+    "by_bucket": [
+      {
+        "bucket": "weeks 1-4",
+        "level": 0.5,
+        "n": 132,
+        "coverage": 0.5303,
+        "below": 0.053,
+        "above": 0.4167,
+        "mean_relative_width": 0.175
+      },
+      {
+        "bucket": "weeks 1-4",
+        "level": 0.8,
+        "n": 132,
+        "coverage": 0.8258,
+        "below": 0.0,
+        "above": 0.1742,
+        "mean_relative_width": 0.34
+      },
+      {
+        "bucket": "weeks 5-8",
+        "level": 0.5,
+        "n": 132,
+        "coverage": 0.4167,
+        "below": 0.1212,
+        "above": 0.4621,
+        "mean_relative_width": 0.2522
+      },
+      {
+        "bucket": "weeks 5-8",
+        "level": 0.8,
+        "n": 132,
+        "coverage": 0.7273,
+        "below": 0.0152,
+        "above": 0.2576,
+        "mean_relative_width": 0.5
+      },
+      {
+        "bucket": "weeks 9-13",
+        "level": 0.5,
+        "n": 165,
+        "coverage": 0.3636,
+        "below": 0.1515,
+        "above": 0.4848,
+        "mean_relative_width": 0.2537
+      },
+      {
+        "bucket": "weeks 9-13",
+        "level": 0.8,
+        "n": 165,
+        "coverage": 0.5273,
+        "below": 0.097,
+        "above": 0.3758,
+        "mean_relative_width": 0.5337
+      }
+    ],
+    "by_season": [
+      {
+        "season": "Nov-Dec peak weeks",
+        "level": 0.5,
+        "n": 36,
+        "coverage": 0.2778,
+        "below": 0.0,
+        "above": 0.7222,
+        "mean_relative_width": 0.2021
+      },
+      {
+        "season": "Nov-Dec peak weeks",
+        "level": 0.8,
+        "n": 36,
+        "coverage": 0.5278,
+        "below": 0.0,
+        "above": 0.4722,
+        "mean_relative_width": 0.3679
+      },
+      {
+        "season": "other weeks",
+        "level": 0.5,
+        "n": 393,
+        "coverage": 0.4453,
+        "below": 0.1221,
+        "above": 0.4326,
+        "mean_relative_width": 0.2315
+      },
+      {
+        "season": "other weeks",
+        "level": 0.8,
+        "n": 393,
+        "coverage": 0.6947,
+        "below": 0.0458,
+        "above": 0.2595,
+        "mean_relative_width": 0.4725
+      }
+    ],
+    "total": [
+      {
+        "level": 0.5,
+        "n": 33,
+        "coverage": 0.4242,
+        "below": 0.1818,
+        "above": 0.3939,
+        "mean_relative_width": 0.2901
+      },
+      {
+        "level": 0.8,
+        "n": 33,
+        "coverage": 0.5455,
+        "below": 0.1515,
+        "above": 0.303,
+        "mean_relative_width": 0.4373
+      }
+    ]
+  },
+  "forecast": {
+    "origin": "2025-12-29",
+    "last_history_day": "2025-12-28",
+    "horizon_end": "2026-03-29",
+    "weeks": [
+      {
+        "week_start": "2025-12-29",
+        "horizon_week": 1,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 93663.2095,
+        "harmonic_no_promo": 97037.8896,
+        "harmonic": 94846.3352,
+        "lower_50": 90091.8676,
+        "upper_50": 96846.2864,
+        "lower_80": 87270.6744,
+        "upper_80": 99889.089,
+        "calibration_n": 26,
+        "same_week_last_year": 49404.9
+      },
+      {
+        "week_start": "2026-01-05",
+        "horizon_week": 2,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 92696.3181,
+        "harmonic_no_promo": 84928.5617,
+        "harmonic": 83968.8659,
+        "lower_50": 80187.203,
+        "upper_50": 85949.1811,
+        "lower_80": 76556.993,
+        "upper_80": 88548.3119,
+        "calibration_n": 26,
+        "same_week_last_year": 48894.89
+      },
+      {
+        "week_start": "2026-01-12",
+        "horizon_week": 3,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 89771.2067,
+        "harmonic_no_promo": 76869.8064,
+        "harmonic": 76760.3742,
+        "lower_50": 72838.9437,
+        "upper_50": 77679.4239,
+        "lower_80": 70407.0125,
+        "upper_80": 81674.403,
+        "calibration_n": 26,
+        "same_week_last_year": 47351.97
+      },
+      {
+        "week_start": "2026-01-19",
+        "horizon_week": 4,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 88716.7659,
+        "harmonic_no_promo": 72912.591,
+        "harmonic": 73353.6062,
+        "lower_50": 69164.175,
+        "upper_50": 74958.6027,
+        "lower_80": 67962.0115,
+        "upper_80": 79087.209,
+        "calibration_n": 26,
+        "same_week_last_year": 46795.78
+      },
+      {
+        "week_start": "2026-01-26",
+        "horizon_week": 5,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 86381.5035,
+        "harmonic_no_promo": 72528.359,
+        "harmonic": 73252.1704,
+        "lower_50": 69036.7447,
+        "upper_50": 76956.9912,
+        "lower_80": 67085.9519,
+        "upper_80": 80214.0219,
+        "calibration_n": 26,
+        "same_week_last_year": 45563.99
+      },
+      {
+        "week_start": "2026-02-02",
+        "horizon_week": 6,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 97045.8413,
+        "harmonic_no_promo": 74800.1135,
+        "harmonic": 75502.7985,
+        "lower_50": 71406.9285,
+        "upper_50": 80461.3237,
+        "lower_80": 69697.2945,
+        "upper_80": 84006.8773,
+        "calibration_n": 26,
+        "same_week_last_year": 51189.15
+      },
+      {
+        "week_start": "2026-02-09",
+        "horizon_week": 7,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 86154.2316,
+        "harmonic_no_promo": 78608.8058,
+        "harmonic": 78916.5374,
+        "lower_50": 75884.6852,
+        "upper_50": 84746.1946,
+        "lower_80": 72098.7007,
+        "upper_80": 88429.3631,
+        "calibration_n": 26,
+        "same_week_last_year": 45444.11
+      },
+      {
+        "week_start": "2026-02-16",
+        "horizon_week": 8,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 97248.5811,
+        "harmonic_no_promo": 82825.4131,
+        "harmonic": 82350.4026,
+        "lower_50": 80293.3173,
+        "upper_50": 88626.852,
+        "lower_80": 76633.0893,
+        "upper_80": 93261.3834,
+        "calibration_n": 26,
+        "same_week_last_year": 51296.09
+      },
+      {
+        "week_start": "2026-02-23",
+        "horizon_week": 9,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 104311.1294,
+        "harmonic_no_promo": 86591.1835,
+        "harmonic": 85071.9327,
+        "lower_50": 83192.7596,
+        "upper_50": 92801.8254,
+        "lower_80": 81131.3783,
+        "upper_80": 97254.9374,
+        "calibration_n": 26,
+        "same_week_last_year": 55021.4
+      },
+      {
+        "week_start": "2026-03-02",
+        "horizon_week": 10,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 106381.4498,
+        "harmonic_no_promo": 89537.118,
+        "harmonic": 86977.3478,
+        "lower_50": 84617.3721,
+        "upper_50": 96908.4732,
+        "lower_80": 82901.0893,
+        "upper_80": 98692.2839,
+        "calibration_n": 26,
+        "same_week_last_year": 56113.44
+      },
+      {
+        "week_start": "2026-03-09",
+        "horizon_week": 11,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 105486.5999,
+        "harmonic_no_promo": 91756.6495,
+        "harmonic": 94028.9194,
+        "lower_50": 94060.2217,
+        "upper_50": 105395.7921,
+        "lower_80": 89699.9898,
+        "upper_80": 107521.3061,
+        "calibration_n": 26,
+        "same_week_last_year": 55641.43
+      },
+      {
+        "week_start": "2026-03-16",
+        "horizon_week": 12,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 122006.5257,
+        "harmonic_no_promo": 93543.3809,
+        "harmonic": 99660.1914,
+        "lower_50": 99821.916,
+        "upper_50": 112450.7239,
+        "lower_80": 96126.8827,
+        "upper_80": 115212.2282,
+        "calibration_n": 26,
+        "same_week_last_year": 64355.26
+      },
+      {
+        "week_start": "2026-03-23",
+        "horizon_week": 13,
+        "naive_4wk": 125047.605,
+        "seasonal_naive_yoy": 108405.7205,
+        "harmonic_no_promo": 95088.7823,
+        "harmonic": 91980.1773,
+        "lower_50": 92520.5244,
+        "upper_50": 105209.1415,
+        "lower_80": 89554.2563,
+        "upper_80": 107080.8749,
+        "calibration_n": 26,
+        "same_week_last_year": 57181.19
+      }
+    ],
+    "total": {
+      "forecast": 1096669.659,
+      "lower_50": 1081514.6073,
+      "upper_50": 1168632.5058,
+      "lower_80": 1068156.0852,
+      "upper_80": 1216983.0663,
+      "calibration_n": 26,
+      "same_weeks_last_year": 674253.6,
+      "naive_4wk_total": 1625618.865,
+      "seasonal_naive_yoy_total": 1278269.083,
+      "harmonic_no_promo_total": 1097028.6543,
+      "harmonic_total": 1096669.659
+    },
+    "promotions_in_horizon": [
+      {
+        "campaign_name": "Spring Refresh Sale (assumed repeat)",
+        "start_date": "2026-03-12",
+        "end_date": "2026-03-22",
+        "assumed": true
+      }
+    ],
+    "harmonic_fit": {
+      "first_train_day": "2024-01-29",
+      "last_train_day": "2025-12-28",
+      "annual_terms": true,
+      "trend_growth_per_year_at_origin": 0.6981,
+      "level_correction": 0.0071,
+      "promotion_effect": 0.1067
+    }
+  }
+}

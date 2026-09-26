@@ -1,0 +1,7 @@
+from_state,prospect,new,active,loyal,at_risk,churned
+prospect,222854,2751,0,0,0,0
+new,0,13191,3067,0,3520,0
+active,0,0,11008,1992,2926,0
+loyal,0,0,234,12508,1046,0
+at_risk,0,0,1643,551,10940,4660
+churned,0,0,740,52,0,32918

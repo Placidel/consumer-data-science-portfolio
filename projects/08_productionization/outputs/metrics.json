@@ -1,0 +1,1152 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "psi_moderate": 0.1,
+    "psi_major": 0.25,
+    "auc_drop": 0.05,
+    "calibration_low": 0.8,
+    "calibration_high": 1.25,
+    "last_run": "2025-12-01"
+  },
+  "registry": [
+    {
+      "name": "acquisition_lead_score",
+      "title": "Lead conversion score",
+      "version": "v20250701-ac88f76ea6",
+      "section": "01_acquisition",
+      "algorithm": "logistic_regression",
+      "algorithm_label": "Logistic regression",
+      "horizon_days": 30,
+      "population": "open leads: created in the 90 days before the scoring date and without a first order yet",
+      "deployable_from": "2025-07-01",
+      "first_train_run": "2024-04-01",
+      "last_train_run": "2025-06-01",
+      "train_rows": 50798,
+      "selection_metric": "average_precision",
+      "candidates": [
+        "channel_rate",
+        "gradient_boosting",
+        "logistic_regression"
+      ],
+      "validation": {
+        "rows": 10518,
+        "base_rate": 0.0601,
+        "roc_auc": 0.8139,
+        "average_precision": 0.2303,
+        "log_loss": 0.188,
+        "brier": 0.0509,
+        "ece": 0.005,
+        "calibration_slope": 1.0365,
+        "mean_predicted": 0.0577
+      },
+      "holdout": {
+        "rows": 23850,
+        "base_rate": 0.0561,
+        "roc_auc": 0.8099,
+        "average_precision": 0.2055,
+        "log_loss": 0.1807,
+        "brier": 0.0484,
+        "ece": 0.003,
+        "calibration_slope": 1.0032,
+        "mean_predicted": 0.0585
+      },
+      "leakage_audit_passed": true,
+      "section_champion": "logistic_regression",
+      "section_holdout_roc_auc": 0.8099,
+      "consistent_with_section": true,
+      "scikit_learn": "1.9.1"
+    },
+    {
+      "name": "churn_risk",
+      "title": "90-day churn risk",
+      "version": "v20250701-089e978487",
+      "section": "02_retention",
+      "algorithm": "gradient_boosting",
+      "algorithm_label": "Gradient boosting",
+      "horizon_days": 90,
+      "population": "active customers: at least one order in the 180 days before the scoring date",
+      "deployable_from": "2025-07-01",
+      "first_train_run": "2024-07-01",
+      "last_train_run": "2025-04-01",
+      "train_rows": 28703,
+      "selection_metric": "log_loss",
+      "candidates": [
+        "gradient_boosting",
+        "logistic_regression",
+        "rfm_cell_rate"
+      ],
+      "validation": {
+        "rows": 9894,
+        "base_rate": 0.529,
+        "roc_auc": 0.802,
+        "average_precision": 0.8012,
+        "log_loss": 0.5448,
+        "brier": 0.1821,
+        "ece": 0.0335,
+        "calibration_slope": 0.8596,
+        "mean_predicted": 0.4976
+      },
+      "holdout": {
+        "rows": 24130,
+        "base_rate": 0.4779,
+        "roc_auc": 0.8107,
+        "average_precision": 0.7817,
+        "log_loss": 0.5307,
+        "brier": 0.1774,
+        "ece": 0.0138,
+        "calibration_slope": 0.9713,
+        "mean_predicted": 0.4894
+      },
+      "leakage_audit_passed": true,
+      "section_champion": "gradient_boosting",
+      "section_holdout_roc_auc": 0.8107,
+      "consistent_with_section": true,
+      "scikit_learn": "1.9.1"
+    }
+  ],
+  "monitoring": {
+    "acquisition_lead_score": {
+      "model": {
+        "name": "acquisition_lead_score",
+        "version": "v20250701-ac88f76ea6",
+        "algorithm": "logistic_regression",
+        "deployable_from": "2025-07-01"
+      },
+      "reference": {
+        "description": "training runs 2024-04-01 to 2025-06-01 (50,798 prospect_id x run rows); in-sample scores",
+        "rows": 50798
+      },
+      "current": {
+        "first_run": "2025-07-01",
+        "last_run": "2025-12-01",
+        "runs": [
+          {
+            "run": "2025-07-01",
+            "records": 3695,
+            "labels_mature": true,
+            "labels_complete_on": "2025-07-31"
+          },
+          {
+            "run": "2025-08-01",
+            "records": 3972,
+            "labels_mature": true,
+            "labels_complete_on": "2025-08-31"
+          },
+          {
+            "run": "2025-09-01",
+            "records": 4035,
+            "labels_mature": true,
+            "labels_complete_on": "2025-10-01"
+          },
+          {
+            "run": "2025-10-01",
+            "records": 4010,
+            "labels_mature": true,
+            "labels_complete_on": "2025-10-31"
+          },
+          {
+            "run": "2025-11-01",
+            "records": 3848,
+            "labels_mature": true,
+            "labels_complete_on": "2025-12-01"
+          },
+          {
+            "run": "2025-12-01",
+            "records": 4290,
+            "labels_mature": true,
+            "labels_complete_on": "2025-12-31"
+          }
+        ],
+        "records": 23850
+      },
+      "score_drift": {
+        "psi": 0.0003,
+        "reference_mean": 0.0576,
+        "current_mean": 0.0585,
+        "max_run_psi": 0.0137,
+        "status": "ok",
+        "by_run": [
+          {
+            "run": "2025-07-01",
+            "psi": 0.0031,
+            "reference_mean": 0.0576,
+            "current_mean": 0.0596
+          },
+          {
+            "run": "2025-08-01",
+            "psi": 0.0031,
+            "reference_mean": 0.0576,
+            "current_mean": 0.058
+          },
+          {
+            "run": "2025-09-01",
+            "psi": 0.0035,
+            "reference_mean": 0.0576,
+            "current_mean": 0.0547
+          },
+          {
+            "run": "2025-10-01",
+            "psi": 0.0048,
+            "reference_mean": 0.0576,
+            "current_mean": 0.0556
+          },
+          {
+            "run": "2025-11-01",
+            "psi": 0.0009,
+            "reference_mean": 0.0576,
+            "current_mean": 0.0575
+          },
+          {
+            "run": "2025-12-01",
+            "psi": 0.0137,
+            "reference_mean": 0.0576,
+            "current_mean": 0.0651
+          }
+        ]
+      },
+      "feature_drift": [
+        {
+          "feature": "acquisition_channel",
+          "kind": "categorical",
+          "psi": 0.0091,
+          "reference_mean": 0.2297,
+          "current_mean": 0.2608,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "paid_social",
+          "max_run_psi": 0.0228,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "age_band",
+          "kind": "categorical",
+          "psi": 0.0014,
+          "reference_mean": 0.2409,
+          "current_mean": 0.2527,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "25-34",
+          "max_run_psi": 0.0033,
+          "max_run": "2025-10-01",
+          "status": "ok"
+        },
+        {
+          "feature": "email_open_rate",
+          "kind": "numeric",
+          "psi": 0.0012,
+          "reference_mean": 0.1699,
+          "current_mean": 0.1697,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0058,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "pages_viewed",
+          "kind": "numeric",
+          "psi": 0.0011,
+          "reference_mean": 12.2477,
+          "current_mean": 12.1893,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0049,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "lead_age_days",
+          "kind": "numeric",
+          "psi": 0.0008,
+          "reference_mean": 42.6373,
+          "current_mean": 42.3219,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0192,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "app_session_share",
+          "kind": "numeric",
+          "psi": 0.0008,
+          "reference_mean": 0.2956,
+          "current_mean": 0.2973,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0024,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "mobile_session_share",
+          "kind": "numeric",
+          "psi": 0.0008,
+          "reference_mean": 0.5545,
+          "current_mean": 0.546,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0025,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "emails_received",
+          "kind": "numeric",
+          "psi": 0.0006,
+          "reference_mean": 3.0819,
+          "current_mean": 3.0106,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0077,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "device_type",
+          "kind": "categorical",
+          "psi": 0.0005,
+          "reference_mean": 0.5934,
+          "current_mean": 0.5822,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "mobile",
+          "max_run_psi": 0.0023,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "email_opt_in",
+          "kind": "numeric",
+          "psi": 0.0005,
+          "reference_mean": 0.5661,
+          "current_mean": 0.5555,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0007,
+          "max_run": "2025-08-01",
+          "status": "ok"
+        },
+        {
+          "feature": "emails_opened",
+          "kind": "numeric",
+          "psi": 0.0004,
+          "reference_mean": 0.9281,
+          "current_mean": 0.9205,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0023,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "sessions_30d",
+          "kind": "numeric",
+          "psi": 0.0004,
+          "reference_mean": 0.9675,
+          "current_mean": 0.9772,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0083,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "max_stage_reached",
+          "kind": "numeric",
+          "psi": 0.0002,
+          "reference_mean": 2.2599,
+          "current_mean": 2.2584,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0017,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "region",
+          "kind": "categorical",
+          "psi": 0.0002,
+          "reference_mean": 0.2162,
+          "current_mean": 0.2117,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "west",
+          "max_run_psi": 0.0013,
+          "max_run": "2025-10-01",
+          "status": "ok"
+        },
+        {
+          "feature": "sessions_total",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 2.3235,
+          "current_mean": 2.3143,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0021,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "days_since_last_session",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 30.5277,
+          "current_mean": 30.3983,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0145,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "emails_clicked",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 0.2064,
+          "current_mean": 0.2101,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0009,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "cart_sessions",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 0.3841,
+          "current_mean": 0.3868,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0007,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "retarget_clicks",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 0.0777,
+          "current_mean": 0.0749,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0012,
+          "max_run": "2025-07-01",
+          "status": "ok"
+        },
+        {
+          "feature": "income_band",
+          "kind": "categorical",
+          "psi": 0.0,
+          "reference_mean": 0.3123,
+          "current_mean": 0.3095,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "low",
+          "max_run_psi": 0.0007,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "sessions_7d",
+          "kind": "numeric",
+          "psi": 0.0,
+          "reference_mean": 0.2494,
+          "current_mean": 0.2529,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0105,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "checkout_sessions",
+          "kind": "numeric",
+          "psi": 0.0,
+          "reference_mean": 0.1139,
+          "current_mean": 0.1125,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0019,
+          "max_run": "2025-07-01",
+          "status": "ok"
+        },
+        {
+          "feature": "cart_sessions_7d",
+          "kind": "numeric",
+          "psi": 0.0,
+          "reference_mean": 0.0487,
+          "current_mean": 0.0496,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.003,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        }
+      ],
+      "performance": {
+        "reference": {
+          "source": "champion on validation runs (fit runs only)",
+          "roc_auc": 0.8139,
+          "average_precision": 0.2303,
+          "base_rate": 0.0601,
+          "mean_predicted": 0.0577
+        },
+        "by_run": [
+          {
+            "run": "2025-07-01",
+            "rows": 3695,
+            "observed_rate": 0.056,
+            "mean_predicted": 0.0596,
+            "observed_to_predicted": 0.9405,
+            "calibration_z": -0.9586,
+            "roc_auc": 0.8205,
+            "roc_auc_ci_low": 0.785,
+            "roc_auc_ci_high": 0.8559,
+            "average_precision": 0.2403
+          },
+          {
+            "run": "2025-08-01",
+            "rows": 3972,
+            "observed_rate": 0.0534,
+            "mean_predicted": 0.058,
+            "observed_to_predicted": 0.9204,
+            "calibration_z": -1.3042,
+            "roc_auc": 0.7997,
+            "roc_auc_ci_low": 0.7635,
+            "roc_auc_ci_high": 0.836,
+            "average_precision": 0.1906
+          },
+          {
+            "run": "2025-09-01",
+            "rows": 4035,
+            "observed_rate": 0.0538,
+            "mean_predicted": 0.0547,
+            "observed_to_predicted": 0.9831,
+            "calibration_z": -0.2709,
+            "roc_auc": 0.8045,
+            "roc_auc_ci_low": 0.7689,
+            "roc_auc_ci_high": 0.8401,
+            "average_precision": 0.2068
+          },
+          {
+            "run": "2025-10-01",
+            "rows": 4010,
+            "observed_rate": 0.0516,
+            "mean_predicted": 0.0556,
+            "observed_to_predicted": 0.9286,
+            "calibration_z": -1.1556,
+            "roc_auc": 0.8233,
+            "roc_auc_ci_low": 0.7881,
+            "roc_auc_ci_high": 0.8585,
+            "average_precision": 0.205
+          },
+          {
+            "run": "2025-11-01",
+            "rows": 3848,
+            "observed_rate": 0.0598,
+            "mean_predicted": 0.0575,
+            "observed_to_predicted": 1.0391,
+            "calibration_z": 0.6302,
+            "roc_auc": 0.7959,
+            "roc_auc_ci_low": 0.7608,
+            "roc_auc_ci_high": 0.831,
+            "average_precision": 0.2021
+          },
+          {
+            "run": "2025-12-01",
+            "rows": 4290,
+            "observed_rate": 0.0618,
+            "mean_predicted": 0.0651,
+            "observed_to_predicted": 0.9482,
+            "calibration_z": -0.9452,
+            "roc_auc": 0.8141,
+            "roc_auc_ci_low": 0.7824,
+            "roc_auc_ci_high": 0.8458,
+            "average_precision": 0.2107
+          }
+        ],
+        "pooled": {
+          "rows": 23850,
+          "observed_rate": 0.0561,
+          "mean_predicted": 0.0585,
+          "observed_to_predicted": 0.9592,
+          "calibration_z": -1.6518,
+          "roc_auc": 0.8099,
+          "roc_auc_ci_low": 0.7957,
+          "roc_auc_ci_high": 0.8241,
+          "average_precision": 0.2055
+        },
+        "pending_runs": []
+      },
+      "findings": [],
+      "status": "ok",
+      "recommendation": "No action: inputs, scores and matured outcomes are in line with the reference."
+    },
+    "churn_risk": {
+      "model": {
+        "name": "churn_risk",
+        "version": "v20250701-089e978487",
+        "algorithm": "gradient_boosting",
+        "deployable_from": "2025-07-01"
+      },
+      "reference": {
+        "description": "training runs 2024-07-01 to 2025-04-01 (28,703 customer_id x run rows); in-sample scores",
+        "rows": 28703
+      },
+      "current": {
+        "first_run": "2025-07-01",
+        "last_run": "2025-12-01",
+        "runs": [
+          {
+            "run": "2025-07-01",
+            "records": 5676,
+            "labels_mature": true,
+            "labels_complete_on": "2025-09-29"
+          },
+          {
+            "run": "2025-08-01",
+            "records": 5960,
+            "labels_mature": true,
+            "labels_complete_on": "2025-10-30"
+          },
+          {
+            "run": "2025-09-01",
+            "records": 6158,
+            "labels_mature": true,
+            "labels_complete_on": "2025-11-30"
+          },
+          {
+            "run": "2025-10-01",
+            "records": 6336,
+            "labels_mature": true,
+            "labels_complete_on": "2025-12-30"
+          },
+          {
+            "run": "2025-11-01",
+            "records": 6561,
+            "labels_mature": false,
+            "labels_complete_on": "2026-01-30"
+          },
+          {
+            "run": "2025-12-01",
+            "records": 6904,
+            "labels_mature": false,
+            "labels_complete_on": "2026-03-01"
+          }
+        ],
+        "records": 37595
+      },
+      "score_drift": {
+        "psi": 0.0326,
+        "reference_mean": 0.5319,
+        "current_mean": 0.4851,
+        "max_run_psi": 0.0524,
+        "status": "ok",
+        "by_run": [
+          {
+            "run": "2025-07-01",
+            "psi": 0.0203,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4972
+          },
+          {
+            "run": "2025-08-01",
+            "psi": 0.036,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4875
+          },
+          {
+            "run": "2025-09-01",
+            "psi": 0.0299,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4893
+          },
+          {
+            "run": "2025-10-01",
+            "psi": 0.034,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4845
+          },
+          {
+            "run": "2025-11-01",
+            "psi": 0.0346,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4826
+          },
+          {
+            "run": "2025-12-01",
+            "psi": 0.0524,
+            "reference_mean": 0.5319,
+            "current_mean": 0.4722
+          }
+        ]
+      },
+      "feature_drift": [
+        {
+          "feature": "tenure_days",
+          "kind": "numeric",
+          "psi": 0.4229,
+          "reference_mean": 126.3997,
+          "current_mean": 219.0245,
+          "outside_reference_range": 0.1213,
+          "most_shifted_level": null,
+          "max_run_psi": 0.5434,
+          "max_run": "2025-12-01",
+          "status": "investigate"
+        },
+        {
+          "feature": "orders_total",
+          "kind": "numeric",
+          "psi": 0.2059,
+          "reference_mean": 3.449,
+          "current_mean": 6.0646,
+          "outside_reference_range": 0.0005,
+          "most_shifted_level": null,
+          "max_run_psi": 0.2799,
+          "max_run": "2025-12-01",
+          "status": "watch"
+        },
+        {
+          "feature": "category_count",
+          "kind": "numeric",
+          "psi": 0.1228,
+          "reference_mean": 2.3246,
+          "current_mean": 2.7795,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.1714,
+          "max_run": "2025-12-01",
+          "status": "watch"
+        },
+        {
+          "feature": "store_order_share",
+          "kind": "numeric",
+          "psi": 0.1073,
+          "reference_mean": 0.0991,
+          "current_mean": 0.1306,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.1461,
+          "max_run": "2025-12-01",
+          "status": "watch"
+        },
+        {
+          "feature": "discount_share",
+          "kind": "numeric",
+          "psi": 0.0844,
+          "reference_mean": 0.0369,
+          "current_mean": 0.0331,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.1065,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "orders_prev_90d",
+          "kind": "numeric",
+          "psi": 0.0533,
+          "reference_mean": 1.1765,
+          "current_mean": 1.5446,
+          "outside_reference_range": 0.0001,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0854,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "app_order_share",
+          "kind": "numeric",
+          "psi": 0.037,
+          "reference_mean": 0.2447,
+          "current_mean": 0.2386,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0523,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "net_revenue_180d",
+          "kind": "numeric",
+          "psi": 0.0365,
+          "reference_mean": 232.8698,
+          "current_mean": 284.92,
+          "outside_reference_range": 0.0001,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0606,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "avg_order_value",
+          "kind": "numeric",
+          "psi": 0.0268,
+          "reference_mean": 83.2054,
+          "current_mean": 83.5078,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0365,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "emails_received_90d",
+          "kind": "numeric",
+          "psi": 0.0253,
+          "reference_mean": 4.0043,
+          "current_mean": 4.1292,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.8889,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "browse_sessions_90d",
+          "kind": "numeric",
+          "psi": 0.0249,
+          "reference_mean": 1.595,
+          "current_mean": 1.9087,
+          "outside_reference_range": 0.0001,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0302,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "plus_member",
+          "kind": "numeric",
+          "psi": 0.0216,
+          "reference_mean": 0.1252,
+          "current_mean": 0.1777,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0277,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "orders_90d",
+          "kind": "numeric",
+          "psi": 0.0167,
+          "reference_mean": 1.6035,
+          "current_mean": 1.8143,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0266,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "support_contacts_180d",
+          "kind": "numeric",
+          "psi": 0.0116,
+          "reference_mean": 0.2818,
+          "current_mean": 0.3512,
+          "outside_reference_range": 0.0002,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0169,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "plus_cancelled_180d",
+          "kind": "numeric",
+          "psi": 0.0066,
+          "reference_mean": 0.0292,
+          "current_mean": 0.0443,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0111,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "browse_sessions_30d",
+          "kind": "numeric",
+          "psi": 0.0057,
+          "reference_mean": 0.6019,
+          "current_mean": 0.6717,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0085,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "days_since_last_order",
+          "kind": "numeric",
+          "psi": 0.0052,
+          "reference_mean": 58.3354,
+          "current_mean": 57.5668,
+          "outside_reference_range": 0.0001,
+          "most_shifted_level": null,
+          "max_run_psi": 0.044,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "open_contacts",
+          "kind": "numeric",
+          "psi": 0.0052,
+          "reference_mean": 0.0144,
+          "current_mean": 0.0247,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0064,
+          "max_run": "2025-10-01",
+          "status": "ok"
+        },
+        {
+          "feature": "slow_resolution_contacts_180d",
+          "kind": "numeric",
+          "psi": 0.0047,
+          "reference_mean": 0.0758,
+          "current_mean": 0.0963,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0068,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "days_since_last_session",
+          "kind": "numeric",
+          "psi": 0.0037,
+          "reference_mean": 42.0033,
+          "current_mean": 41.0513,
+          "outside_reference_range": 0.0002,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0293,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "email_open_rate_90d",
+          "kind": "numeric",
+          "psi": 0.0037,
+          "reference_mean": 0.1436,
+          "current_mean": 0.1457,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.1305,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "acquisition_channel",
+          "kind": "categorical",
+          "psi": 0.0035,
+          "reference_mean": 0.0416,
+          "current_mean": 0.0321,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "display",
+          "max_run_psi": 0.0053,
+          "max_run": "2025-12-01",
+          "status": "ok"
+        },
+        {
+          "feature": "email_clicks_90d",
+          "kind": "numeric",
+          "psi": 0.0023,
+          "reference_mean": 0.1592,
+          "current_mean": 0.1785,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0113,
+          "max_run": "2025-08-01",
+          "status": "ok"
+        },
+        {
+          "feature": "low_csat_contacts_180d",
+          "kind": "numeric",
+          "psi": 0.0022,
+          "reference_mean": 0.0213,
+          "current_mean": 0.029,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.003,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "age_band",
+          "kind": "categorical",
+          "psi": 0.0016,
+          "reference_mean": 0.1812,
+          "current_mean": 0.1684,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "45-54",
+          "max_run_psi": 0.0022,
+          "max_run": "2025-10-01",
+          "status": "ok"
+        },
+        {
+          "feature": "region",
+          "kind": "categorical",
+          "psi": 0.0009,
+          "reference_mean": 0.2004,
+          "current_mean": 0.212,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "northeast",
+          "max_run_psi": 0.0012,
+          "max_run": "2025-07-01",
+          "status": "ok"
+        },
+        {
+          "feature": "income_band",
+          "kind": "categorical",
+          "psi": 0.0005,
+          "reference_mean": 0.2622,
+          "current_mean": 0.2527,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "low",
+          "max_run_psi": 0.0009,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        },
+        {
+          "feature": "first_order_discounted",
+          "kind": "numeric",
+          "psi": 0.0002,
+          "reference_mean": 0.4009,
+          "current_mean": 0.394,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0007,
+          "max_run": "2025-10-01",
+          "status": "ok"
+        },
+        {
+          "feature": "device_type",
+          "kind": "categorical",
+          "psi": 0.0002,
+          "reference_mean": 0.0856,
+          "current_mean": 0.0818,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": "tablet",
+          "max_run_psi": 0.0004,
+          "max_run": "2025-08-01",
+          "status": "ok"
+        },
+        {
+          "feature": "email_opt_in",
+          "kind": "numeric",
+          "psi": 0.0001,
+          "reference_mean": 0.7027,
+          "current_mean": 0.7061,
+          "outside_reference_range": 0.0,
+          "most_shifted_level": null,
+          "max_run_psi": 0.0001,
+          "max_run": "2025-11-01",
+          "status": "ok"
+        }
+      ],
+      "performance": {
+        "reference": {
+          "source": "champion on validation runs (fit runs only)",
+          "roc_auc": 0.802,
+          "average_precision": 0.8012,
+          "base_rate": 0.529,
+          "mean_predicted": 0.4976
+        },
+        "by_run": [
+          {
+            "run": "2025-07-01",
+            "rows": 5676,
+            "observed_rate": 0.4891,
+            "mean_predicted": 0.4972,
+            "observed_to_predicted": 0.9837,
+            "calibration_z": -1.4662,
+            "roc_auc": 0.8129,
+            "roc_auc_ci_low": 0.8017,
+            "roc_auc_ci_high": 0.8242,
+            "average_precision": 0.793
+          },
+          {
+            "run": "2025-08-01",
+            "rows": 5960,
+            "observed_rate": 0.4935,
+            "mean_predicted": 0.4875,
+            "observed_to_predicted": 1.0122,
+            "calibration_z": 1.1051,
+            "roc_auc": 0.8165,
+            "roc_auc_ci_low": 0.8056,
+            "roc_auc_ci_high": 0.8273,
+            "average_precision": 0.7989
+          },
+          {
+            "run": "2025-09-01",
+            "rows": 6158,
+            "observed_rate": 0.4774,
+            "mean_predicted": 0.4893,
+            "observed_to_predicted": 0.9757,
+            "calibration_z": -2.2234,
+            "roc_auc": 0.7999,
+            "roc_auc_ci_low": 0.7887,
+            "roc_auc_ci_high": 0.8111,
+            "average_precision": 0.7653
+          },
+          {
+            "run": "2025-10-01",
+            "rows": 6336,
+            "observed_rate": 0.4536,
+            "mean_predicted": 0.4845,
+            "observed_to_predicted": 0.9363,
+            "calibration_z": -5.8428,
+            "roc_auc": 0.8142,
+            "roc_auc_ci_low": 0.8034,
+            "roc_auc_ci_high": 0.825,
+            "average_precision": 0.7712
+          }
+        ],
+        "pooled": {
+          "rows": 24130,
+          "observed_rate": 0.4779,
+          "mean_predicted": 0.4894,
+          "observed_to_predicted": 0.9764,
+          "calibration_z": -4.2948,
+          "roc_auc": 0.8107,
+          "roc_auc_ci_low": 0.8052,
+          "roc_auc_ci_high": 0.8162,
+          "average_precision": 0.7817
+        },
+        "pending_runs": [
+          "2025-11-01",
+          "2025-12-01"
+        ]
+      },
+      "findings": [
+        {
+          "check": "feature_drift",
+          "severity": "investigate",
+          "subject": "tenure_days",
+          "message": "PSI 0.423 vs reference (worst run 2025-12-01: 0.543)"
+        },
+        {
+          "check": "feature_drift",
+          "severity": "watch",
+          "subject": "category_count",
+          "message": "PSI 0.123 vs reference (worst run 2025-12-01: 0.171)"
+        },
+        {
+          "check": "feature_drift",
+          "severity": "watch",
+          "subject": "orders_total",
+          "message": "PSI 0.206 vs reference (worst run 2025-12-01: 0.280)"
+        },
+        {
+          "check": "feature_drift",
+          "severity": "watch",
+          "subject": "store_order_share",
+          "message": "PSI 0.107 vs reference (worst run 2025-12-01: 0.146)"
+        }
+      ],
+      "status": "investigate",
+      "recommendation": "Keep scoring, but confirm with the data owner whether the shift is a real change in the population or an upstream pipeline change before the next run."
+    }
+  }
+}

@@ -1,0 +1,11 @@
+stage_number,stage,reached,share_of_start,step_conversion,lost_at_step,share_of_all_losses,visitor_type
+1,session_start,52366,1.0,1.0,0,0.0,prospect
+2,product_view,40343,0.770404,0.770404,12023,0.258593,prospect
+3,add_to_cart,15061,0.28761,0.373324,25282,0.543769,prospect
+4,checkout_start,8733,0.166769,0.579842,6328,0.136104,prospect
+5,purchase,5872,0.112134,0.672392,2861,0.061535,prospect
+1,session_start,36074,1.0,1.0,0,0.0,customer
+2,product_view,30669,0.850169,0.850169,5405,0.233447,customer
+3,add_to_cart,18949,0.525281,0.617855,11720,0.506198,customer
+4,checkout_start,15627,0.433193,0.824687,3322,0.14348,customer
+5,purchase,12921,0.35818,0.826838,2706,0.116875,customer

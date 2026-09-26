@@ -1,0 +1,24 @@
+feature,shap_logistic_regression,direction_logistic_regression,shap_gradient_boosting,direction_gradient_boosting,permutation_ap_drop,permutation_ap_drop_std
+sessions_30d,0.545407,higher -> more likely,0.009006,higher -> more likely,0.05654,0.002285
+sessions_total,0.541897,higher -> less likely,0.184357,higher -> less likely,0.058197,0.002344
+email_opt_in,0.487695,higher -> more likely,0.12427,higher -> more likely,0.043148,0.003568
+emails_received,0.359914,higher -> less likely,0.085903,higher -> less likely,0.022709,0.002376
+days_since_last_session,0.35439,higher -> less likely,0.790307,higher -> less likely,0.046033,0.003728
+acquisition_channel,0.272326,categorical,0.207313,categorical,0.019808,0.003447
+cart_sessions,0.191902,higher -> more likely,0.032922,higher -> more likely,0.017508,0.00242
+age_band,0.138095,categorical,0.099943,categorical,0.002008,0.001768
+max_stage_reached,0.135257,higher -> more likely,0.182679,higher -> more likely,0.012107,0.0011
+email_open_rate,0.129931,higher -> more likely,0.105193,higher -> more likely,0.006574,0.001615
+income_band,0.095261,categorical,0.075662,categorical,0.001246,0.0026
+mobile_session_share,0.094073,higher -> less likely,0.061219,higher -> less likely,0.001866,0.001334
+region,0.073955,categorical,0.052421,categorical,0.001093,0.000729
+emails_clicked,0.064714,higher -> more likely,0.038007,higher -> more likely,0.002559,0.000455
+sessions_7d,0.055772,higher -> less likely,0.001215,higher -> less likely,0.000578,0.000414
+device_type,0.020868,categorical,0.007072,categorical,0.000229,0.000205
+app_session_share,0.017609,higher -> more likely,0.02193,higher -> more likely,0.000297,0.00027
+retarget_clicks,0.014673,higher -> less likely,0.00262,higher -> less likely,-0.000168,0.000201
+checkout_sessions,0.013095,higher -> less likely,0.000187,higher -> less likely,-0.000555,0.000181
+pages_viewed,0.012298,higher -> less likely,0.063266,higher -> less likely,3.7e-05,0.000128
+lead_age_days,0.009993,higher -> more likely,0.31247,higher -> less likely,-0.000237,0.000215
+cart_sessions_7d,0.007677,higher -> more likely,0.015343,higher -> more likely,0.000381,0.000269
+emails_opened,0.003242,higher -> more likely,0.044154,higher -> more likely,-4.6e-05,3.9e-05

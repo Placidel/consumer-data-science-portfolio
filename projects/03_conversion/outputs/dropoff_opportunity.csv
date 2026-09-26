@@ -1,0 +1,9 @@
+dimension,level,reference,step,entering,level_rate,reference_rate,rate_gap,extra_step_completions,purchase_equivalents
+device_type,mobile,desktop,session_start->product_view,29034,0.772646,0.768304,-0.004342,-126.063646,-16.622666
+device_type,mobile,desktop,product_view->add_to_cart,22433,0.377034,0.370451,-0.006583,-147.67352,-51.645575
+device_type,mobile,desktop,add_to_cart->checkout_start,8458,0.543864,0.627304,0.08344,705.737492,453.819892
+device_type,mobile,desktop,checkout_start->purchase,4600,0.643043,0.698095,0.055051,253.236681,253.236681
+device_type,tablet,desktop,session_start->product_view,5986,0.76562,0.768304,0.002684,16.067335,2.636403
+device_type,tablet,desktop,product_view->add_to_cart,4583,0.363517,0.370451,0.006934,31.776769,14.343416
+device_type,tablet,desktop,add_to_cart->checkout_start,1666,0.621849,0.627304,0.005455,9.088515,6.597069
+device_type,tablet,desktop,checkout_start->purchase,1036,0.725869,0.698095,-0.027774,-28.773652,-28.773652

@@ -1,0 +1,3 @@
+# The model registry is rebuilt deterministically with `northstar train-models`; keep it out of Git.
+*
+!.gitignore

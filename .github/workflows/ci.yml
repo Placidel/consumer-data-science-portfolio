@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    name: Lint and test (Python ${{ matrix.python }}, ${{ matrix.deps }} dependencies)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Exactly the versions the Docker image uses.
+          - python: "3.12"
+            deps: locked
+          # Newest releases allowed by pyproject.toml, to catch upstream breakage early.
+          - python: "3.11"
+            deps: latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install into a clean virtual environment
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --upgrade pip
+          if [ "${{ matrix.deps }}" = "locked" ]; then
+            .venv/bin/python -m pip install --constraint constraints.txt -e ".[dev]"
+          else
+            .venv/bin/python -m pip install -e ".[dev]"
+          fi
+      - name: Lint
+        run: .venv/bin/python -m ruff check .
+      - name: Test (full suite, including full-scale reproducibility checks)
+        run: .venv/bin/python -m pytest
+
+  docker:
+    name: Docker build and smoke test
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the image
+        run: docker compose build
+      - name: Start API and dashboard, wait for health checks
+        run: docker compose up --detach --wait --wait-timeout 180
+      - name: Smoke test
+        run: |
+          curl --fail --silent --show-error http://localhost:8000/health
+          for route in acquisition churn; do
+            curl --fail --silent --show-error -X POST "http://localhost:8000/v1/${route}/score" \
+              -H "Content-Type: application/json" \
+              -d @"projects/08_productionization/outputs/example_requests/${route}.json"
+          done
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' -X POST \
+            http://localhost:8000/v1/acquisition/score -H "Content-Type: application/json" \
+            -d '{"records": []}')
+          test "$status" = "422"
+          curl --fail --silent --show-error http://localhost:8501/_stcore/health
+      - name: Container logs
+        if: failure()
+        run: docker compose logs
+      - name: Stop
+        if: always()
+        run: docker compose down

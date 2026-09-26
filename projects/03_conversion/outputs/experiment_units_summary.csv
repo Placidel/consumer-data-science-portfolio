@@ -1,0 +1,3 @@
+variant,mean_converted,mean_first_order_value,mean_first_order_items,mean_first_order_revenue,mean_revenue_90d,mean_reached_product_view,mean_reached_add_to_cart,mean_reached_checkout_start,mean_reached_purchase,mean_prior_sessions,units
+control,0.242382,86.018371,1.727143,20.849328,55.385623,0.885388,0.450139,0.312327,0.242382,0.411704,2888
+treatment,0.27131,73.586462,1.570881,19.964726,54.624657,0.889813,0.475745,0.33957,0.27131,0.413028,2886

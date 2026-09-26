@@ -1,0 +1,667 @@
+{
+  "data": {
+    "seed": 20240101,
+    "n_prospects": 40000
+  },
+  "config": {
+    "horizon_days": 30,
+    "fit_runs": [
+      "2024-04-01",
+      "2024-05-01",
+      "2024-06-01",
+      "2024-07-01",
+      "2024-08-01",
+      "2024-09-01",
+      "2024-10-01",
+      "2024-11-01",
+      "2024-12-01",
+      "2025-01-01",
+      "2025-02-01",
+      "2025-03-01"
+    ],
+    "validation_runs": [
+      "2025-04-01",
+      "2025-05-01",
+      "2025-06-01"
+    ],
+    "holdout_runs": [
+      "2025-07-01",
+      "2025-08-01",
+      "2025-09-01",
+      "2025-10-01",
+      "2025-11-01",
+      "2025-12-01"
+    ],
+    "pipeline_days": 90,
+    "capacities": [
+      0.1,
+      0.2,
+      0.3
+    ],
+    "n_bootstrap": 200,
+    "shap_sample": 2000,
+    "seed": 20240101,
+    "features": [
+      "acquisition_channel",
+      "region",
+      "age_band",
+      "income_band",
+      "device_type",
+      "email_opt_in",
+      "lead_age_days",
+      "sessions_total",
+      "sessions_7d",
+      "sessions_30d",
+      "days_since_last_session",
+      "max_stage_reached",
+      "cart_sessions",
+      "cart_sessions_7d",
+      "checkout_sessions",
+      "pages_viewed",
+      "app_session_share",
+      "mobile_session_share",
+      "emails_received",
+      "emails_opened",
+      "emails_clicked",
+      "email_open_rate",
+      "retarget_clicks"
+    ]
+  },
+  "splits": [
+    {
+      "split": "fit",
+      "runs": 12,
+      "first_run": "2024-04-01",
+      "last_run": "2025-03-01",
+      "lead_runs": 40280,
+      "unique_leads": 16725,
+      "conversions": 2290,
+      "conversion_rate": 0.0569
+    },
+    {
+      "split": "validation",
+      "runs": 3,
+      "first_run": "2025-04-01",
+      "last_run": "2025-06-01",
+      "lead_runs": 10518,
+      "unique_leads": 6052,
+      "conversions": 632,
+      "conversion_rate": 0.0601
+    },
+    {
+      "split": "holdout",
+      "runs": 6,
+      "first_run": "2025-07-01",
+      "last_run": "2025-12-01",
+      "lead_runs": 23850,
+      "unique_leads": 11468,
+      "conversions": 1338,
+      "conversion_rate": 0.0561
+    }
+  ],
+  "pipeline_coverage": {
+    "first_orders_in_holdout_windows": 3640,
+    "share_open_pipeline": 0.3676,
+    "share_older_leads": 0.0203,
+    "share_leads_created_in_window": 0.6121
+  },
+  "leakage_audit": {
+    "passed": true,
+    "checks": {
+      "features_only_from_pre_cutoff_rows": true,
+      "features_unchanged_when_future_rows_removed": true,
+      "no_pipeline_lead_converted_before_cutoff": true,
+      "no_customer_linked_rows_in_feature_inputs": true,
+      "no_outcome_columns_used_as_features": true,
+      "train_labels_end_before_holdout_starts": true,
+      "no_single_feature_suspiciously_predictive": true
+    },
+    "details": {
+      "pipeline_leads_converted_before_cutoff": 0,
+      "customer_linked_rows": 0,
+      "min_gap_between_last_event_and_cutoff_seconds": 27.0,
+      "invariance_probe_run": "2025-07-01",
+      "last_train_label_end": "2025-07-01",
+      "first_holdout_run": "2025-07-01",
+      "most_predictive_single_feature": "days_since_last_session",
+      "most_predictive_single_feature_auc": 0.7624,
+      "single_feature_auc_limit": 0.9
+    }
+  },
+  "champion": "logistic_regression",
+  "selection_metric": "validation average precision",
+  "models": [
+    {
+      "model": "channel_rate",
+      "role": "baseline",
+      "champion": false,
+      "validation_roc_auc": 0.5948,
+      "validation_average_precision": 0.0759,
+      "holdout_rows": 23850,
+      "holdout_conversions": 1338,
+      "holdout_base_rate": 0.0561,
+      "holdout_roc_auc": 0.6024,
+      "holdout_average_precision": 0.0748,
+      "holdout_precision_top10": 0.093,
+      "holdout_recall_top10": 0.1658,
+      "holdout_lift_top10": 1.6584,
+      "holdout_precision_top20": 0.0873,
+      "holdout_recall_top20": 0.3113,
+      "holdout_lift_top20": 1.5566,
+      "holdout_brier": 0.0526,
+      "holdout_brier_skill": 0.0074,
+      "holdout_log_loss": 0.2124,
+      "holdout_mean_predicted": 0.0575,
+      "holdout_ece": 0.0031,
+      "holdout_calibration_slope": 0.9992,
+      "holdout_roc_auc_ci_low": 0.5883,
+      "holdout_roc_auc_ci_high": 0.6192,
+      "holdout_ap_ci_low": 0.0692,
+      "holdout_ap_ci_high": 0.0811
+    },
+    {
+      "model": "recent_activity",
+      "role": "baseline",
+      "champion": false,
+      "validation_roc_auc": 0.7652,
+      "validation_average_precision": 0.1503,
+      "holdout_rows": 23850,
+      "holdout_conversions": 1338,
+      "holdout_base_rate": 0.0561,
+      "holdout_roc_auc": 0.7624,
+      "holdout_average_precision": 0.1381,
+      "holdout_precision_top10": 0.1675,
+      "holdout_recall_top10": 0.2986,
+      "holdout_lift_top10": 2.9858,
+      "holdout_precision_top20": 0.14,
+      "holdout_recall_top20": 0.499,
+      "holdout_lift_top20": 2.4948,
+      "holdout_brier": null,
+      "holdout_brier_skill": null,
+      "holdout_log_loss": null,
+      "holdout_mean_predicted": null,
+      "holdout_ece": null,
+      "holdout_calibration_slope": null,
+      "holdout_roc_auc_ci_low": 0.7511,
+      "holdout_roc_auc_ci_high": 0.7747,
+      "holdout_ap_ci_low": 0.1274,
+      "holdout_ap_ci_high": 0.1521
+    },
+    {
+      "model": "logistic_regression",
+      "role": "model",
+      "champion": true,
+      "validation_roc_auc": 0.8139,
+      "validation_average_precision": 0.2303,
+      "holdout_rows": 23850,
+      "holdout_conversions": 1338,
+      "holdout_base_rate": 0.0561,
+      "holdout_roc_auc": 0.8099,
+      "holdout_average_precision": 0.2055,
+      "holdout_precision_top10": 0.2166,
+      "holdout_recall_top10": 0.386,
+      "holdout_lift_top10": 3.8602,
+      "holdout_precision_top20": 0.169,
+      "holdout_recall_top20": 0.6024,
+      "holdout_lift_top20": 3.012,
+      "holdout_brier": 0.0484,
+      "holdout_brier_skill": 0.0861,
+      "holdout_log_loss": 0.1807,
+      "holdout_mean_predicted": 0.0585,
+      "holdout_ece": 0.003,
+      "holdout_calibration_slope": 1.0032,
+      "holdout_roc_auc_ci_low": 0.8013,
+      "holdout_roc_auc_ci_high": 0.8204,
+      "holdout_ap_ci_low": 0.1898,
+      "holdout_ap_ci_high": 0.2262
+    },
+    {
+      "model": "gradient_boosting",
+      "role": "model",
+      "champion": false,
+      "validation_roc_auc": 0.8126,
+      "validation_average_precision": 0.215,
+      "holdout_rows": 23850,
+      "holdout_conversions": 1338,
+      "holdout_base_rate": 0.0561,
+      "holdout_roc_auc": 0.8103,
+      "holdout_average_precision": 0.2039,
+      "holdout_precision_top10": 0.2179,
+      "holdout_recall_top10": 0.3885,
+      "holdout_lift_top10": 3.8849,
+      "holdout_precision_top20": 0.1699,
+      "holdout_recall_top20": 0.6057,
+      "holdout_lift_top20": 3.0284,
+      "holdout_brier": 0.0484,
+      "holdout_brier_skill": 0.0856,
+      "holdout_log_loss": 0.1806,
+      "holdout_mean_predicted": 0.058,
+      "holdout_ece": 0.0043,
+      "holdout_calibration_slope": 0.9803,
+      "holdout_roc_auc_ci_low": 0.799,
+      "holdout_roc_auc_ci_high": 0.8216,
+      "holdout_ap_ci_low": 0.1886,
+      "holdout_ap_ci_high": 0.226
+    }
+  ],
+  "champion_vs_baselines": {
+    "logistic_regression_minus_channel_rate": {
+      "roc_auc": 0.2075,
+      "roc_auc_ci": [
+        0.1902,
+        0.2238
+      ],
+      "average_precision": 0.1306,
+      "average_precision_ci": [
+        0.1167,
+        0.1501
+      ]
+    },
+    "logistic_regression_minus_recent_activity": {
+      "roc_auc": 0.0475,
+      "roc_auc_ci": [
+        0.0393,
+        0.0551
+      ],
+      "average_precision": 0.0674,
+      "average_precision_ci": [
+        0.0541,
+        0.0819
+      ]
+    }
+  },
+  "champion_per_run_auc": {
+    "2025-07-01": 0.8205,
+    "2025-08-01": 0.7997,
+    "2025-09-01": 0.8045,
+    "2025-10-01": 0.8233,
+    "2025-11-01": 0.7959,
+    "2025-12-01": 0.8141
+  },
+  "deciles": [
+    {
+      "decile": 1,
+      "leads": 2387,
+      "conversions": 517,
+      "mean_score": 0.234,
+      "conversion_rate": 0.2166,
+      "lift": 3.8607,
+      "cumulative_capture": 0.3864
+    },
+    {
+      "decile": 2,
+      "leads": 2384,
+      "conversions": 289,
+      "mean_score": 0.1176,
+      "conversion_rate": 0.1212,
+      "lift": 2.1608,
+      "cumulative_capture": 0.6024
+    },
+    {
+      "decile": 3,
+      "leads": 2386,
+      "conversions": 191,
+      "mean_score": 0.0776,
+      "conversion_rate": 0.0801,
+      "lift": 1.4269,
+      "cumulative_capture": 0.7451
+    },
+    {
+      "decile": 4,
+      "leads": 2383,
+      "conversions": 129,
+      "mean_score": 0.0538,
+      "conversion_rate": 0.0541,
+      "lift": 0.9649,
+      "cumulative_capture": 0.8416
+    },
+    {
+      "decile": 5,
+      "leads": 2386,
+      "conversions": 78,
+      "mean_score": 0.0369,
+      "conversion_rate": 0.0327,
+      "lift": 0.5827,
+      "cumulative_capture": 0.8999
+    },
+    {
+      "decile": 6,
+      "leads": 2384,
+      "conversions": 58,
+      "mean_score": 0.0246,
+      "conversion_rate": 0.0243,
+      "lift": 0.4337,
+      "cumulative_capture": 0.9432
+    },
+    {
+      "decile": 7,
+      "leads": 2383,
+      "conversions": 34,
+      "mean_score": 0.0167,
+      "conversion_rate": 0.0143,
+      "lift": 0.2543,
+      "cumulative_capture": 0.9686
+    },
+    {
+      "decile": 8,
+      "leads": 2386,
+      "conversions": 21,
+      "mean_score": 0.0115,
+      "conversion_rate": 0.0088,
+      "lift": 0.1569,
+      "cumulative_capture": 0.9843
+    },
+    {
+      "decile": 9,
+      "leads": 2384,
+      "conversions": 16,
+      "mean_score": 0.0078,
+      "conversion_rate": 0.0067,
+      "lift": 0.1196,
+      "cumulative_capture": 0.9963
+    },
+    {
+      "decile": 10,
+      "leads": 2387,
+      "conversions": 5,
+      "mean_score": 0.0042,
+      "conversion_rate": 0.0021,
+      "lift": 0.0373,
+      "cumulative_capture": 1.0
+    }
+  ],
+  "budget_simulation": [
+    {
+      "capacity_share": 0.1,
+      "policy": "random",
+      "contacts_per_run": 397.5,
+      "conversions_reached_per_run": 22.3,
+      "conversions_reached_total": 133.8,
+      "precision": 0.0561,
+      "share_of_conversions_captured": 0.1,
+      "lift_vs_random": 1.0,
+      "contacts_per_conversion": 17.8251
+    },
+    {
+      "capacity_share": 0.1,
+      "policy": "channel_rate",
+      "contacts_per_run": 397.5,
+      "conversions_reached_per_run": 36.9826,
+      "conversions_reached_total": 221.8959,
+      "precision": 0.093,
+      "share_of_conversions_captured": 0.1658,
+      "lift_vs_random": 1.6584,
+      "contacts_per_conversion": 10.7483
+    },
+    {
+      "capacity_share": 0.1,
+      "policy": "recent_activity",
+      "contacts_per_run": 397.5,
+      "conversions_reached_per_run": 66.5833,
+      "conversions_reached_total": 399.5,
+      "precision": 0.1675,
+      "share_of_conversions_captured": 0.2986,
+      "lift_vs_random": 2.9858,
+      "contacts_per_conversion": 5.97
+    },
+    {
+      "capacity_share": 0.1,
+      "policy": "logistic_regression",
+      "contacts_per_run": 397.5,
+      "conversions_reached_per_run": 86.0833,
+      "conversions_reached_total": 516.5,
+      "precision": 0.2166,
+      "share_of_conversions_captured": 0.386,
+      "lift_vs_random": 3.8602,
+      "contacts_per_conversion": 4.6176
+    },
+    {
+      "capacity_share": 0.2,
+      "policy": "random",
+      "contacts_per_run": 795.0,
+      "conversions_reached_per_run": 44.6,
+      "conversions_reached_total": 267.6,
+      "precision": 0.0561,
+      "share_of_conversions_captured": 0.2,
+      "lift_vs_random": 1.0,
+      "contacts_per_conversion": 17.8251
+    },
+    {
+      "capacity_share": 0.2,
+      "policy": "channel_rate",
+      "contacts_per_run": 795.0,
+      "conversions_reached_per_run": 69.424,
+      "conversions_reached_total": 416.5441,
+      "precision": 0.0873,
+      "share_of_conversions_captured": 0.3113,
+      "lift_vs_random": 1.5566,
+      "contacts_per_conversion": 11.4514
+    },
+    {
+      "capacity_share": 0.2,
+      "policy": "recent_activity",
+      "contacts_per_run": 795.0,
+      "conversions_reached_per_run": 111.2667,
+      "conversions_reached_total": 667.6,
+      "precision": 0.14,
+      "share_of_conversions_captured": 0.499,
+      "lift_vs_random": 2.4948,
+      "contacts_per_conversion": 7.145
+    },
+    {
+      "capacity_share": 0.2,
+      "policy": "logistic_regression",
+      "contacts_per_run": 795.0,
+      "conversions_reached_per_run": 134.3333,
+      "conversions_reached_total": 806.0,
+      "precision": 0.169,
+      "share_of_conversions_captured": 0.6024,
+      "lift_vs_random": 3.012,
+      "contacts_per_conversion": 5.9181
+    },
+    {
+      "capacity_share": 0.3,
+      "policy": "random",
+      "contacts_per_run": 1192.5,
+      "conversions_reached_per_run": 66.9,
+      "conversions_reached_total": 401.4,
+      "precision": 0.0561,
+      "share_of_conversions_captured": 0.3,
+      "lift_vs_random": 1.0,
+      "contacts_per_conversion": 17.8251
+    },
+    {
+      "capacity_share": 0.3,
+      "policy": "channel_rate",
+      "contacts_per_run": 1192.5,
+      "conversions_reached_per_run": 93.8284,
+      "conversions_reached_total": 562.9703,
+      "precision": 0.0787,
+      "share_of_conversions_captured": 0.4208,
+      "lift_vs_random": 1.4025,
+      "contacts_per_conversion": 12.7094
+    },
+    {
+      "capacity_share": 0.3,
+      "policy": "recent_activity",
+      "contacts_per_run": 1192.5,
+      "conversions_reached_per_run": 145.5833,
+      "conversions_reached_total": 873.5,
+      "precision": 0.1221,
+      "share_of_conversions_captured": 0.6528,
+      "lift_vs_random": 2.1761,
+      "contacts_per_conversion": 8.1912
+    },
+    {
+      "capacity_share": 0.3,
+      "policy": "logistic_regression",
+      "contacts_per_run": 1192.5,
+      "conversions_reached_per_run": 166.1,
+      "conversions_reached_total": 996.6,
+      "precision": 0.1393,
+      "share_of_conversions_captured": 0.7448,
+      "lift_vs_random": 2.4828,
+      "contacts_per_conversion": 7.1794
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "sessions_30d",
+      "shap_logistic_regression": 0.5454,
+      "direction_logistic_regression": "higher -> more likely",
+      "shap_gradient_boosting": 0.009,
+      "direction_gradient_boosting": "higher -> more likely",
+      "permutation_ap_drop": 0.0565,
+      "permutation_ap_drop_std": 0.0023
+    },
+    {
+      "feature": "sessions_total",
+      "shap_logistic_regression": 0.5419,
+      "direction_logistic_regression": "higher -> less likely",
+      "shap_gradient_boosting": 0.1844,
+      "direction_gradient_boosting": "higher -> less likely",
+      "permutation_ap_drop": 0.0582,
+      "permutation_ap_drop_std": 0.0023
+    },
+    {
+      "feature": "email_opt_in",
+      "shap_logistic_regression": 0.4877,
+      "direction_logistic_regression": "higher -> more likely",
+      "shap_gradient_boosting": 0.1243,
+      "direction_gradient_boosting": "higher -> more likely",
+      "permutation_ap_drop": 0.0431,
+      "permutation_ap_drop_std": 0.0036
+    },
+    {
+      "feature": "emails_received",
+      "shap_logistic_regression": 0.3599,
+      "direction_logistic_regression": "higher -> less likely",
+      "shap_gradient_boosting": 0.0859,
+      "direction_gradient_boosting": "higher -> less likely",
+      "permutation_ap_drop": 0.0227,
+      "permutation_ap_drop_std": 0.0024
+    },
+    {
+      "feature": "days_since_last_session",
+      "shap_logistic_regression": 0.3544,
+      "direction_logistic_regression": "higher -> less likely",
+      "shap_gradient_boosting": 0.7903,
+      "direction_gradient_boosting": "higher -> less likely",
+      "permutation_ap_drop": 0.046,
+      "permutation_ap_drop_std": 0.0037
+    },
+    {
+      "feature": "acquisition_channel",
+      "shap_logistic_regression": 0.2723,
+      "direction_logistic_regression": "categorical",
+      "shap_gradient_boosting": 0.2073,
+      "direction_gradient_boosting": "categorical",
+      "permutation_ap_drop": 0.0198,
+      "permutation_ap_drop_std": 0.0034
+    },
+    {
+      "feature": "cart_sessions",
+      "shap_logistic_regression": 0.1919,
+      "direction_logistic_regression": "higher -> more likely",
+      "shap_gradient_boosting": 0.0329,
+      "direction_gradient_boosting": "higher -> more likely",
+      "permutation_ap_drop": 0.0175,
+      "permutation_ap_drop_std": 0.0024
+    },
+    {
+      "feature": "age_band",
+      "shap_logistic_regression": 0.1381,
+      "direction_logistic_regression": "categorical",
+      "shap_gradient_boosting": 0.0999,
+      "direction_gradient_boosting": "categorical",
+      "permutation_ap_drop": 0.002,
+      "permutation_ap_drop_std": 0.0018
+    },
+    {
+      "feature": "max_stage_reached",
+      "shap_logistic_regression": 0.1353,
+      "direction_logistic_regression": "higher -> more likely",
+      "shap_gradient_boosting": 0.1827,
+      "direction_gradient_boosting": "higher -> more likely",
+      "permutation_ap_drop": 0.0121,
+      "permutation_ap_drop_std": 0.0011
+    },
+    {
+      "feature": "email_open_rate",
+      "shap_logistic_regression": 0.1299,
+      "direction_logistic_regression": "higher -> more likely",
+      "shap_gradient_boosting": 0.1052,
+      "direction_gradient_boosting": "higher -> more likely",
+      "permutation_ap_drop": 0.0066,
+      "permutation_ap_drop_std": 0.0016
+    },
+    {
+      "feature": "income_band",
+      "shap_logistic_regression": 0.0953,
+      "direction_logistic_regression": "categorical",
+      "shap_gradient_boosting": 0.0757,
+      "direction_gradient_boosting": "categorical",
+      "permutation_ap_drop": 0.0012,
+      "permutation_ap_drop_std": 0.0026
+    },
+    {
+      "feature": "mobile_session_share",
+      "shap_logistic_regression": 0.0941,
+      "direction_logistic_regression": "higher -> less likely",
+      "shap_gradient_boosting": 0.0612,
+      "direction_gradient_boosting": "higher -> less likely",
+      "permutation_ap_drop": 0.0019,
+      "permutation_ap_drop_std": 0.0013
+    }
+  ],
+  "logistic_top_coefficients": [
+    {
+      "term": "acquisition_channel_display",
+      "feature": "acquisition_channel",
+      "coefficient": -0.7343,
+      "odds_ratio": 0.4798
+    },
+    {
+      "term": "sessions_total",
+      "feature": "sessions_total",
+      "coefficient": -0.6548,
+      "odds_ratio": 0.5196
+    },
+    {
+      "term": "sessions_30d",
+      "feature": "sessions_30d",
+      "coefficient": 0.6185,
+      "odds_ratio": 1.8561
+    },
+    {
+      "term": "acquisition_channel_referral",
+      "feature": "acquisition_channel",
+      "coefficient": 0.5323,
+      "odds_ratio": 1.7028
+    },
+    {
+      "term": "email_opt_in",
+      "feature": "email_opt_in",
+      "coefficient": 0.4898,
+      "odds_ratio": 1.6321
+    },
+    {
+      "term": "days_since_last_session",
+      "feature": "days_since_last_session",
+      "coefficient": -0.4296,
+      "odds_ratio": 0.6507
+    },
+    {
+      "term": "emails_received",
+      "feature": "emails_received",
+      "coefficient": -0.3816,
+      "odds_ratio": 0.6828
+    },
+    {
+      "term": "acquisition_channel_paid_social",
+      "feature": "acquisition_channel",
+      "coefficient": -0.3398,
+      "odds_ratio": 0.7119
+    }
+  ]
+}

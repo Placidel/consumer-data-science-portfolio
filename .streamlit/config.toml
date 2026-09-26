@@ -1,0 +1,10 @@
+# Used by `streamlit run` from the repository root; `northstar dashboard` passes the same options.
+[theme]
+base = "light"
+primaryColor = "#2a78d6"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false

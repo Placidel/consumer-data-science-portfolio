@@ -1,0 +1,31 @@
+covariate,control_mean,treatment_mean,smd
+device_type=desktop,0.33241,0.332987,0.001224
+device_type=mobile,0.588643,0.590437,0.003646
+device_type=tablet,0.078947,0.076577,-0.008852
+acquisition_channel=affiliate,0.0741,0.083853,0.036163
+acquisition_channel=display,0.069945,0.062024,-0.031905
+acquisition_channel=email,0.105956,0.108108,0.006961
+acquisition_channel=organic_search,0.198061,0.203742,0.014177
+acquisition_channel=paid_search,0.241343,0.234581,-0.015879
+acquisition_channel=paid_social,0.227493,0.219681,-0.018747
+acquisition_channel=referral,0.083102,0.088011,0.017547
+region=midwest,0.205679,0.188496,-0.043196
+region=northeast,0.194252,0.211712,0.043411
+region=southeast,0.239266,0.253638,0.03335
+region=southwest,0.14162,0.134789,-0.019793
+region=west,0.219183,0.211365,-0.019018
+age_band=18-24,0.135042,0.137214,0.006334
+age_band=25-34,0.245499,0.245669,0.000395
+age_band=35-44,0.225762,0.225918,0.000374
+age_band=45-54,0.16205,0.172211,0.027232
+age_band=55-64,0.13885,0.130284,-0.0251
+age_band=65+,0.092798,0.088704,-0.014249
+income_band=high,0.191482,0.20097,0.023889
+income_band=low,0.292936,0.288635,-0.009471
+income_band=middle,0.515582,0.510395,-0.010375
+email_opt_in=False,0.400277,0.398475,-0.003678
+email_opt_in=True,0.599723,0.601525,0.003678
+lead_type=new lead,0.78705,0.795218,0.020092
+lead_type=returning lead,0.21295,0.204782,-0.020092
+prior_sessions,0.411704,0.413028,0.001348
+days_since_lead,11.302806,10.430837,-0.029944
